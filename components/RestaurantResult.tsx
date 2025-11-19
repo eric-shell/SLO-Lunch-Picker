@@ -12,57 +12,61 @@ const RestaurantResult: React.FC<Props> = ({ restaurant, onSpinAgain }) => {
   const hoursToday = getTodaysHours(restaurant.hours);
 
   return (
-    <div className="w-full max-w-md chalkboard-texture p-4 rounded-xl shadow-2xl border-8 border-wood-light transform rotate-1 animate-[slideIn_0.5s_ease-out]">
+    <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 text-center animate-slide-up border border-gray-100 relative overflow-hidden">
       
-      {/* Chalk Content */}
-      <div className="border-2 border-dashed border-white/20 p-6 h-full flex flex-col items-center text-center text-white/90 font-hand">
-        
-        <div className="mb-2 text-yellow-200 text-5xl">★</div>
-        
-        <h2 className="text-4xl font-bold text-white mb-2 tracking-widest uppercase font-sans">{restaurant.name}</h2>
-        <p className="text-xl text-gray-300 mb-6">{restaurant.category}</p>
-        
-        <div className="space-y-4 w-full mb-8">
-          <div className="bg-white/10 p-3 rounded">
-            <p className="text-2xl">{restaurant.address}</p>
-          </div>
-          
-          <div className="flex items-center justify-center gap-4 text-lg">
-            <span className={`${open ? 'text-green-400' : 'text-red-400'} font-bold font-sans`}>
-              {open ? 'OPEN NOW' : 'CLOSED'}
-            </span>
-            <span>•</span>
-            <span>Hours: {hoursToday}</span>
-          </div>
-          
-          <div className="flex justify-center gap-4 text-lg">
-             <span className="text-yellow-400 font-sans">{'★'.repeat(Math.round(restaurant.rating))} <span className="text-gray-500 text-sm">({restaurant.rating})</span></span>
-             <span className="text-green-400 font-sans">{'$'.repeat(restaurant.price)}</span>
-          </div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-slo-teal via-slo-yellow to-slo-coral"></div>
+      
+      <h2 className="text-gray-400 font-bold text-xs tracking-widest uppercase mb-4">We found a winner</h2>
+      
+      <h1 className="text-4xl md:text-5xl font-serif text-slo-blue mb-2 leading-tight">
+        {restaurant.name}
+      </h1>
+      
+      <p className="text-lg text-slo-teal font-semibold mb-6">{restaurant.category}</p>
 
-          {restaurant.notes && (
-            <p className="text-xl text-yellow-100 italic rotate-[-1deg] mt-2">"{restaurant.notes}"</p>
-          )}
+      <div className="bg-gray-50 rounded-xl p-6 mb-8 space-y-3">
+        <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+           {restaurant.address}
         </div>
 
-        <div className="grid grid-cols-1 gap-3 w-full font-sans">
-          <a 
-            href={restaurant.mapUrl} 
-            target="_blank" 
-            rel="noreferrer"
-            className="block w-full py-3 bg-white text-black hover:bg-gray-200 rounded font-bold transition-colors shadow-lg"
-          >
-            DIRECTIONS
-          </a>
-          
-          <button 
-            onClick={onSpinAgain}
-            className="mt-2 w-full py-3 bg-dart-red hover:bg-red-700 text-white rounded font-bold text-lg shadow-lg transition-all"
-          >
-            SPIN AGAIN
-          </button>
+        <div className="flex items-center justify-center gap-4">
+           <span className={`px-3 py-1 rounded-full text-xs font-bold ${open ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+             {open ? 'OPEN NOW' : 'CLOSED'}
+           </span>
+           <span className="text-sm text-gray-500">{hoursToday}</span>
+        </div>
+
+        <div className="flex justify-center gap-6 text-sm pt-2 border-t border-gray-200 mt-2">
+           <span className="flex items-center gap-1 text-slo-yellow font-bold">
+             ★ {restaurant.rating}
+           </span>
+           <span className="flex items-center gap-1 text-gray-400">
+             {Array(3).fill(0).map((_, i) => (
+               <span key={i} className={i < restaurant.price ? 'text-green-600 font-bold' : 'text-gray-300'}>$</span>
+             ))}
+           </span>
         </div>
       </div>
+
+      <div className="grid gap-3">
+        <a 
+          href={restaurant.mapUrl} 
+          target="_blank" 
+          rel="noreferrer"
+          className="block w-full py-3 bg-slo-blue hover:bg-blue-900 text-white rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/20"
+        >
+          Get Directions
+        </a>
+        
+        <button 
+          onClick={onSpinAgain}
+          className="block w-full py-3 bg-white hover:bg-gray-50 text-slo-text border-2 border-gray-200 rounded-xl font-bold transition-colors"
+        >
+          Spin Again
+        </button>
+      </div>
+
     </div>
   );
 };

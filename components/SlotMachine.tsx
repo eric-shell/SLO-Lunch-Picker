@@ -5,10 +5,10 @@ interface Props {
   restaurants: Restaurant[];
   isSpinning: boolean;
   onFinished: () => void;
+  onTriggerSpin: () => void;
   winner: Restaurant | null;
 }
 
-// Helper to get category icons
 const getIcon = (cat: string) => {
   if (cat === 'BBQ') return '🍖';
   if (cat === 'Pizza') return '🍕';
@@ -22,66 +22,70 @@ const getIcon = (cat: string) => {
   return '🍽️';
 };
 
-export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinished, winner }) => {
-  // We spin 3 reels: [Icon] [Name] [Price/Rating]
-  const [reel1, setReel1] = useState<string>('🎰');
-  const [reel2, setReel2] = useState<string>('PULL THE LEVER');
-  const [reel3, setReel3] = useState<string>('💰');
-
-  // Refs for intervals
+export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinished, onTriggerSpin, winner }) => {
+  const [reel1, setReel1] = useState<string>('🎲');
+  const [reel2, setReel2] = useState<string>('Pull Lever');
+  const [reel3, setReel3] = useState<string>('😋');
+  const [leverPulled, setLeverPulled] = useState(false);
+  
   const intervalRef1 = useRef<number | null>(null);
   const intervalRef2 = useRef<number | null>(null);
   const intervalRef3 = useRef<number | null>(null);
 
+  // Update "Ready" state when filters change, but no shake
+  useEffect(() => {
+     if (!isSpinning) {
+        const r = restaurants[Math.floor(Math.random() * restaurants.length)];
+        if (r) {
+            // Smooth update
+            setTimeout(() => setReel1(getIcon(r.category)), 100);
+            setTimeout(() => setReel2("Ready to Spin"), 200);
+        } else {
+           setReel2("No Results");
+        }
+     }
+  }, [restaurants, isSpinning]);
+
+  // Handle Spin Logic
   useEffect(() => {
     if (isSpinning && winner && restaurants.length > 0) {
-      // START SPINNING
+      setLeverPulled(true);
+      setTimeout(() => setLeverPulled(false), 600); // Reset lever animation after pull
 
-      // Reel 1: Icons (Fastest)
+      // Fast Spin
       intervalRef1.current = window.setInterval(() => {
         const r = restaurants[Math.floor(Math.random() * restaurants.length)];
         setReel1(getIcon(r.category));
       }, 80);
 
-      // Reel 2: Names (Medium)
       intervalRef2.current = window.setInterval(() => {
         const r = restaurants[Math.floor(Math.random() * restaurants.length)];
         setReel2(r.name);
       }, 100);
 
-      // Reel 3: Rating/Price (Fast)
       intervalRef3.current = window.setInterval(() => {
-        setReel3(['💲', '⭐⭐', '💵', '⭐⭐⭐', '💲💲', '⭐⭐⭐⭐'].sort(() => Math.random() - 0.5)[0]);
+        setReel3(`${(Math.random() * 2 + 3).toFixed(1)}★`);
       }, 90);
 
-      // STOPPING SEQUENCE
-      
-      // Stop Reel 1 (Icon) at 1.5s
+      // Stop Sequence
       setTimeout(() => {
         if (intervalRef1.current) clearInterval(intervalRef1.current);
         setReel1(getIcon(winner.category));
-      }, 1500);
+      }, 1000);
 
-      // Stop Reel 2 (Name) at 2.5s
       setTimeout(() => {
         if (intervalRef2.current) clearInterval(intervalRef2.current);
         setReel2(winner.name);
-      }, 2500);
+      }, 2000);
 
-      // Stop Reel 3 (Stats) at 3.5s
       setTimeout(() => {
         if (intervalRef3.current) clearInterval(intervalRef3.current);
         setReel3(`${winner.rating}★`);
         onFinished();
-      }, 3500);
+      }, 2500);
 
-    } else if (!isSpinning && !winner) {
-      // Reset state
-      setReel1('🎰');
-      setReel2('READY');
-      setReel3('💰');
-    }
-
+    } 
+    
     return () => {
       if (intervalRef1.current) clearInterval(intervalRef1.current);
       if (intervalRef2.current) clearInterval(intervalRef2.current);
@@ -89,50 +93,109 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
     };
   }, [isSpinning, winner, restaurants, onFinished]);
 
+  const handleLeverClick = () => {
+    if (!isSpinning && restaurants.length > 0) {
+        setLeverPulled(true);
+        onTriggerSpin();
+    }
+  };
+
   return (
-    <div className="relative p-6 bg-wood-dark rounded-xl border-8 border-wood-light shadow-2xl max-w-3xl mx-auto transform scale-90 md:scale-100">
-      {/* Brass Frame Top */}
-      <div className="absolute top-0 left-0 right-0 h-4 brass-gradient rounded-t-lg opacity-80"></div>
+    // Added padding-right to accommodate the lever
+    <div className="w-full max-w-4xl mx-auto flex items-center justify-center pt-8 relative pr-12 md:pr-24">
       
       {/* Machine Body */}
-      <div className="flex flex-row gap-2 md:gap-4 items-center justify-center bg-black/30 p-6 rounded-lg border-4 border-yellow-700 shadow-inner">
-        
-        {/* REEL 1: Category */}
-        <div className="relative overflow-hidden w-20 h-32 md:w-24 md:h-40 bg-white rounded border-4 border-gray-400 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none z-10"></div>
-          <span className={`text-5xl md:text-6xl ${isSpinning && !winner ? 'slot-motion-blur' : ''}`}>
-            {reel1}
-          </span>
-        </div>
+      <div className="relative z-10 p-4 bg-gradient-to-b from-gray-700 to-gray-900 rounded-3xl shadow-2xl border-4 border-gray-600 w-full max-w-2xl">
+          
+          {/* Metallic Bezel */}
+          <div className="bg-gradient-to-r from-yellow-600 via-yellow-300 to-yellow-600 p-3 rounded-2xl shadow-inner">
+              
+              {/* Screen/Reel Area */}
+              <div className="bg-white rounded-xl border-4 border-gray-800 flex flex-row gap-2 items-stretch justify-center h-40 md:h-48 p-2 shadow-[inset_0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                
+                {/* Glass Reflection */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent h-1/2 pointer-events-none z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent h-1/4 bottom-0 pointer-events-none z-10"></div>
 
-        {/* REEL 2: Name (Wide) */}
-        <div className="relative overflow-hidden w-48 md:w-80 h-32 md:h-40 bg-white rounded border-4 border-gray-400 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] flex items-center justify-center px-2 text-center">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none z-10"></div>
-          <span className={`text-xl md:text-3xl font-sans font-black text-gray-800 uppercase leading-tight ${isSpinning && !winner ? 'slot-motion-blur blur-sm' : ''}`}>
-            {reel2}
-          </span>
-        </div>
+                {/* Reel 1 */}
+                <div className="w-20 md:w-24 bg-gray-100 rounded-lg border-x border-gray-300 flex items-center justify-center relative overflow-hidden flex-shrink-0">
+                    <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-gray-400 to-transparent z-0"></div>
+                    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-400 to-transparent z-0"></div>
+                    <span className="text-4xl md:text-5xl relative z-0 drop-shadow-sm select-none">{reel1}</span>
+                </div>
 
-        {/* REEL 3: Price/Rating */}
-        <div className="relative overflow-hidden w-20 h-32 md:w-24 md:h-40 bg-white rounded border-4 border-gray-400 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none z-10"></div>
-          <span className={`text-2xl md:text-3xl font-bold text-dart-red font-sans ${isSpinning && !winner ? 'slot-motion-blur' : ''}`}>
-            {reel3}
-          </span>
-        </div>
+                {/* Reel 2 (Main) - Fixed width to prevent jumping */}
+                <div className="flex-1 w-0 min-w-0 bg-gray-100 rounded-lg border-x border-gray-300 flex items-center justify-center relative overflow-hidden px-2 text-center">
+                    <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-gray-400 to-transparent z-0"></div>
+                    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-400 to-transparent z-0"></div>
+                    <span className="text-xl md:text-3xl font-serif font-bold text-slo-blue tracking-tight relative z-0 drop-shadow-sm truncate w-full select-none">
+                        {reel2}
+                    </span>
+                </div>
 
+                {/* Reel 3 */}
+                <div className="w-20 md:w-24 bg-gray-100 rounded-lg border-x border-gray-300 flex items-center justify-center relative overflow-hidden flex-shrink-0">
+                    <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-gray-400 to-transparent z-0"></div>
+                    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-400 to-transparent z-0"></div>
+                    <span className="text-xl md:text-2xl font-bold text-slo-coral relative z-0 drop-shadow-sm select-none">{reel3}</span>
+                </div>
+
+              </div>
+          </div>
+
+          {/* Machine Bottom Trim */}
+          <div className="mt-2 h-4 bg-gray-800 rounded-full mx-4 opacity-50"></div>
       </div>
 
-      {/* Decorative Bottom Panel */}
-      <div className="mt-4 h-12 brass-gradient rounded flex items-center justify-center border-2 border-yellow-800 shadow-lg">
-        <span className="text-wood-dark font-serif font-bold tracking-widest text-lg opacity-70">WINNER PAID IN CALORIES</span>
+      {/* Lever Assembly - Positioned absolutely relative to the flex container, using the padding area */}
+      <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-64 w-20 z-0">
+         
+         {/* Base Connector to Machine - positioned to connect to the machine body to the left */}
+         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-24 bg-gradient-to-r from-gray-800 to-gray-600 border-y border-gray-500 shadow-xl -translate-x-full"></div>
+         
+         {/* The Lever Arm SVG */}
+         <svg width="100" height="300" viewBox="0 0 100 300" className="absolute left-[-30px] top-1/2 -translate-y-1/2 overflow-visible">
+             <g 
+                className="origin-[10px_150px] transition-transform duration-500 ease-in-out"
+                style={{ transform: leverPulled ? 'rotate(180deg)' : 'rotate(0deg)' }}
+             >
+                {/* Stick */}
+                <rect x="0" y="30" width="12" height="120" rx="6" fill="url(#stickGradient)" stroke="#999" strokeWidth="1"/>
+                
+                {/* Knob */}
+                <circle cx="6" cy="30" r="24" fill="url(#knobGradient)" stroke="#900" strokeWidth="1" 
+                    className={`cursor-pointer ${isSpinning ? 'cursor-not-allowed' : 'hover:brightness-110'}`}
+                    onClick={handleLeverClick}
+                />
+             </g>
+             <defs>
+                 <linearGradient id="stickGradient" x1="0" y1="0" x2="1" y2="0">
+                     <stop offset="0%" stopColor="#E2E8F0" />
+                     <stop offset="50%" stopColor="#CBD5E0" />
+                     <stop offset="100%" stopColor="#A0AEC0" />
+                 </linearGradient>
+                 <radialGradient id="knobGradient" cx="30%" cy="30%" r="70%">
+                     <stop offset="0%" stopColor="#FC8181" />
+                     <stop offset="100%" stopColor="#C53030" />
+                 </radialGradient>
+             </defs>
+         </svg>
+
+         {/* Fulcrum Cover */}
+         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-gray-400 rounded-full border-4 border-gray-600 shadow-md pointer-events-none -translate-x-[calc(100%+10px)]"></div>
       </div>
-      
-      {/* Mechanical Lever (Visual Only) */}
-      <div className="absolute -right-12 top-20 w-8 h-32 bg-gray-400 rounded-r-lg border-l-4 border-gray-600 shadow-xl hidden md:block">
-         <div className={`absolute -top-8 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-red-700 shadow-inner border-2 border-red-900 transition-transform duration-500 ${isSpinning ? 'translate-y-32' : ''}`}></div>
-         <div className={`absolute top-4 left-1/2 -translate-x-1/2 w-2 h-24 bg-gray-300 transition-transform duration-500 origin-bottom ${isSpinning ? 'scale-y-0' : ''}`}></div>
+
+      {/* Mobile Trigger Button (Shown if lever is hidden) */}
+      <div className="md:hidden absolute -bottom-20">
+         <button 
+            onClick={onTriggerSpin}
+            disabled={isSpinning}
+            className="px-8 py-3 bg-slo-coral text-white font-bold rounded-full shadow-lg active:scale-95 transition-transform"
+         >
+            SPIN!
+         </button>
       </div>
+
     </div>
   );
 };

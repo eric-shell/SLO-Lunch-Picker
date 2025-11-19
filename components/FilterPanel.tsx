@@ -1,5 +1,6 @@
-import React from 'react';
-import { FilterState } from '../types';
+import React, { useState } from 'react';
+import { FilterState, Restaurant } from '../types';
+import RestaurantListModal from './RestaurantListModal';
 
 interface Props {
   allCategories: string[];
@@ -7,9 +8,11 @@ interface Props {
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
   resultCount: number;
   totalCount: number;
+  allRestaurants: Restaurant[]; // Added for modal
 }
 
-const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resultCount, totalCount }) => {
+const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resultCount, totalCount, allRestaurants }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const toggleCategory = (cat: string) => {
     setFilters(prev => {
@@ -21,126 +24,151 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
     });
   };
 
-  const toggleFilter = (key: keyof Omit<FilterState, 'categories'>) => {
+  const toggleFilter = (key: keyof Omit<FilterState, 'categories' | 'excludedIds'>) => {
     setFilters(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const toggleExclusion = (id: string) => {
+    setFilters(prev => {
+      const isExcluded = prev.excludedIds.includes(id);
+      const newExcluded = isExcluded
+        ? prev.excludedIds.filter(e => e !== id)
+        : [...prev.excludedIds, id];
+      return { ...prev, excludedIds: newExcluded };
+    });
   };
 
   const selectAll = () => setFilters(prev => ({ ...prev, categories: allCategories }));
   const clearAll = () => setFilters(prev => ({ ...prev, categories: [] }));
 
   return (
-    <div className="relative">
-      {/* Wood Frame */}
-      <div className="bg-wood-light p-3 rounded-lg shadow-2xl border-2 border-wood-dark">
+    <>
+      <div className="h-full bg-white rounded-3xl shadow-xl border border-gray-100 p-6 flex flex-col relative overflow-hidden">
         
-        {/* Corkboard Surface */}
-        <div className="cork-texture rounded p-6">
-          
-          {/* Header "Pinned" Note */}
-          <div className="bg-yellow-100 p-4 shadow-md transform -rotate-1 mb-6 relative font-hand text-xl text-gray-800 text-center border border-yellow-200">
-             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-red-600 shadow-sm border border-red-800"></div>
-             <h3 className="font-bold text-2xl mb-1">Preferences</h3>
-             <span className="block text-sm text-gray-600 font-sans">
-               Finding {resultCount} of {totalCount} spots
-             </span>
-          </div>
+        {/* Decorative background blob */}
+        <div className="absolute -top-20 -right-20 w-48 h-48 bg-slo-teal/5 rounded-full pointer-events-none"></div>
 
-          {/* Game Rules / Boolean Toggles */}
-          <div className="mb-6 space-y-3">
-            <h4 className="font-hand text-2xl text-wood-dark font-bold mb-2 border-b border-wood-dark/20 pb-1">House Rules</h4>
+        <div className="relative z-10 flex flex-col h-full">
+          <div className="mb-6 flex items-start justify-between">
+            <div>
+              <h2 className="text-2xl font-serif text-slo-blue mb-1">Preferences</h2>
+              <p className="text-gray-500 text-sm font-medium">
+                Showing <span className="text-slo-teal font-bold">{resultCount}</span> of {totalCount} places
+              </p>
+            </div>
             
-            <label className="flex items-center cursor-pointer select-none bg-white/80 p-2 rounded shadow-sm">
-              <div className="relative">
-                <input 
-                  type="checkbox" 
-                  className="sr-only" 
-                  checked={filters.openNow} 
-                  onChange={() => toggleFilter('openNow')}
-                />
-                <div className={`block w-10 h-6 rounded-full transition-colors ${filters.openNow ? 'bg-green-600' : 'bg-gray-400'}`}></div>
-                <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${filters.openNow ? 'transform translate-x-4' : ''}`}></div>
-              </div>
-              <div className="ml-3 text-gray-800 font-sans font-semibold text-sm">
-                Open Now Only
-              </div>
-            </label>
-
-            <label className="flex items-center cursor-pointer select-none bg-white/80 p-2 rounded shadow-sm">
-              <div className="relative">
-                <input 
-                  type="checkbox" 
-                  className="sr-only" 
-                  checked={filters.useRatingWeight} 
-                  onChange={() => toggleFilter('useRatingWeight')}
-                />
-                <div className={`block w-10 h-6 rounded-full transition-colors ${filters.useRatingWeight ? 'bg-dart-red' : 'bg-gray-400'}`}></div>
-                <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${filters.useRatingWeight ? 'transform translate-x-4' : ''}`}></div>
-              </div>
-              <div className="ml-3 text-gray-800 font-sans font-semibold text-sm">
-                Weighted Spin (By Rating)
-              </div>
-            </label>
-
-             <label className="flex items-center cursor-pointer select-none bg-white/80 p-2 rounded shadow-sm">
-              <div className="relative">
-                <input 
-                  type="checkbox" 
-                  className="sr-only" 
-                  checked={filters.cheapEatsOnly} 
-                  onChange={() => toggleFilter('cheapEatsOnly')}
-                />
-                <div className={`block w-10 h-6 rounded-full transition-colors ${filters.cheapEatsOnly ? 'bg-blue-600' : 'bg-gray-400'}`}></div>
-                <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${filters.cheapEatsOnly ? 'transform translate-x-4' : ''}`}></div>
-              </div>
-              <div className="ml-3 text-gray-800 font-sans font-semibold text-sm">
-                Cheap Eats Only ($)
-              </div>
-            </label>
+            {/* Show All Button */}
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="px-3 py-1.5 bg-slo-blue text-white text-xs font-bold rounded-lg shadow-sm hover:bg-blue-900 transition-colors"
+            >
+              Show All
+            </button>
           </div>
 
-          {/* Categories Header */}
-          <div className="mb-3">
-            <h4 className="font-hand text-3xl text-wood-dark font-bold text-center">I'm in the mood for...</h4>
-            <div className="flex justify-between text-xs text-wood-dark font-sans mt-1 px-2">
-              <button onClick={selectAll} className="underline hover:text-blue-600 font-bold">All</button>
-              <button onClick={clearAll} className="underline hover:text-red-600 font-bold">None</button>
+          {/* Filters */}
+          <div className="space-y-3 mb-8">
+             <div 
+                className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
+                onClick={() => toggleFilter('openNow')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && toggleFilter('openNow')}
+             >
+                <span className="font-semibold text-gray-700 group-hover:text-slo-teal transition-colors">Open Now</span>
+                <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.openNow ? 'bg-slo-teal' : 'bg-gray-300'}`}>
+                  <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.openNow ? 'translate-x-5' : 'translate-x-0'}`}></div>
+                </div>
+             </div>
+
+             <div 
+                className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
+                onClick={() => toggleFilter('useRatingWeight')}
+                role="button"
+                tabIndex={0}
+             >
+                <span className="font-semibold text-gray-700 group-hover:text-slo-coral transition-colors">Weighted Spin</span>
+                <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.useRatingWeight ? 'bg-slo-coral' : 'bg-gray-300'}`}>
+                  <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.useRatingWeight ? 'translate-x-5' : 'translate-x-0'}`}></div>
+                </div>
+             </div>
+
+             {/* Changed to Navy Blue (slo-blue) for ADA compliance */}
+             <div 
+                className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
+                onClick={() => toggleFilter('cheapEatsOnly')}
+                role="button"
+                tabIndex={0}
+             >
+                <span className="font-semibold text-gray-700 group-hover:text-slo-blue transition-colors">Cheap Eats ($)</span>
+                <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.cheapEatsOnly ? 'bg-slo-blue' : 'bg-gray-300'}`}>
+                  <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.cheapEatsOnly ? 'translate-x-5' : 'translate-x-0'}`}></div>
+                </div>
+             </div>
+          </div>
+
+          {/* Categories */}
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-serif text-xl text-slo-blue">Cravings</h3>
+            <div className="flex space-x-2">
+              <button 
+                onClick={selectAll} 
+                className="px-3 py-1 rounded-md bg-slo-teal/10 text-slo-teal text-xs font-bold hover:bg-slo-teal hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-teal focus:ring-offset-1"
+                aria-label="Select all categories"
+              >
+                ALL
+              </button>
+              <button 
+                onClick={clearAll} 
+                className="px-3 py-1 rounded-md bg-slo-coral/10 text-slo-coral text-xs font-bold hover:bg-slo-coral hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-coral focus:ring-offset-1"
+                aria-label="Clear all categories"
+              >
+                NONE
+              </button>
             </div>
           </div>
-          
-          {/* Category Tags */}
-          <div className="flex flex-wrap gap-2 justify-center">
-            {allCategories.map((cat, idx) => {
+
+          {/* Added p-1 to prevent focus ring clipping */}
+          <div className="flex flex-wrap gap-2 content-start overflow-y-auto flex-grow pr-2 custom-scrollbar pb-2 p-1 -m-1">
+            {allCategories.map(cat => {
               const active = filters.categories.includes(cat);
-              // Rotate slightly for messy look
-              const rot = (idx % 3 === 0 ? 'rotate-1' : (idx % 2 === 0 ? '-rotate-1' : 'rotate-0'));
-              
               return (
                 <button
                   key={cat}
                   onClick={() => toggleCategory(cat)}
                   className={`
-                    font-hand text-lg py-1 px-3 shadow-sm border transition-all transform ${rot}
+                    px-4 py-2 rounded-full text-sm font-bold transition-all
+                    focus:outline-none focus:ring-2 focus:ring-offset-1
                     ${active 
-                      ? 'bg-white text-black border-gray-400 hover:scale-105 shadow-md' 
-                      : 'bg-gray-300 text-gray-500 border-transparent opacity-70 hover:opacity-100'
+                      ? 'bg-slo-blue text-white shadow-md shadow-blue-900/10 transform scale-100 focus:ring-slo-blue' 
+                      : 'bg-gray-100 text-gray-400 hover:bg-gray-200 focus:ring-gray-400'
                     }
                   `}
-                  style={{
-                    // Mimic Post-it colors if active
-                    backgroundColor: active ? (idx % 2 === 0 ? '#fffdc2' : '#d8f5ff') : undefined
-                  }}
                 >
-                  {/* Pin graphic */}
-                  <span className={`block w-2 h-2 rounded-full mx-auto mb-1 ${active ? 'bg-red-500' : 'bg-gray-400'}`}></span>
                   {cat}
                 </button>
-              );
+              )
             })}
           </div>
 
+          {/* AdSense / Placeholder Area */}
+          <div className="mt-auto pt-6">
+             <div className="w-full h-32 bg-gray-100 rounded-xl border border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400">
+                <span className="text-xs font-bold uppercase tracking-widest mb-1">Sponsored</span>
+                <span className="text-xs">Ad Space</span>
+             </div>
+          </div>
         </div>
       </div>
-    </div>
+
+      <RestaurantListModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        restaurants={allRestaurants}
+        excludedIds={filters.excludedIds}
+        onToggleExclusion={toggleExclusion}
+      />
+    </>
   );
 };
 

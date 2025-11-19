@@ -11,33 +11,45 @@
         theme: {
           extend: {
             fontFamily: {
-              'serif': ['Rye', 'serif'],
-              'hand': ['Caveat', 'cursive'],
-              'sans': ['Poppins', 'sans-serif'],
+              'serif': ['"DM Serif Display"', 'serif'],
+              'sans': ['Quicksand', 'sans-serif'],
             },
             colors: {
-              'wood-dark': '#3E2723',
-              'wood-light': '#5D4037',
-              'felt-green': '#1B5E20',
-              'dart-red': '#B71C1C',
-              'dart-cream': '#F5F5DC',
-              'dart-black': '#212121',
-              'cork': '#DEB887',
+              'slo-bg': '#F9FAFB', // Very light gray/off-white
+              'slo-sand': '#FDF6E3', // Warm backdrop
+              'slo-teal': '#2A9D8F', // Ocean
+              'slo-coral': '#E76F51', // Sunset
+              'slo-yellow': '#E9C46A', // Sun
+              'slo-blue': '#264653', // Deep Ocean
+              'slo-text': '#2D3748',
             },
             animation: {
               'spin-slow': 'spin 3s linear infinite',
-              'bounce-slow': 'bounce 3s infinite',
-              'sway': 'sway 3s ease-in-out infinite',
-              'slideIn': 'slideIn 0.5s ease-out forwards',
+              'bounce-soft': 'bounce 2s infinite',
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'slide-up': 'slideUp 0.5s ease-out forwards',
+              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+              'lever-pull': 'leverPull 0.6s ease-in-out',
             },
             keyframes: {
-              sway: {
-                '0%, 100%': { transform: 'rotate(-3deg)' },
-                '50%': { transform: 'rotate(3deg)' },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
               },
-              slideIn: {
+              slideUp: {
                 '0%': { opacity: '0', transform: 'translateY(20px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              shake: {
+                '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+              },
+              leverPull: {
+                '0%': { transform: 'rotate(0deg)' },
+                '50%': { transform: 'rotate(180deg)' },
+                '100%': { transform: 'rotate(0deg)' }
               }
             }
           }
@@ -45,55 +57,46 @@
       }
     </script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Rye&family=Caveat:wght@400;700&family=Poppins:wght@300;400;600;900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;500;700&display=swap');
       
       body {
-        font-family: 'Rye', serif;
-        background-color: #2a1b15;
-        background-image: 
-          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url("https://www.transparenttextures.com/patterns/dark-wood.png");
+        font-family: 'Quicksand', sans-serif;
+        background-color: #F7F9FC; /* Soft Cloud White */
+        background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
+        background-size: 24px 24px;
+        color: #2D3748;
         min-height: 100vh;
-        color: #f3e5ab;
       }
 
-      .cork-texture {
-        background-color: #deb887;
-        background-image: url("https://www.transparenttextures.com/patterns/cork-board.png");
-        box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+      /* Smooth transitions for all interactive elements */
+      button, a {
+        transition: all 0.2s ease-in-out;
       }
 
-      .chalkboard-texture {
-        background-color: #212121;
-        background-image: url("https://www.transparenttextures.com/patterns/black-lozenge.png");
-      }
-
-      .parchment-texture {
-        background-color: #f8f5e6;
-        background-image: url("https://www.transparenttextures.com/patterns/skulls.png"); 
-        /* Using a subtle grain texture, ignoring 'skulls' name which is just noise */
-      }
-
-      .brass-gradient {
-        background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-      }
-      
-      .slot-motion-blur {
-        filter: blur(1px);
-        /* Simulates vertical movement blur */
-        transform: scaleY(1.1); 
-      }
-
-      /* Custom Scrollbar for filter list */
+      /* Custom Scrollbar */
       ::-webkit-scrollbar {
-        width: 8px;
+        width: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: rgba(0,0,0,0.1); 
+        background: transparent;
       }
       ::-webkit-scrollbar-thumb {
-        background: #8d6e63; 
-        border-radius: 4px;
+        background: #CBD5E0; 
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #A0AEC0; 
+      }
+
+      /* Slot Machine Motion Blur Class */
+      .slot-motion-blur {
+        filter: blur(0px);
+        animation: blurEffect 0.1s infinite;
+      }
+      @keyframes blurEffect {
+        0% { filter: blur(0px); transform: translateY(0); }
+        50% { filter: blur(2px); transform: translateY(-2px); }
+        100% { filter: blur(0px); transform: translateY(0); }
       }
     </style>
   <script type="importmap">

@@ -20,19 +20,16 @@ const App: React.FC = () => {
     openNow: false,
     useRatingWeight: false,
     cheapEatsOnly: false,
+    excludedIds: [] // Initialize excluded IDs
   });
 
-  // Load data on mount
   useEffect(() => {
     const data = initialData;
     setRestaurants(data);
-    
-    // Initialize filters with all categories
     const allCats = Array.from(new Set(data.map(r => r.category)));
     setFilters(prev => ({ ...prev, categories: allCats }));
   }, []);
 
-  // Derived state
   const allCategories = useMemo(() => 
     Array.from(new Set(restaurants.map(r => r.category))).sort(), 
   [restaurants]);
@@ -40,8 +37,14 @@ const App: React.FC = () => {
   const filteredRestaurants = useMemo(() => {
     let result = getFilteredRestaurants(restaurants, filters.categories, filters.openNow);
     
+    // Apply Cheap Eats Filter
     if (filters.cheapEatsOnly) {
       result = result.filter(r => r.price === 1);
+    }
+
+    // Apply Manual Exclusions
+    if (filters.excludedIds.length > 0) {
+      result = result.filter(r => !filters.excludedIds.includes(r.id));
     }
 
     return result;
@@ -53,13 +56,9 @@ const App: React.FC = () => {
     let winner: Restaurant;
 
     if (filters.useRatingWeight) {
-      // Weighted Random Algorithm
       const totalWeight = filteredRestaurants.reduce((sum, r) => sum + r.rating, 0);
       let randomValue = Math.random() * totalWeight;
-      
-      // Default to last just in case
       winner = filteredRestaurants[filteredRestaurants.length - 1];
-      
       for (const r of filteredRestaurants) {
         randomValue -= r.rating;
         if (randomValue <= 0) {
@@ -68,7 +67,6 @@ const App: React.FC = () => {
         }
       }
     } else {
-      // Standard Random
       winner = filteredRestaurants[Math.floor(Math.random() * filteredRestaurants.length)];
     }
 
@@ -85,127 +83,169 @@ const App: React.FC = () => {
     setSelectedRestaurant(null);
   };
 
+  const handleFullReset = () => {
+    setViewState(ViewState.IDLE);
+    setSelectedRestaurant(null);
+    setFilters(prev => ({
+      ...prev,
+      categories: allCategories,
+      openNow: false,
+      useRatingWeight: false,
+      cheapEatsOnly: false,
+      excludedIds: []
+    }));
+  };
+
   return (
-    <div className="min-h-screen flex flex-col max-w-6xl mx-auto px-4 overflow-x-hidden">
+    <div className="min-h-screen flex flex-col max-w-7xl mx-auto px-6 font-sans">
       <Header />
       
-      <main className="flex-grow flex flex-col lg:flex-row gap-12 items-start justify-center pb-12 mt-8">
+      {/* Main Content Area - Equal Height Columns */}
+      <main className="flex-grow w-full flex flex-col lg:flex-row gap-8 items-stretch lg:h-[650px] mb-12">
         
-        {/* Left Col: Filters */}
-        <div className="w-full lg:w-1/3 order-2 lg:order-1 relative z-10">
+        {/* Left: Filter Panel (1/3) */}
+        <div className="w-full lg:w-1/3 h-full">
            <FilterPanel 
              allCategories={allCategories} 
              filters={filters} 
              setFilters={setFilters} 
              resultCount={filteredRestaurants.length}
              totalCount={restaurants.length}
+             allRestaurants={restaurants}
            />
         </div>
 
-        {/* Right Col: Action Area */}
-        <div className="w-full lg:w-2/3 order-1 lg:order-2 flex flex-col items-center min-h-[600px]">
+        {/* Right: Game Container (2/3) */}
+        {/* Removed overflow-hidden to allow slot machine handle to stick out */}
+        <div className="w-full lg:w-2/3 h-full bg-white rounded-3xl shadow-xl border border-gray-100 relative flex flex-col">
           
-          {/* Mode Toggle Switch */}
+          {/* Decorative Background Container (Overflow Hidden here to keep blobs contained) */}
+          <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none z-0">
+             <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-slo-teal to-slo-yellow"></div>
+             {viewState !== ViewState.RESULT && (
+                <>
+                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-50 rounded-tr-full opacity-50"></div>
+                   <div className="absolute top-20 left-10 w-12 h-12 border-4 border-slo-teal/10 rounded-full"></div>
+                   <div className="absolute bottom-20 right-10 w-6 h-6 bg-slo-coral/10 rounded-full"></div>
+                </>
+             )}
+          </div>
+          
+          {/* Toggle Switch (Only when Idle) */}
           {viewState === ViewState.IDLE && (
-             <div className="mb-6 flex items-center bg-wood-light p-2 rounded-full shadow-inner border border-wood-dark">
+             <div className="absolute top-6 right-6 z-20 bg-gray-100 p-1 rounded-full flex shadow-inner">
                 <button 
                   onClick={() => setMode('WHEEL')}
-                  className={`px-4 py-1 rounded-full font-serif text-sm transition-all ${mode === 'WHEEL' ? 'bg-dart-cream text-wood-dark font-bold shadow' : 'text-gray-400'}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'WHEEL' ? 'bg-white text-slo-blue shadow' : 'text-gray-400'}`}
                 >
-                  Wheel
+                  WHEEL
                 </button>
                 <button 
                   onClick={() => setMode('SLOTS')}
-                  className={`px-4 py-1 rounded-full font-serif text-sm transition-all ${mode === 'SLOTS' ? 'bg-dart-cream text-wood-dark font-bold shadow' : 'text-gray-400'}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'SLOTS' ? 'bg-white text-slo-blue shadow' : 'text-gray-400'}`}
                 >
-                  Slots
+                  SLOTS
                 </button>
              </div>
           )}
 
-          {/* State: IDLE */}
-          {viewState === ViewState.IDLE && (
-            <div className="text-center w-full flex flex-col items-center">
-              
-              <div className="mb-8 transform transition-all duration-500">
-                 {mode === 'WHEEL' ? (
-                    <Spinner 
-                      restaurants={filteredRestaurants} 
-                      isSpinning={false} 
-                      onFinished={() => {}} 
-                      winner={null}
-                      useWeight={filters.useRatingWeight}
-                    />
-                 ) : (
-                    <SlotMachine
-                      restaurants={filteredRestaurants}
-                      isSpinning={false}
-                      onFinished={() => {}}
-                      winner={null}
-                    />
-                 )}
-              </div>
-              
-              <div className="relative z-20">
-                <button 
-                  onClick={handleSpin}
-                  disabled={filteredRestaurants.length === 0}
-                  className={`
-                    px-16 py-6 rounded-lg text-3xl font-serif font-black shadow-2xl border-4 border-wood-light
-                    transform transition-all duration-200
-                    ${filteredRestaurants.length > 0 
-                      ? 'bg-dart-red text-dart-cream hover:scale-105 hover:shadow-red-900/50 hover:bg-red-700 active:scale-95 cursor-pointer' 
-                      : 'bg-gray-600 text-gray-400 border-gray-700 cursor-not-allowed'}
-                  `}
-                >
-                  {filteredRestaurants.length > 0 ? (mode === 'WHEEL' ? 'SPIN!' : 'PULL!') : 'No Spots Found'}
-                </button>
-                {filteredRestaurants.length === 0 && (
-                    <div className="mt-4 bg-black/50 p-2 rounded text-red-300 font-bold animate-bounce">
-                      Check the Corkboard filters!
-                    </div>
-                )}
-              </div>
-            </div>
-          )}
+          {/* Content Wrapper: Center content vertically/horizontally */}
+          <div className="flex-grow flex items-center justify-center p-8 relative z-10">
+             
+             {viewState === ViewState.IDLE && (
+                <div className="flex flex-col items-center w-full animate-fade-in">
+                   
+                   {/* Game Area */}
+                   <div className="mb-8 w-full flex justify-center">
+                     {mode === 'WHEEL' ? (
+                        <Spinner 
+                          restaurants={filteredRestaurants} 
+                          isSpinning={false} 
+                          onFinished={() => {}} 
+                          onTriggerSpin={handleSpin}
+                          winner={null}
+                          useWeight={filters.useRatingWeight}
+                        />
+                     ) : (
+                        <SlotMachine
+                          restaurants={filteredRestaurants}
+                          isSpinning={false}
+                          onFinished={() => {}}
+                          onTriggerSpin={handleSpin}
+                          winner={null}
+                        />
+                     )}
+                   </div>
+                   
+                   {/* Empty State Message */}
+                   {filteredRestaurants.length === 0 && (
+                     <div className="text-center p-6 bg-red-50 rounded-xl border border-red-100">
+                        <p className="text-red-500 font-bold">No restaurants match your filters.</p>
+                        <button 
+                           onClick={() => setFilters(prev => ({ ...prev, categories: allCategories, openNow: false, excludedIds: [] }))}
+                           className="mt-2 text-sm text-red-700 underline hover:text-red-900"
+                        >
+                          Reset Filters
+                        </button>
+                     </div>
+                   )}
 
-          {/* State: SPINNING */}
-          {viewState === ViewState.SPINNING && (
-             <div className="text-center w-full">
-                <div className="mb-8">
-                  {mode === 'WHEEL' ? (
-                    <Spinner 
-                      restaurants={filteredRestaurants} 
-                      isSpinning={true} 
-                      onFinished={handleSpinFinished} 
-                      winner={selectedRestaurant}
-                      useWeight={filters.useRatingWeight}
-                    />
-                  ) : (
-                     <SlotMachine
-                      restaurants={filteredRestaurants}
-                      isSpinning={true}
-                      onFinished={handleSpinFinished}
-                      winner={selectedRestaurant}
-                    />
-                  )}
                 </div>
-                <p className="text-3xl font-serif font-bold text-dart-cream animate-pulse mt-8 drop-shadow-lg">
-                  {mode === 'WHEEL' ? 'Round and round...' : 'Feeling Lucky...'}
-                </p>
-             </div>
-          )}
+             )}
 
-          {/* State: RESULT */}
-          {viewState === ViewState.RESULT && selectedRestaurant && (
-            <div className="w-full flex justify-center relative z-10 mt-10">
-              <Confetti />
-              <RestaurantResult 
-                restaurant={selectedRestaurant} 
-                onSpinAgain={handleReset} 
-              />
-            </div>
-          )}
+             {viewState === ViewState.SPINNING && (
+                <div className="flex flex-col items-center w-full">
+                   <div className="mb-12 w-full flex justify-center">
+                    {mode === 'WHEEL' ? (
+                        <Spinner 
+                          restaurants={filteredRestaurants} 
+                          isSpinning={true} 
+                          onFinished={handleSpinFinished} 
+                          onTriggerSpin={handleSpin}
+                          winner={selectedRestaurant}
+                          useWeight={filters.useRatingWeight}
+                        />
+                     ) : (
+                        <SlotMachine
+                          restaurants={filteredRestaurants}
+                          isSpinning={true}
+                          onFinished={handleSpinFinished}
+                          onTriggerSpin={handleSpin}
+                          winner={selectedRestaurant}
+                        />
+                     )}
+                   </div>
+                   <p className="text-xl font-serif text-slo-teal animate-pulse">
+                     Choosing the perfect spot...
+                   </p>
+                </div>
+             )}
+
+             {viewState === ViewState.RESULT && selectedRestaurant && (
+                <div className="w-full h-full flex items-center justify-center z-50 relative">
+                  <Confetti />
+                  <RestaurantResult 
+                    restaurant={selectedRestaurant} 
+                    onSpinAgain={handleReset} 
+                  />
+                </div>
+             )}
+
+          </div>
+
+          {/* Reset App Button - Bottom Right of Container */}
+          <div className="absolute bottom-4 right-4 z-20">
+             <button 
+               onClick={handleFullReset}
+               className="p-2 text-xs font-bold text-gray-400 hover:text-slo-coral transition-colors flex items-center gap-1 group"
+               title="Reset Everything"
+             >
+               <svg className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+               </svg>
+               RESET APP
+             </button>
+          </div>
 
         </div>
       </main>

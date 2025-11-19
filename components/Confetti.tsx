@@ -3,15 +3,13 @@ import React, { useEffect, useRef } from 'react';
 interface Particle {
   x: number;
   y: number;
+  vx: number; // Velocity X
+  vy: number; // Velocity Y
   w: number;
   h: number;
   color: string;
-  speed: number;
-  drift: number;
   rotation: number;
   rotationSpeed: number;
-  tilt: number;
-  tiltSpeed: number;
   drag: number;
 }
 
@@ -29,24 +27,55 @@ export const Confetti: React.FC = () => {
     canvas.height = window.innerHeight;
 
     const particles: Particle[] = [];
-    const colors = ['#ef4444', '#3b82f6', '#eab308', '#22c55e', '#ec4899', '#a855f7'];
+    // Bright, beachy palette
+    const colors = ['#2A9D8F', '#E9C46A', '#E76F51', '#F4A261', '#264653'];
 
-    // Create larger, more "paper-like" particles
-    for (let i = 0; i < 100; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height - canvas.height, // Start above
-        w: Math.random() * 15 + 10, // Wider
-        h: Math.random() * 10 + 8, // Taller
+    const createParticle = (x: number, y: number, burstFromSide: boolean = false, direction: 'left' | 'right' = 'left') => {
+      const speed = Math.random() * 15 + 10;
+      const angle = burstFromSide 
+        ? (direction === 'left' ? -Math.PI / 4 : -Math.PI * 0.75) + (Math.random() * 0.5 - 0.25)
+        : Math.PI / 2;
+
+      let vx = 0;
+      let vy = 0;
+
+      if (burstFromSide) {
+        vx = Math.cos(angle) * speed * 1.5;
+        vy = Math.sin(angle) * speed * 1.5;
+      } else {
+        // Falling rain style
+        vx = Math.random() * 4 - 2;
+        vy = Math.random() * 5 + 5;
+      }
+
+      return {
+        x,
+        y,
+        vx,
+        vy,
+        w: Math.random() * 15 + 8,
+        h: Math.random() * 15 + 8,
         color: colors[Math.floor(Math.random() * colors.length)],
-        speed: Math.random() * 3 + 2, // Slower gravity
-        drift: Math.random() * 2 - 1,
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 5,
-        tilt: Math.random() * 10,
-        tiltSpeed: Math.random() * 0.1 + 0.05,
-        drag: 0.05 // Air resistance
-      });
+        rotationSpeed: (Math.random() - 0.5) * 10,
+        drag: 0.96 // Slow down over time
+      };
+    };
+
+    // Initial Burst
+    // 1. Rain from top
+    for (let i = 0; i < 150; i++) {
+      particles.push(createParticle(Math.random() * canvas.width, Math.random() * -100));
+    }
+    
+    // 2. Burst from Left Side
+    for (let i = 0; i < 100; i++) {
+      particles.push(createParticle(0, canvas.height * 0.8, true, 'left'));
+    }
+
+    // 3. Burst from Right Side
+    for (let i = 0; i < 100; i++) {
+      particles.push(createParticle(canvas.width, canvas.height * 0.8, true, 'right'));
     }
 
     let animationId: number;
@@ -54,34 +83,33 @@ export const Confetti: React.FC = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((p) => {
-        ctx.beginPath();
-        ctx.lineWidth = p.h / 2;
-        ctx.strokeStyle = p.color;
-        
-        // Simulate 3D rotation by changing height based on tilt
-        const currentH = p.h * Math.cos(p.tilt);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
         
         ctx.save();
         ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
         ctx.rotate((p.rotation * Math.PI) / 180);
         ctx.fillStyle = p.color;
-        ctx.fillRect(-p.w / 2, -currentH / 2, p.w, currentH);
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
         ctx.restore();
 
         // Physics
-        p.y += p.speed;
-        p.x += p.drift + Math.sin(p.tilt) * 0.5; // Sway
+        p.x += p.vx;
+        p.y += p.vy;
         p.rotation += p.rotationSpeed;
-        p.tilt += p.tiltSpeed;
+        
+        p.vy += 0.5; // Gravity
+        p.vx *= p.drag;
+        p.vy *= p.drag;
 
-        // Wrap around
-        if (p.y > canvas.height) {
-          p.y = -50;
-          p.x = Math.random() * canvas.width;
-          p.speed = Math.random() * 3 + 2;
+        // Reset if falling rain goes off screen (keep the party going slightly)
+        if (p.y > canvas.height + 100 && Math.random() > 0.9) {
+           p.y = -50;
+           p.x = Math.random() * canvas.width;
+           p.vy = Math.random() * 5 + 5;
+           p.vx = Math.random() * 2 - 1;
         }
-      });
+      }
 
       animationId = requestAnimationFrame(animate);
     };
@@ -103,7 +131,7 @@ export const Confetti: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-50"
+      className="fixed inset-0 pointer-events-none z-40" // Lower z-index to stay behind result card (z-50)
     />
   );
 };
