@@ -45,11 +45,11 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
     <>
       <div className="h-full bg-white rounded-3xl shadow-xl border border-gray-100 p-6 flex flex-col relative overflow-hidden">
         
-        {/* Decorative background blob */}
-        <div className="absolute -top-20 -right-20 w-48 h-48 bg-slo-teal/5 rounded-full pointer-events-none"></div>
+        {/* Decorative Gradient Border */}
+        <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-slo-teal to-slo-yellow z-20"></div>
 
         <div className="relative z-10 flex flex-col h-full">
-          <div className="mb-6 flex items-start justify-between">
+          <div className="mb-6 flex items-start justify-between pt-2">
             <div>
               <h2 className="text-2xl font-serif text-slo-blue mb-1">Preferences</h2>
               <p className="text-gray-500 text-sm font-medium">
@@ -68,12 +68,14 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
 
           {/* Filters */}
           <div className="space-y-3 mb-8">
+             {/* Open Now */}
              <div 
                 className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
                 onClick={() => toggleFilter('openNow')}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && toggleFilter('openNow')}
+                title="Based on known hours"
              >
                 <span className="font-semibold text-gray-700 group-hover:text-slo-teal transition-colors">Open Now</span>
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.openNow ? 'bg-slo-teal' : 'bg-gray-300'}`}>
@@ -81,11 +83,13 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 </div>
              </div>
 
+             {/* Weighted Spin */}
              <div 
                 className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
                 onClick={() => toggleFilter('useRatingWeight')}
                 role="button"
                 tabIndex={0}
+                title="Higher rating = higher chance"
              >
                 <span className="font-semibold text-gray-700 group-hover:text-slo-coral transition-colors">Weighted Spin</span>
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.useRatingWeight ? 'bg-slo-coral' : 'bg-gray-300'}`}>
@@ -93,15 +97,16 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 </div>
              </div>
 
-             {/* Changed to Navy Blue (slo-blue) for ADA compliance */}
+             {/* Cheap Eats - Updated to Sky Blue */}
              <div 
                 className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
                 onClick={() => toggleFilter('cheapEatsOnly')}
                 role="button"
                 tabIndex={0}
+                title="Price level: $"
              >
-                <span className="font-semibold text-gray-700 group-hover:text-slo-blue transition-colors">Cheap Eats ($)</span>
-                <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.cheapEatsOnly ? 'bg-slo-blue' : 'bg-gray-300'}`}>
+                <span className="font-semibold text-gray-700 group-hover:text-slo-sky transition-colors">Cheap Eats</span>
+                <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.cheapEatsOnly ? 'bg-slo-sky' : 'bg-gray-300'}`}>
                   <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.cheapEatsOnly ? 'translate-x-5' : 'translate-x-0'}`}></div>
                 </div>
              </div>

@@ -12,7 +12,8 @@ const RestaurantResult: React.FC<Props> = ({ restaurant, onSpinAgain }) => {
   const hoursToday = getTodaysHours(restaurant.hours);
 
   return (
-    <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 text-center animate-slide-up border border-gray-100 relative overflow-hidden">
+    // Added z-[60] to ensure it sits on top of the Confetti (z-40)
+    <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 text-center animate-slide-up border border-gray-100 relative overflow-hidden z-[60]">
       
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-slo-teal via-slo-yellow to-slo-coral"></div>
       

@@ -17,10 +17,10 @@ const App: React.FC = () => {
   const [mode, setMode] = useState<'WHEEL' | 'SLOTS'>('WHEEL');
   const [filters, setFilters] = useState<FilterState>({
     categories: [],
-    openNow: false,
+    openNow: true, // Default to true
     useRatingWeight: false,
     cheapEatsOnly: false,
-    excludedIds: [] // Initialize excluded IDs
+    excludedIds: [] 
   });
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const App: React.FC = () => {
     setFilters(prev => ({
       ...prev,
       categories: allCategories,
-      openNow: false,
+      openNow: true, // Reset to true
       useRatingWeight: false,
       cheapEatsOnly: false,
       excludedIds: []
@@ -119,16 +119,10 @@ const App: React.FC = () => {
         {/* Removed overflow-hidden to allow slot machine handle to stick out */}
         <div className="w-full lg:w-2/3 h-full bg-white rounded-3xl shadow-xl border border-gray-100 relative flex flex-col">
           
-          {/* Decorative Background Container (Overflow Hidden here to keep blobs contained) */}
+          {/* Decorative Background Container */}
           <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none z-0">
              <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-slo-teal to-slo-yellow"></div>
-             {viewState !== ViewState.RESULT && (
-                <>
-                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-50 rounded-tr-full opacity-50"></div>
-                   <div className="absolute top-20 left-10 w-12 h-12 border-4 border-slo-teal/10 rounded-full"></div>
-                   <div className="absolute bottom-20 right-10 w-6 h-6 bg-slo-coral/10 rounded-full"></div>
-                </>
-             )}
+             {/* Removed background flourish circle */}
           </div>
           
           {/* Toggle Switch (Only when Idle) */}

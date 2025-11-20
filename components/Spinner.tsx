@@ -11,7 +11,8 @@ interface Props {
 }
 
 // SLO Palette with slightly more vibrant/matte tones for the wheel
-const COLORS = ['#2A9D8F', '#E9C46A', '#E76F51', '#264653', '#F4A261']; 
+// Added #73A6C7 (slo-sky) to the palette
+const COLORS = ['#2A9D8F', '#E9C46A', '#E76F51', '#264653', '#F4A261', '#73A6C7']; 
 
 const Spinner: React.FC<Props> = ({ restaurants, isSpinning, onFinished, onTriggerSpin, winner, useWeight }) => {
   const [rotation, setRotation] = useState(0);
