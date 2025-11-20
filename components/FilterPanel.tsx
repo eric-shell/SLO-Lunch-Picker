@@ -50,9 +50,9 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
         <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-slo-teal to-slo-yellow z-20"></div>
 
         <div className="relative z-10 flex flex-col h-full">
-          <div className="mb-6 flex items-start justify-between pt-2">
+          <div className="mb-4 flex items-start justify-between pt-2">
             <div>
-              <h2 className="text-2xl font-serif text-slo-blue mb-1">Preferences</h2>
+              <h2 className="text-2xl font-serif text-slo-blue ">Preferences</h2>
               <p className="text-gray-500 text-sm font-medium">
                 Showing <span className="text-slo-teal font-bold">{resultCount}</span> of {totalCount} places
               </p>
@@ -117,7 +117,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
           </div>
 
           {/* Categories */}
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center justify-between mb-4">
             <h3 className="font-serif text-xl text-slo-blue">Cravings</h3>
             <div className="flex space-x-2">
               <button 
