@@ -20,7 +20,7 @@ const App: React.FC = () => {
     categories: [],
     openNow: true, // Default to true
     useRatingWeight: false,
-    cheapEatsOnly: false,
+    cheapMealsOnly: false,
     excludedIds: [] 
   });
 
@@ -39,7 +39,7 @@ const App: React.FC = () => {
     let result = getFilteredRestaurants(restaurants, filters.categories, filters.openNow);
     
     // Apply Cheap Eats Filter
-    if (filters.cheapEatsOnly) {
+    if (filters.cheapMealsOnly) {
       result = result.filter(r => r.price === 1);
     }
 
@@ -96,7 +96,7 @@ const App: React.FC = () => {
       categories: allCategories,
       openNow: true, // Reset to true
       useRatingWeight: false,
-      cheapEatsOnly: false,
+      cheapMealsOnly: false,
       excludedIds: []
     }));
   };

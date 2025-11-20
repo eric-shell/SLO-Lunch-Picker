@@ -20,7 +20,7 @@ export interface FilterState {
   categories: string[];
   openNow: boolean;
   useRatingWeight: boolean; // True = Higher rating gets bigger slice
-  cheapEatsOnly: boolean; // True = Price level 1 only
+  cheapMealsOnly: boolean; // True = Price level 1 only
   excludedIds: string[]; // Array of restaurant IDs to manually exclude
 }
 
