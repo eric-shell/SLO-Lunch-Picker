@@ -386,5 +386,222 @@ export const restaurants: Restaurant[] = [
     notes: "Vegan junk food!",
     rating: 4.7,
     price: 2
+  },
+  {
+    id: "21",
+    name: "Taj Palace (Cuisine of India)",
+    address: "795 E Foothill Blvd, San Luis Obispo, CA 93405",
+    category: "Indian",
+    hours: {
+      "Mon": "11:00-21:00",
+      "Tue": "11:00-21:00",
+      "Wed": "11:00-21:00",
+      "Thu": "11:00-21:00",
+      "Fri": "11:00-22:00",
+      "Sat": "11:00-22:00",
+      "Sun": "11:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Taj+Palace+Cuisine+of+India+San+Luis+Obispo",
+    rating: 4.5,
+    price: 2
+  },
+  {
+    id: "22",
+    name: "Raku Ramen",
+    address: "799 E Foothill Blvd, San Luis Obispo, CA 93405",
+    category: "Asian",
+    hours: {
+      "Mon": "11:00-21:00",
+      "Tue": "11:00-21:00",
+      "Wed": "11:00-21:00",
+      "Thu": "11:00-21:00",
+      "Fri": "11:00-22:00",
+      "Sat": "11:00-22:00",
+      "Sun": "11:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Raku+Ramen+San+Luis+Obispo",
+    rating: 4.5,
+    price: 2
+  },
+  {
+    id: "23",
+    name: "Taqueria San Miguel",
+    address: "5 Santa Rosa Street, San Luis Obispo, CA 93405",
+    category: "Mexican",
+    hours: {
+      "Mon": "10:00-21:00",
+      "Tue": "10:00-21:00",
+      "Wed": "10:00-21:00",
+      "Thu": "10:00-21:00",
+      "Fri": "10:00-22:00",
+      "Sat": "10:00-22:00",
+      "Sun": "10:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Taqueria+San+Miguel+San+Luis+Obispo",
+    rating: 4.4,
+    price: 1
+  },
+  {
+    id: "24",
+    name: "Sushi Kokku",
+    address: "285 Madonna Rd, San Luis Obispo, CA 93405",
+    category: "Asian",
+    hours: {
+      "Mon": "11:00-21:00",
+      "Tue": "11:00-21:00",
+      "Wed": "11:00-21:00",
+      "Thu": "11:00-21:00",
+      "Fri": "11:00-22:00",
+      "Sat": "11:00-22:00",
+      "Sun": "11:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Sushi+Kokku+San+Luis+Obispo",
+    rating: 4.4,
+    price: 2
+  },
+  {
+    id: "25",
+    name: "Shalimar Restaurant",
+    address: "2115 Broad St, San Luis Obispo, CA 93401",
+    category: "Indian",
+    hours: {
+      "Mon": "11:00-21:00",
+      "Tue": "11:00-21:00",
+      "Wed": "11:00-21:00",
+      "Thu": "11:00-21:00",
+      "Fri": "11:00-22:00",
+      "Sat": "11:00-22:00",
+      "Sun": "11:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Shalimar+Restaurant+San+Luis+Obispo",
+    rating: 4.2,
+    price: 2
+  },
+  {
+    id: "26",
+    name: "Nick The Greek",
+    address: "733 Higuera St, San Luis Obispo, CA 93401",
+    category: "Mediterranean",
+    hours: {
+      "Mon": "11:00-22:00",
+      "Tue": "11:00-22:00",
+      "Wed": "11:00-22:00",
+      "Thu": "11:00-22:00",
+      "Fri": "11:00-23:00",
+      "Sat": "11:00-23:00",
+      "Sun": "11:00-22:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Nick+The+Greek+San+Luis+Obispo",
+    rating: 4.3,
+    price: 2
+  },
+  {
+    id: "27",
+    name: "Louisa’s Place",
+    address: "964 Higuera St, San Luis Obispo, CA 93401",
+    category: "American",
+    hours: {
+      "Mon": "06:00-15:00",
+      "Tue": "06:00-15:00",
+      "Wed": "06:00-15:00",
+      "Thu": "06:00-15:00",
+      "Fri": "06:00-15:00",
+      "Sat": "06:00-15:00",
+      "Sun": "06:00-15:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Louisas+Place+San+Luis+Obispo",
+    rating: 4.6,
+    price: 2
+  },
+  {
+    id: "28",
+    name: "Jewel of India",
+    address: "2115 Broad St, San Luis Obispo, CA 93401",
+    category: "Indian",
+    hours: {
+      "Mon": "11:00-21:00",
+      "Tue": "11:00-21:00",
+      "Wed": "11:00-21:00",
+      "Thu": "11:00-21:00",
+      "Fri": "11:00-22:00",
+      "Sat": "11:00-22:00",
+      "Sun": "11:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Jewel+of+India+San+Luis+Obispo",
+    rating: 4.4,
+    price: 2
+  },
+  {
+    id: "29",
+    name: "Kitchen & Vine",
+    address: "3897 South Higuera St, San Luis Obispo, CA 93401",
+    category: "American",
+    hours: {
+      "Mon": "07:00-21:00",
+      "Tue": "07:00-21:00",
+      "Wed": "07:00-21:00",
+      "Thu": "07:00-21:00",
+      "Fri": "07:00-21:00",
+      "Sat": "07:00-21:00",
+      "Sun": "07:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Kitchen+and+Vine+San+Luis+Obispo",
+    rating: 4.3,
+    price: 2
+  },
+  {
+    id: "30",
+    name: "Sichuan Kitchen SLO",
+    address: "977 Foothill Blvd, San Luis Obispo, CA 93401",
+    category: "Asian",
+    hours: {
+      "Mon": "11:00-21:00",
+      "Tue": "11:00-21:00",
+      "Wed": "11:00-21:00",
+      "Thu": "11:00-21:00",
+      "Fri": "11:00-22:00",
+      "Sat": "11:00-22:00",
+      "Sun": "11:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Sichuan+Kitchen+SLO",
+    rating: 4.4,
+    price: 2
+  },
+  {
+    id: "31",
+    name: "Baht",
+    address: "3845 S Higuera St, San Luis Obispo, CA 93401",
+    category: "Asian",
+    hours: {
+      "Mon": "11:00-21:00",
+      "Tue": "11:00-21:00",
+      "Wed": "11:00-21:00",
+      "Thu": "11:00-21:00",
+      "Fri": "11:00-22:00",
+      "Sat": "11:00-22:00",
+      "Sun": "11:00-21:00"
+    },
+    mapUrl: "https://goo.gl/maps/search/Baht+Thai+San+Luis+Obispo",
+    rating: 4.5,
+    price: 2
+  },
+  {
+    id: "32",
+    name: "Efren's Mexican Restaurant",
+    address: "1285 Laurel Ln, San Luis Obispo, CA 93401",
+    category: "Mexican",
+    hours: {
+      "Mon": "08:00-21:00",
+      "Tue": "08:00-21:00",
+      "Wed": "08:00-21:00",
+      "Thu": "08:00-21:00",
+      "Fri": "08:00-21:00",
+      "Sat": "08:00-21:00",
+      "Sun": "08:00-21:00"
+    },
+    website: "https://www.efrensslo.com",
+    mapUrl: "https://goo.gl/maps/search/Efrens+Mexican+Restaurant+San+Luis+Obispo",
+    rating: 4.5,
+    price: 1
   }
 ];

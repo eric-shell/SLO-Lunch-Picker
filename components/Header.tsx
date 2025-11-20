@@ -6,7 +6,7 @@ export const Header: React.FC = () => (
       SLO Lunch Picker
     </h1>
     <p className="text-slo-teal mt-2 text-lg font-medium tracking-wide uppercase text-xs">
-      Find your next bite in 93401 & 93405
+      Get help choosing your next lunch spot in San Luis Obispo
     </p>
   </header>
 );
