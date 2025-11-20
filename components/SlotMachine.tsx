@@ -109,7 +109,7 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
       <div className="relative w-full max-w-2xl">
 
           {/* Machine Body */}
-          <div className="relative z-10 p-4 bg-gradient-to-b from-gray-700 to-gray-900 rounded-3xl shadow-2xl border-4 border-gray-600 w-full mx-auto">
+          <div className="relative z-10 p-4 pb-7 bg-gradient-to-b from-gray-700 to-gray-900 rounded-3xl shadow-2xl border-4 border-gray-600 w-full mx-auto">
               
               {/* Metallic Bezel */}
               <div className="bg-gradient-to-r from-yellow-600 via-yellow-200 to-yellow-600 p-3 rounded-2xl shadow-inner">
@@ -195,17 +195,19 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
              <div className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-gray-300 rounded-full border-2 border-gray-500 shadow-lg pointer-events-none z-30 bg-gradient-to-br from-gray-100 to-gray-500"></div>
           </div>
 
-      </div>
+        {/* Mobile Trigger Button (Shown if lever is hidden) */}
+        <div className="md:hidden flex justify-center relative z-50">
+          <div className="-mt-16 bg-gradient-to-b from-yellow-200 to-yellow-600 p-2 rounded-full mx-auto shadow-[0_10px_20px_rgba(0,0,0,0.3),inset_0_4px_10px_rgba(255,255,255,0.4)] ">
+            <button 
+                onClick={onTriggerSpin}
+                disabled={isSpinning}
+                className="px-8 py-3 rounded-full cursor-pointer text-white font-bold border-gray-200 transition-all duration-150 active:translate-y-1 active:shadow-[0_5px_10px_rgba(0,0,0,0.3)] bg-gradient-to-br from-slo-coral to-red-600 hover:scale-105"
+            >
+                SPIN
+            </button>
+          </div>
+        </div>
 
-      {/* Mobile Trigger Button (Shown if lever is hidden) */}
-      <div className="md:hidden absolute -bottom-20">
-         <button 
-            onClick={onTriggerSpin}
-            disabled={isSpinning}
-            className="px-8 py-3 bg-slo-coral text-white font-bold rounded-full shadow-lg active:scale-95 transition-transform"
-         >
-            SPIN!
-         </button>
       </div>
 
     </div>

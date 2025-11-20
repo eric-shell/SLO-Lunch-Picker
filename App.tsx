@@ -159,7 +159,7 @@ const App: React.FC = () => {
                 <div className="flex flex-col items-center w-full animate-fade-in">
                    
                    {/* Game Area */}
-                   <div className={`mt-10 mb-6 w-full flex justify-center ${mode === 'SLOTS' ? 'mr-12' : ''}`}>
+                   <div className={`mt-10 mb-6 w-full flex justify-center ${mode === 'SLOTS' ? 'lg:mr-12' : ''}`}>
                      {mode === 'WHEEL' ? (
                         <Spinner 
                           restaurants={filteredRestaurants} 
