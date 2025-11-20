@@ -55,7 +55,7 @@ const RestaurantResult: React.FC<Props> = ({ restaurant, onSpinAgain }) => {
           href={restaurant.mapUrl} 
           target="_blank" 
           rel="noreferrer"
-          className="block w-full py-3 bg-slo-blue hover:bg-blue-900 text-white rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/20"
+          className="block w-full py-3 bg-slo-blue hover:bg-sky-950 text-white rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/20"
         >
           Get Directions
         </a>

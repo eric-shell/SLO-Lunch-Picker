@@ -50,9 +50,9 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
         <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-slo-teal to-slo-yellow z-20"></div>
 
         <div className="relative z-10 flex flex-col h-full">
-          <div className="mb-4 flex items-start justify-between pt-2">
+          <div className="mb-6 flex items-start justify-between pt-2">
             <div>
-              <h2 className="text-2xl font-serif text-slo-blue ">Preferences</h2>
+              <h2 className="text-2xl font-serif text-slo-blue pb-1">Preferences</h2>
               <p className="text-gray-500 text-sm font-medium">
                 Showing <span className="text-slo-teal font-bold">{resultCount}</span> of {totalCount} places
               </p>
@@ -61,7 +61,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
             {/* Show All Button */}
             <button 
               onClick={() => setIsModalOpen(true)}
-              className="px-3 py-1.5 bg-slo-blue text-white text-xs font-bold rounded-lg shadow-sm hover:bg-blue-900 transition-colors"
+              className="px-3 py-1.5 bg-slo-blue text-white text-xs font-bold rounded-lg shadow-sm hover:bg-sky-950 transition-colors"
             >
               Show All
             </button>
@@ -149,7 +149,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                     px-4 py-2 rounded-full text-sm font-bold transition-all
                     focus:outline-none focus:ring-2 focus:ring-offset-1
                     ${active 
-                      ? 'bg-slo-blue text-white shadow-md shadow-blue-900/10 transform scale-100 focus:ring-slo-blue' 
+                      ? 'bg-slo-blue text-white shadow-md shadow-blue-900/10 transform scale-100 focus:ring-slo-blue hover:bg-sky-950' 
                       : 'bg-gray-100 text-gray-400 hover:bg-gray-200 focus:ring-gray-400'
                     }
                   `}

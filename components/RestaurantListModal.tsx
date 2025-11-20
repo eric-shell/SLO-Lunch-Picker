@@ -257,7 +257,7 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
         <div className="p-4 border-t border-gray-100 bg-white flex justify-end relative z-20 flex-shrink-0">
           <button 
             onClick={onClose}
-            className="px-6 py-2 bg-slo-blue text-white rounded-xl font-bold hover:bg-blue-900 transition-colors"
+            className="px-6 py-2 bg-slo-blue text-white rounded-xl font-bold hover:bg-sky-950 transition-colors"
           >
             Done
           </button>

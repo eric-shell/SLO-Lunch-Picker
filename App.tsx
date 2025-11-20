@@ -209,7 +209,7 @@ const App: React.FC = () => {
                         />
                      )}
                    </div>
-                   <p className="text-xl font-serif text-slo-teal animate-pulse">
+                   <p className="text-xl font-serif text-slo-navy animate-pulse">
                      Choosing the perfect spot...
                    </p>
                 </div>
