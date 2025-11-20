@@ -6,14 +6,14 @@ A fun, React-based web application to help you decide where to eat lunch in San 
 
 *   **Spin the Wheel**: Randomly selects a restaurant from your filtered list.
 *   **Filtering**: Filter by food category or check what's "Open Now".
-*   **Local Data**: Powered by a local JSON file for easy editing.
+*   **Local Data**: Powered by a local TypeScript data file for easy editing.
 *   **Fun UI**: Beach-themed design with animations and confetti.
 
 ## Project Structure
 
-*   `src/data/restaurants.json`: The database of restaurants. Edit this to add more spots!
-*   `src/components/`: Reusable UI components.
-*   `src/utils/`: Helper logic for time checking.
+*   `data/restaurants.ts`: The database of restaurants. Edit this to add more spots!
+*   `components/`: Reusable UI components.
+*   `utils/`: Helper logic for time checking.
 
 ## Development
 
@@ -26,63 +26,50 @@ A fun, React-based web application to help you decide where to eat lunch in San 
     ```bash
     npm run dev
     ```
-    Open http://localhost:5173 to view the app.
+    Open the link shown in the terminal (usually http://localhost:5173) to view the app.
 
 ## How to Update Restaurant Data
 
-1.  Open `src/data/restaurants.json`.
-2.  Add a new object to the array following this schema:
-    ```json
+1.  Open `data/restaurants.ts`.
+2.  Add a new object to the `restaurants` array following the existing pattern:
+    ```typescript
     {
-      "id": "unique-id",
-      "name": "Restaurant Name",
-      "address": "Address String",
-      "category": "Category Name",
-      "hours": {
+      id: "unique-id",
+      name: "Restaurant Name",
+      address: "Address String",
+      category: "Category Name",
+      hours: {
         "Mon": "11:00-21:00",
-        ...
+        // ... other days
       },
-      "mapUrl": "Google Maps Link"
+      mapUrl: "Google Maps Link",
+      // Optional fields: website, notes, rating, price
     }
     ```
-3.  Save the file and redeploy.
+3.  Save the file. The development server will auto-reload if running.
 
 ## Deployment to GitHub Pages
 
-This project is pre-configured for GitHub Pages.
+This project is configured to deploy to GitHub Pages using the `/docs` folder.
 
-1.  **Update `vite.config.ts`** (Optional):
-    If you deploy to a user page (`username.github.io`), remove the `base` line.
-    If you deploy to a project page (`username.github.io/repo-name`), the current configuration (`base: './'`) handles relative paths automatically, but setting `base: '/repo-name/'` is explicit and recommended if routing issues occur.
-
-2.  **Build and Deploy**:
-    We recommend using the `gh-pages` package.
-
-    First, install the deploy script utility:
+1.  **Build the Project**:
     ```bash
-    npm install --save-dev gh-pages
+    npm run build
     ```
+    This will generate the static site in the `docs/` folder.
 
-    Add these scripts to your `package.json`:
-    ```json
-    "scripts": {
-      "predeploy": "npm run build",
-      "deploy": "gh-pages -d dist",
-      ...
-    }
-    ```
-
-    Run the deploy command:
-    ```bash
-    npm run deploy
-    ```
+2.  **Push to GitHub**:
+    Commit and push the `docs/` folder changes to your repository.
 
 3.  **GitHub Settings**:
-    Go to your repository Settings > Pages and select `gh-pages` branch as the source.
+    Go to your repository **Settings > Pages**.
+    *   **Source**: Select `Deploy from a branch`.
+    *   **Branch**: Select `main` (or your default branch) and `/docs` folder.
+    *   Click **Save**.
 
 ## Tech Stack
 
-*   React 18
+*   React 19
 *   TypeScript
-*   Vite
-*   Tailwind CSS (via CDN for portability, easily convertible to PostCSS)
+*   Vite 7
+*   Tailwind CSS 4
