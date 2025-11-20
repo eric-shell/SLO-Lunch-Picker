@@ -229,7 +229,7 @@ const Spinner: React.FC<Props> = ({ restaurants, isSpinning, onFinished, onTrigg
             onClick={onTriggerSpin}
             disabled={isSpinning || restaurants.length === 0}
             className={`
-                absolute z-40 w-24 h-24 rounded-full flex items-center justify-center
+                absolute z-40 w-24 h-24 rounded-full flex items-center justify-center cursor-pointer
                 text-white font-bold text-xl tracking-wider border-4 border-gray-200
                 shadow-[0_10px_20px_rgba(0,0,0,0.3),inset_0_4px_10px_rgba(255,255,255,0.4)]
                 transition-all duration-150 active:translate-y-1 active:shadow-[0_5px_10px_rgba(0,0,0,0.3)]

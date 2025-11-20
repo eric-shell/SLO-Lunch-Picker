@@ -79,7 +79,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 setIsModalOpen(true);
                 trackEvent(GA_ACTIONS.SHOW_FULL_LIST, GA_CATEGORIES.INTERACTION);
               }}
-              className="px-3 py-1.5 bg-slo-blue text-white text-xs font-bold rounded-lg shadow-sm hover:bg-sky-950 transition-colors"
+              className="px-3 py-1.5 bg-slo-blue text-white text-xs font-bold rounded-lg shadow-sm hover:bg-sky-950 transition-colors cursor-pointer"
             >
               All Restaurants
             </button>
@@ -140,14 +140,14 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
             <div className="flex space-x-2">
               <button 
                 onClick={selectAll} 
-                className="px-3 py-1 rounded-md bg-slo-teal/10 text-slo-teal text-xs font-bold hover:bg-slo-teal hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-teal focus:ring-offset-1"
+                className="px-3 py-1 rounded-md bg-slo-teal/10 text-slo-teal text-xs font-bold hover:bg-slo-teal hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-teal focus:ring-offset-1 cursor-pointer"
                 aria-label="Select all categories"
               >
                 ALL
               </button>
               <button 
                 onClick={clearAll} 
-                className="px-3 py-1 rounded-md bg-slo-coral/10 text-slo-coral text-xs font-bold hover:bg-slo-coral hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-coral focus:ring-offset-1"
+                className="px-3 py-1 rounded-md bg-slo-coral/10 text-slo-coral text-xs font-bold hover:bg-slo-coral hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-coral focus:ring-offset-1 cursor-pointer"
                 aria-label="Clear all categories"
               >
                 NONE
@@ -165,10 +165,10 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                   onClick={() => toggleCategory(cat)}
                   className={`
                     px-4 py-2 rounded-full text-sm font-bold transition-all
-                    focus:outline-none focus:ring-2 focus:ring-offset-1
+                    focus:outline-none focus:ring-2 focus:ring-offset-1 cursor-pointer
                     ${active 
                       ? 'bg-slo-blue text-white shadow-md shadow-blue-900/10 transform scale-100 focus:ring-slo-blue hover:bg-sky-950' 
-                      : 'bg-gray-100 text-gray-400 hover:bg-gray-200 focus:ring-gray-400'
+                      : 'bg-gray-100 text-gray-400 hover:bg-gray-200 focus:ring-gray-400 cursor-pointer'
                     }
                   `}
                 >

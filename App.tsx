@@ -131,14 +131,13 @@ const App: React.FC = () => {
           </div>
           
           {/* Toggle Switch (Only when Idle) */}
-          {viewState === ViewState.IDLE && (
-             <div className="absolute top-6 right-6 z-20 bg-gray-100 p-1 rounded-full flex shadow-inner">
+             <div className={`absolute top-6 right-6 z-20 bg-gray-100 p-1 rounded-full flex shadow-inner transition-opacity duration-300 ${viewState === ViewState.IDLE ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <button 
                   onClick={() => {
                     setMode('WHEEL');
                     trackEvent(GA_ACTIONS.CHANGE_MODE, GA_CATEGORIES.INTERACTION, 'WHEEL');
                   }}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'WHEEL' ? 'bg-white text-slo-blue shadow' : 'text-gray-400'}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${mode === 'WHEEL' ? 'bg-white text-slo-blue shadow' : 'text-gray-400'}`}
                 >
                   WHEEL
                 </button>
@@ -147,17 +146,16 @@ const App: React.FC = () => {
                     setMode('SLOTS');
                     trackEvent(GA_ACTIONS.CHANGE_MODE, GA_CATEGORIES.INTERACTION, 'SLOTS');
                   }}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'SLOTS' ? 'bg-white text-slo-blue shadow' : 'text-gray-400'}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${mode === 'SLOTS' ? 'bg-white text-slo-blue shadow' : 'text-gray-400'}`}
                 >
                   SLOTS
                 </button>
              </div>
-          )}
 
           {/* Content Wrapper: Center content vertically/horizontally */}
           <div className="flex-grow flex items-center justify-center p-8 relative z-10">
              
-             {viewState === ViewState.IDLE && (
+             {(viewState === ViewState.IDLE || viewState === ViewState.SPINNING) && (
                 <div className="flex flex-col items-center w-full animate-fade-in">
                    
                    {/* Game Area */}
@@ -165,25 +163,25 @@ const App: React.FC = () => {
                      {mode === 'WHEEL' ? (
                         <Spinner 
                           restaurants={filteredRestaurants} 
-                          isSpinning={false} 
-                          onFinished={() => {}} 
+                          isSpinning={viewState === ViewState.SPINNING} 
+                          onFinished={viewState === ViewState.SPINNING ? handleSpinFinished : () => {}} 
                           onTriggerSpin={handleSpin}
-                          winner={null}
+                          winner={viewState === ViewState.SPINNING ? selectedRestaurant : null}
                           useWeight={filters.useRatingWeight}
                         />
                      ) : (
                         <SlotMachine
                           restaurants={filteredRestaurants}
-                          isSpinning={false}
-                          onFinished={() => {}}
+                          isSpinning={viewState === ViewState.SPINNING}
+                          onFinished={viewState === ViewState.SPINNING ? handleSpinFinished : () => {}}
                           onTriggerSpin={handleSpin}
-                          winner={null}
+                          winner={viewState === ViewState.SPINNING ? selectedRestaurant : null}
                         />
                      )}
                    </div>
                    
                    {/* Empty State Message */}
-                   {filteredRestaurants.length === 0 && (
+                   {viewState === ViewState.IDLE && filteredRestaurants.length === 0 && (
                      <div className="text-center p-6 bg-red-50 rounded-xl border border-red-100">
                         <p className="text-red-500 font-bold">No restaurants match your filters.</p>
                         <button 
@@ -198,34 +196,6 @@ const App: React.FC = () => {
                      </div>
                    )}
 
-                </div>
-             )}
-
-             {viewState === ViewState.SPINNING && (
-                <div className="flex flex-col items-center w-full">
-                   <div className={`mb-12 w-full flex justify-center ${mode === 'SLOTS' ? 'mr-12' : ''}`}>
-                    {mode === 'WHEEL' ? (
-                        <Spinner 
-                          restaurants={filteredRestaurants} 
-                          isSpinning={true} 
-                          onFinished={handleSpinFinished} 
-                          onTriggerSpin={handleSpin}
-                          winner={selectedRestaurant}
-                          useWeight={filters.useRatingWeight}
-                        />
-                     ) : (
-                        <SlotMachine
-                          restaurants={filteredRestaurants}
-                          isSpinning={true}
-                          onFinished={handleSpinFinished}
-                          onTriggerSpin={handleSpin}
-                          winner={selectedRestaurant}
-                        />
-                     )}
-                   </div>
-                   <p className="absolute bottom-20 left-1/2 -translate-x-1/2 text-xl font-serif text-slo-navy animate-pulse whitespace-nowrap">
-                     Choosing the perfect spot...
-                   </p>
                 </div>
              )}
 
@@ -245,7 +215,7 @@ const App: React.FC = () => {
           <div className="absolute bottom-4 right-4 z-20">
              <button 
                onClick={handleFullReset}
-               className="p-2 text-xs font-bold text-gray-400 hover:text-slo-coral transition-colors flex items-center gap-1 group"
+               className="p-2 text-xs font-bold text-gray-400 hover:text-slo-coral transition-colors flex items-center gap-1 group cursor-pointer"
                title="Reset Everything"
              >
                <svg className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -110,14 +110,14 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
         
         {/* Header */}
         <div className="p-6 border-b border-gray-100 bg-white space-y-4 relative z-20 flex-shrink-0">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-top">
             <div>
               <h2 className="text-2xl font-serif text-slo-blue">All Restaurants</h2>
               <p className="text-sm text-gray-500">Manage which places are included in the spin.</p>
             </div>
             <button 
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 transition-colors"
+              className="w-8 h-8 rounded-full bg-slo-blue hover:bg-sky-950 text-white flex items-center justify-center text-gray-500 transition-colors cursor-pointer"
             >
               ✕
             </button>
@@ -131,7 +131,7 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
                 <button 
                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                    className={`
-                     flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border transition-all
+                     flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border transition-all cursor-pointer
                      ${isDropdownOpen 
                        ? 'bg-slo-blue text-white border-slo-blue ring-2 ring-blue-100' 
                        : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300'}
@@ -151,7 +151,7 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
                       <div className="mb-2 pb-2 border-b border-gray-100">
                         <button
                            onClick={() => { setSelectedCategories([]); setIsDropdownOpen(false); }}
-                           className="w-full text-left px-3 py-2 rounded-lg text-xs font-bold text-gray-500 hover:bg-gray-50 hover:text-slo-blue transition-colors uppercase tracking-wide"
+                           className="w-full text-left px-3 py-2 rounded-lg text-xs font-bold text-gray-500 hover:bg-gray-50 hover:text-slo-blue transition-colors uppercase tracking-wide cursor-pointer"
                         >
                           Reset Filter
                         </button>
@@ -161,7 +161,7 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
                           key={cat}
                           onClick={() => toggleCategory(cat)}
                           className={`
-                            w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-bold transition-colors mb-1
+                            w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-bold transition-colors mb-1 cursor-pointer
                             ${selectedCategories.includes(cat) 
                                ? 'bg-slo-teal/10 text-slo-teal' 
                                : 'text-gray-600 hover:bg-gray-50'}
@@ -181,13 +181,13 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
              <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-xl">
                 <button 
                   onClick={() => handleSortClick('NAME')}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1 ${sortState.field === 'NAME' ? 'bg-white shadow text-slo-blue' : 'text-gray-400 hover:text-gray-600'}`}
+                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${sortState.field === 'NAME' ? 'bg-white shadow text-slo-blue' : 'text-gray-400 hover:text-gray-600'}`}
                 >
                   Name {sortState.field === 'NAME' && (sortState.direction === 'ASC' ? '↑' : '↓')}
                 </button>
                 <button 
                   onClick={() => handleSortClick('RATING')}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1 ${sortState.field === 'RATING' ? 'bg-white shadow text-slo-coral' : 'text-gray-400 hover:text-gray-600'}`}
+                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${sortState.field === 'RATING' ? 'bg-white shadow text-slo-coral' : 'text-gray-400 hover:text-gray-600'}`}
                 >
                   Rating {sortState.field === 'RATING' && (sortState.direction === 'ASC' ? '↑' : '↓')}
                 </button>
@@ -230,7 +230,7 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
                   <button
                     onClick={() => onToggleExclusion(r.id)}
                     className={`
-                      relative inline-flex h-6 w-11 flex-shrink-0 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-slo-teal focus:ring-offset-2
+                      relative inline-flex h-6 w-11 flex-shrink-0 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-slo-teal focus:ring-offset-2 cursor-pointer
                       ${isIncluded ? 'bg-slo-teal' : 'bg-gray-300'}
                     `}
                   >
@@ -254,10 +254,10 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-gray-100 bg-white flex justify-end relative z-20 flex-shrink-0">
+        <div className="p-4 pt-6 border-t border-gray-100 bg-white flex justify-end relative z-20 flex-shrink-0">
           <button 
             onClick={onClose}
-            className="px-6 py-2 bg-slo-blue text-white rounded-xl font-bold hover:bg-sky-950 transition-colors"
+            className="px-6 py-2 bg-slo-blue text-white rounded-xl font-bold hover:bg-sky-950 transition-colors cursor-pointer"
           >
             Done
           </button>
