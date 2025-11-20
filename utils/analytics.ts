@@ -40,15 +40,16 @@ export const trackEvent = (
   label?: string,
   value?: number
 ) => {
+  
+  // Debug helper
+  // console.log('[GA Event Triggered]', { action, category, label, value });
+
   if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
     window.gtag('event', action, {
       event_category: category,
       event_label: label,
       value: value,
     });
-  } else {
-    // Optional: console.log for dev debugging if gtag isn't loaded
-    // console.log('GA Event:', { action, category, label, value });
   }
 };
 
