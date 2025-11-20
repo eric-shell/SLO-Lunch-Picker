@@ -73,15 +73,15 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
               </p>
             </div>
             
-            {/* Show All Button */}
+            {/* All Restaurants Button */}
             <button 
               onClick={() => {
                 setIsModalOpen(true);
-                trackEvent(GA_ACTIONS.SHOW_ALL_LIST, GA_CATEGORIES.INTERACTION);
+                trackEvent(GA_ACTIONS.SHOW_FULL_LIST, GA_CATEGORIES.INTERACTION);
               }}
               className="px-3 py-1.5 bg-slo-blue text-white text-xs font-bold rounded-lg shadow-sm hover:bg-sky-950 transition-colors"
             >
-              Show All
+              All Restaurants
             </button>
           </div>
 

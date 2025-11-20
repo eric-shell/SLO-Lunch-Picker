@@ -28,7 +28,7 @@ export const GA_ACTIONS = {
   TOGGLE_CATEGORY: 'toggle_category',
   RESET_APP: 'reset_app',
   RESET_FILTERS: 'reset_filters',
-  SHOW_ALL_LIST: 'show_all_list',
+  SHOW_FULL_LIST: 'show_full_restaurant_list',
   GET_DIRECTIONS: 'get_directions',
   SPIN_AGAIN: 'spin_again',
   EXCLUDE_RESTAURANT: 'exclude_restaurant'
@@ -40,7 +40,7 @@ export const trackEvent = (
   label?: string,
   value?: number
 ) => {
-  
+
   // Debug helper
   // console.log('[GA Event Triggered]', { action, category, label, value });
 
