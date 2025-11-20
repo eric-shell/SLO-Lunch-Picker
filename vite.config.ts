@@ -5,10 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   // Set the base path for GitHub Pages deployment
-  // Replace 'slo-lunch-picker' with your actual repository name if different
-  // or use './' for relative path linking which works in most static hosting cases
-  base: './', 
+  base: '/SLO-Lunch-Picker/', 
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
   }
 });
