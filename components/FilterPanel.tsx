@@ -103,7 +103,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 </div>
              </div>
 
-             {/* Weighted Spin */}
+             {/* Rating Adjusted */}
              <div 
                 className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
                 onClick={() => toggleFilter('useRatingWeight')}
@@ -111,7 +111,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 tabIndex={0}
              >
                 {/* <Tooltip content="Changes probability based on last known ratings" position="top"> */}
-                  <span className="font-semibold text-gray-700 group-hover:text-slo-coral transition-colors">Weighted Spin</span>
+                  <span className="font-semibold text-gray-700 group-hover:text-slo-coral transition-colors">Rating Adjusted</span>
                 {/* </Tooltip> */}
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.useRatingWeight ? 'bg-slo-coral' : 'bg-gray-300'}`}>
                   <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.useRatingWeight ? 'translate-x-5' : 'translate-x-0'}`}></div>

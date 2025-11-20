@@ -2,12 +2,15 @@
 
 A fun, React-based web application to help you decide where to eat lunch in San Luis Obispo (93401/93405). Built with Vite, TypeScript, and Tailwind CSS.
 
+Production URL:
+<a href="https://eric-shell.github.io/SLO-Lunch-Picker"/>https://eric-shell.github.io/SLO-Lunch-Picker/</a>
+
 ## Features
 
 *   **Spin the Wheel**: Randomly selects a restaurant from your filtered list.
-*   **Filtering**: Filter by food category or check what's "Open Now".
+*   **Filtering**: Filter by food category, check what's "Open Now" (Default), change probability with "Rating Adjusted" and toggle value options with "Cheap Eats" .
 *   **Local Data**: Powered by a local TypeScript data file for easy editing.
-*   **Fun UI**: Beach-themed design with animations and confetti.
+*   **Fun UI**: Minimal coastal inspired design with animations and confetti.
 
 ## Project Structure
 
