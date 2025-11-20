@@ -105,10 +105,11 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
     <div className="w-full max-w-5xl mx-auto flex items-center justify-center pt-8">
       
       {/* Container wrapper for positioning logic */}
-      <div className="relative">
+      {/* Added w-full max-w-2xl here to control the width from the parent, allowing absolute elements to attach relative to this frame */}
+      <div className="relative w-full max-w-2xl">
 
           {/* Machine Body */}
-          <div className="relative z-10 p-4 bg-gradient-to-b from-gray-700 to-gray-900 rounded-3xl shadow-2xl border-4 border-gray-600 w-full max-w-2xl mx-auto">
+          <div className="relative z-10 p-4 bg-gradient-to-b from-gray-700 to-gray-900 rounded-3xl shadow-2xl border-4 border-gray-600 w-full mx-auto">
               
               {/* Metallic Bezel */}
               <div className="bg-gradient-to-r from-yellow-600 via-yellow-200 to-yellow-600 p-3 rounded-2xl shadow-inner">
@@ -118,19 +119,18 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
                     
                     {/* Glass Reflection */}
                     <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent h-1/2 pointer-events-none z-20"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent h-1/4 bottom-0 pointer-events-none z-20"></div>
 
                     {/* Reel 1 */}
                     <div className="w-20 md:w-24 bg-gray-100 rounded-lg border-x border-gray-300 flex items-center justify-center relative overflow-hidden flex-shrink-0">
+                        {/* Flipped Gradient: Shadow at Top */}
                         <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-gray-400 to-transparent z-0"></div>
-                        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-400 to-transparent z-0"></div>
                         <span className="text-4xl md:text-5xl relative z-10 drop-shadow-sm select-none">{reel1}</span>
                     </div>
 
-                    {/* Reel 2 (Main) - Added w-0 to force flex-shrink logic correctly */}
+                    {/* Reel 2 (Main) */}
                     <div className="flex-1 w-0 min-w-[150px] bg-gray-100 rounded-lg border-x border-gray-300 flex items-center justify-center relative overflow-hidden px-2 text-center">
+                        {/* Flipped Gradient: Shadow at Top */}
                         <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-gray-400 to-transparent z-0"></div>
-                        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-400 to-transparent z-0"></div>
                         <span className="text-xl md:text-3xl font-serif font-bold text-slo-blue tracking-tight relative z-10 drop-shadow-sm truncate w-full select-none">
                             {reel2}
                         </span>
@@ -138,8 +138,8 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
 
                     {/* Reel 3 */}
                     <div className="w-20 md:w-24 bg-gray-100 rounded-lg border-x border-gray-300 flex items-center justify-center relative overflow-hidden flex-shrink-0">
+                        {/* Flipped Gradient: Shadow at Top */}
                         <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-gray-400 to-transparent z-0"></div>
-                        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-400 to-transparent z-0"></div>
                         <span className="text-xl md:text-2xl font-bold text-slo-coral relative z-10 drop-shadow-sm select-none">{reel3}</span>
                     </div>
 
@@ -151,14 +151,14 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
           </div>
 
           {/* Lever Assembly - Positioned ABSOLUTELY relative to the machine wrapper */}
-          {/* Moved to z-20 to sit on top of the machine body/shadows */}
+          {/* Adjusted right position to attach firmly to the side (-right-24) */}
           <div className="hidden md:block absolute -right-24 top-1/2 -translate-y-1/2 h-64 w-24 z-20">
             
             {/* Base Connector - Sits behind the lever but visually attached to the machine */}
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-16 bg-gradient-to-r from-gray-700 to-gray-500 rounded-r-lg shadow-xl border-y border-r border-gray-600"></div>
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-16 bg-gradient-to-r from-gray-700 to-gray-500 rounded-r-lg shadow-xl border-y border-r border-gray-600"></div>
 
              {/* The Lever SVG */}
-             <svg width="100" height="300" viewBox="0 0 100 300" className="absolute left-0 top-1/2 -translate-y-1/2 overflow-visible drop-shadow-2xl">
+             <svg width="100" height="300" viewBox="0 0 100 300" className="absolute left-2 top-1/2 -translate-y-1/2 overflow-visible drop-shadow-2xl">
                  <g 
                     className="origin-[20px_150px] transition-transform duration-500 ease-in-out"
                     style={{ transform: leverPulled ? 'rotate(180deg)' : 'rotate(0deg)' }}
@@ -192,7 +192,7 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
              </svg>
              
              {/* Pivot Point Cap (Covering the rotation origin) */}
-             <div className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 bg-gray-300 rounded-full border-2 border-gray-500 shadow-lg pointer-events-none z-30 bg-gradient-to-br from-gray-100 to-gray-500"></div>
+             <div className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-gray-300 rounded-full border-2 border-gray-500 shadow-lg pointer-events-none z-30 bg-gradient-to-br from-gray-100 to-gray-500"></div>
           </div>
 
       </div>

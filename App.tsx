@@ -150,7 +150,8 @@ const App: React.FC = () => {
                 <div className="flex flex-col items-center w-full animate-fade-in">
                    
                    {/* Game Area */}
-                   <div className="mb-8 w-full flex justify-center">
+                   {/* Added conditional mr-12 to balance the slot handle width sticking out to the right */}
+                   <div className={`mb-8 w-full flex justify-center ${mode === 'SLOTS' ? 'mr-12' : ''}`}>
                      {mode === 'WHEEL' ? (
                         <Spinner 
                           restaurants={filteredRestaurants} 
@@ -189,7 +190,7 @@ const App: React.FC = () => {
 
              {viewState === ViewState.SPINNING && (
                 <div className="flex flex-col items-center w-full">
-                   <div className="mb-12 w-full flex justify-center">
+                   <div className={`mb-12 w-full flex justify-center ${mode === 'SLOTS' ? 'mr-12' : ''}`}>
                     {mode === 'WHEEL' ? (
                         <Spinner 
                           restaurants={filteredRestaurants} 

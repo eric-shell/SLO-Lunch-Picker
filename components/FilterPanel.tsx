@@ -89,7 +89,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 onClick={() => toggleFilter('useRatingWeight')}
                 role="button"
                 tabIndex={0}
-                title="Higher rating = higher chance"
+                title="Changes probability based on last known ratings"
              >
                 <span className="font-semibold text-gray-700 group-hover:text-slo-coral transition-colors">Weighted Spin</span>
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.useRatingWeight ? 'bg-slo-coral' : 'bg-gray-300'}`}>
@@ -103,7 +103,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 onClick={() => toggleFilter('cheapEatsOnly')}
                 role="button"
                 tabIndex={0}
-                title="Price level: $"
+                title="This is for $ restaurants"
              >
                 <span className="font-semibold text-gray-700 group-hover:text-slo-sky transition-colors">Cheap Eats</span>
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.cheapEatsOnly ? 'bg-slo-sky' : 'bg-gray-300'}`}>
