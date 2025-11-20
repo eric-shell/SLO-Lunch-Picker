@@ -101,7 +101,7 @@ const App: React.FC = () => {
       <Header />
       
       {/* Main Content Area - Equal Height Columns */}
-      <main className="flex-grow w-full flex flex-col lg:flex-row gap-8 items-stretch lg:h-[650px] mb-12">
+      <main className="flex-grow w-full flex flex-col lg:flex-row gap-8 items-stretch lg:h-[750px] mb-12">
         
         {/* Left: Filter Panel (1/3) */}
         <div className="w-full lg:w-1/3 h-full">
@@ -150,7 +150,7 @@ const App: React.FC = () => {
                 <div className="flex flex-col items-center w-full animate-fade-in">
                    
                    {/* Game Area */}
-                   <div className={`mt-12 lg:mt-0 mb-8 w-full flex justify-center ${mode === 'SLOTS' ? 'mr-12' : ''}`}>
+                   <div className={`mt-10 mb-6 w-full flex justify-center ${mode === 'SLOTS' ? 'mr-12' : ''}`}>
                      {mode === 'WHEEL' ? (
                         <Spinner 
                           restaurants={filteredRestaurants} 
