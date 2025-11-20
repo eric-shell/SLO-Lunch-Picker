@@ -1,6 +1,7 @@
 import React from 'react';
 import { Restaurant } from '../types';
 import { isOpenNow, getTodaysHours } from '../utils/timeHelpers';
+import { trackEvent, GA_ACTIONS, GA_CATEGORIES } from '../utils/analytics';
 
 interface Props {
   restaurant: Restaurant;
@@ -55,6 +56,7 @@ const RestaurantResult: React.FC<Props> = ({ restaurant, onSpinAgain }) => {
           href={restaurant.mapUrl} 
           target="_blank" 
           rel="noreferrer"
+          onClick={() => trackEvent(GA_ACTIONS.GET_DIRECTIONS, GA_CATEGORIES.OUTBOUND, restaurant.name)}
           className="block w-full py-3 bg-slo-blue hover:bg-sky-950 text-white rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/20"
         >
           Get Directions

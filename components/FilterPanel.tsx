@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FilterState, Restaurant } from '../types';
 import RestaurantListModal from './RestaurantListModal';
 import Tooltip from './Tooltip';
+import { trackEvent, GA_CATEGORIES, GA_ACTIONS } from '../utils/analytics';
 
 interface Props {
   allCategories: string[];
@@ -21,12 +22,18 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
       const newCats = exists 
         ? prev.categories.filter(c => c !== cat)
         : [...prev.categories, cat];
+      
+      trackEvent(GA_ACTIONS.TOGGLE_CATEGORY, GA_CATEGORIES.FILTER, cat, exists ? 0 : 1);
       return { ...prev, categories: newCats };
     });
   };
 
   const toggleFilter = (key: keyof Omit<FilterState, 'categories' | 'excludedIds'>) => {
-    setFilters(prev => ({ ...prev, [key]: !prev[key] }));
+    setFilters(prev => {
+      const newValue = !prev[key];
+      trackEvent(GA_ACTIONS.TOGGLE_FILTER, GA_CATEGORIES.FILTER, key, newValue ? 1 : 0);
+      return { ...prev, [key]: newValue };
+    });
   };
 
   const toggleExclusion = (id: string) => {
@@ -35,12 +42,20 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
       const newExcluded = isExcluded
         ? prev.excludedIds.filter(e => e !== id)
         : [...prev.excludedIds, id];
+      
+      trackEvent(GA_ACTIONS.EXCLUDE_RESTAURANT, GA_CATEGORIES.FILTER, id, isExcluded ? 0 : 1);
       return { ...prev, excludedIds: newExcluded };
     });
   };
 
-  const selectAll = () => setFilters(prev => ({ ...prev, categories: allCategories }));
-  const clearAll = () => setFilters(prev => ({ ...prev, categories: [] }));
+  const selectAll = () => {
+    trackEvent(GA_ACTIONS.TOGGLE_CATEGORY, GA_CATEGORIES.FILTER, 'SELECT_ALL');
+    setFilters(prev => ({ ...prev, categories: allCategories }));
+  };
+  const clearAll = () => {
+    trackEvent(GA_ACTIONS.TOGGLE_CATEGORY, GA_CATEGORIES.FILTER, 'CLEAR_ALL');
+    setFilters(prev => ({ ...prev, categories: [] }));
+  };
 
   return (
     <>
@@ -60,7 +75,10 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
             
             {/* Show All Button */}
             <button 
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                setIsModalOpen(true);
+                trackEvent(GA_ACTIONS.SHOW_ALL_LIST, GA_CATEGORIES.INTERACTION);
+              }}
               className="px-3 py-1.5 bg-slo-blue text-white text-xs font-bold rounded-lg shadow-sm hover:bg-sky-950 transition-colors"
             >
               Show All

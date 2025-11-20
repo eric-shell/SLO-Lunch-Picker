@@ -9,6 +9,7 @@ import { Confetti } from './components/Confetti';
 import { Restaurant, FilterState, ViewState } from './types';
 import { getFilteredRestaurants } from './utils/timeHelpers';
 import { restaurants as initialData } from './data/restaurants';
+import { trackEvent, GA_CATEGORIES, GA_ACTIONS } from './utils/analytics';
 
 const App: React.FC = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
@@ -53,6 +54,8 @@ const App: React.FC = () => {
   const handleSpin = () => {
     if (filteredRestaurants.length === 0) return;
     
+    trackEvent(GA_ACTIONS.SPIN, GA_CATEGORIES.GAME, mode);
+
     let winner: Restaurant;
 
     if (filters.useRatingWeight) {
@@ -79,11 +82,13 @@ const App: React.FC = () => {
   };
 
   const handleReset = () => {
+    trackEvent(GA_ACTIONS.SPIN_AGAIN, GA_CATEGORIES.GAME);
     setViewState(ViewState.IDLE);
     setSelectedRestaurant(null);
   };
 
   const handleFullReset = () => {
+    trackEvent(GA_ACTIONS.RESET_APP, GA_CATEGORIES.INTERACTION);
     setViewState(ViewState.IDLE);
     setSelectedRestaurant(null);
     setFilters(prev => ({
@@ -129,13 +134,19 @@ const App: React.FC = () => {
           {viewState === ViewState.IDLE && (
              <div className="absolute top-6 right-6 z-20 bg-gray-100 p-1 rounded-full flex shadow-inner">
                 <button 
-                  onClick={() => setMode('WHEEL')}
+                  onClick={() => {
+                    setMode('WHEEL');
+                    trackEvent(GA_ACTIONS.CHANGE_MODE, GA_CATEGORIES.INTERACTION, 'WHEEL');
+                  }}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'WHEEL' ? 'bg-white text-slo-blue shadow' : 'text-gray-400'}`}
                 >
                   WHEEL
                 </button>
                 <button 
-                  onClick={() => setMode('SLOTS')}
+                  onClick={() => {
+                    setMode('SLOTS');
+                    trackEvent(GA_ACTIONS.CHANGE_MODE, GA_CATEGORIES.INTERACTION, 'SLOTS');
+                  }}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'SLOTS' ? 'bg-white text-slo-blue shadow' : 'text-gray-400'}`}
                 >
                   SLOTS
@@ -176,7 +187,10 @@ const App: React.FC = () => {
                      <div className="text-center p-6 bg-red-50 rounded-xl border border-red-100">
                         <p className="text-red-500 font-bold">No restaurants match your filters.</p>
                         <button 
-                           onClick={() => setFilters(prev => ({ ...prev, categories: allCategories, openNow: false, excludedIds: [] }))}
+                           onClick={() => {
+                             setFilters(prev => ({ ...prev, categories: allCategories, openNow: false, excludedIds: [] }));
+                             trackEvent(GA_ACTIONS.RESET_FILTERS, GA_CATEGORIES.FILTER, 'No Results State');
+                           }}
                            className="mt-2 text-sm text-red-700 underline hover:text-red-900"
                         >
                           Reset Filters
