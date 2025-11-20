@@ -162,7 +162,7 @@ const Spinner: React.FC<Props> = ({ restaurants, isSpinning, onFinished, onTrigg
     <div className="relative flex flex-col items-center">
       
       {/* Increased Size from 380px to 440px */}
-      <div className="relative w-[340px] h-[340px] md:w-[440px] md:h-[440px] flex items-center justify-center transition-all duration-300">
+      <div className="relative w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[480px] md:h-[480px] lg:w-[580px] lg:h-[580px] xl:w-[640px] xl:h-[640px] flex items-center justify-center transition-all duration-300">
          
         {/* Realistic Wheel Container */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-300 to-gray-100 shadow-2xl flex items-center justify-center border border-gray-400">

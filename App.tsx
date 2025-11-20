@@ -209,7 +209,7 @@ const App: React.FC = () => {
                         />
                      )}
                    </div>
-                   <p className="text-xl font-serif text-slo-navy animate-pulse">
+                   <p className="absolute bottom-20 left-1/2 -translate-x-1/2 text-xl font-serif text-slo-navy animate-pulse whitespace-nowrap">
                      Choosing the perfect spot...
                    </p>
                 </div>

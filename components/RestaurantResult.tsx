@@ -17,13 +17,13 @@ const RestaurantResult: React.FC<Props> = ({ restaurant, onSpinAgain }) => {
       
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-slo-teal via-slo-yellow to-slo-coral"></div>
       
-      <h2 className="text-gray-400 font-bold text-xs tracking-widest uppercase mb-4">We found a winner</h2>
+      <h2 className="text-gray-600 font-bold text-xs tracking-widest uppercase mb-4">You're going to</h2>
       
       <h1 className="text-4xl md:text-5xl font-serif text-slo-blue mb-2 leading-tight">
         {restaurant.name}
       </h1>
       
-      <p className="text-lg text-slo-teal font-semibold mb-6">{restaurant.category}</p>
+      <p className="text-lg text-slo-teal font-semibold pt-1 pb-4">{restaurant.category}</p>
 
       <div className="bg-gray-50 rounded-xl p-6 mb-8 space-y-3">
         <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
