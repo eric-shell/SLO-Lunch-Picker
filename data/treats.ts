@@ -5,7 +5,7 @@ export const treats: Restaurant[] = [
     id: "t1",
     name: "McConnell's Fine Ice Creams",
     address: "868 Monterey St, San Luis Obispo, CA 93401",
-    category: "Ice Cream",
+    categories: ["Ice Cream"],
     hours: {
       "Mon": "12:00-22:00",
       "Tue": "12:00-22:00",
@@ -25,7 +25,7 @@ export const treats: Restaurant[] = [
     id: "t2",
     name: "Batch",
     address: "1108 Broad St, San Luis Obispo, CA 93401",
-    category: "Cookies",
+    categories: ["Cookies"],
     hours: {
       "Mon": "12:00-22:00",
       "Tue": "12:00-22:00",
@@ -45,7 +45,7 @@ export const treats: Restaurant[] = [
     id: "t3",
     name: "Rocket Fizz",
     address: "699 Higuera St, San Luis Obispo, CA 93401",
-    category: "Candy",
+    categories: ["Candy"],
     hours: {
       "Mon": "10:00-21:00",
       "Tue": "10:00-21:00",
@@ -65,7 +65,7 @@ export const treats: Restaurant[] = [
     id: "t4",
     name: "SloDoCo Donuts",
     address: "793F Foothill Blvd, San Luis Obispo, CA 93405",
-    category: "Donuts",
+    categories: ["Donuts", "Vegan"],
     hours: {
       "Mon": "00:00-23:59",
       "Tue": "00:00-23:59",
@@ -85,7 +85,7 @@ export const treats: Restaurant[] = [
     id: "t5",
     name: "Crumbl Cookies",
     address: "491 Madonna Rd, San Luis Obispo, CA 93405",
-    category: "Cookies",
+    categories: ["Cookies"],
     hours: {
       "Mon": "08:00-22:00",
       "Tue": "08:00-22:00",
@@ -104,7 +104,7 @@ export const treats: Restaurant[] = [
     id: "t6",
     name: "Nite Creamery",
     address: "570 Higuera St #103, San Luis Obispo, CA 93401",
-    category: "Ice Cream",
+    categories: ["Ice Cream"],
     hours: {
       "Mon": "13:00-22:00",
       "Tue": "13:00-22:00",
@@ -124,7 +124,7 @@ export const treats: Restaurant[] = [
     id: "t7",
     name: "Sheila Kearns Chocolate & Confections",
     address: "722 Marsh St, San Luis Obispo, CA 93401",
-    category: "Chocolates",
+    categories: ["Chocolates"],
     hours: {
       "Mon": "Closed",
       "Tue": "11:00-17:00",
@@ -144,7 +144,7 @@ export const treats: Restaurant[] = [
     id: "t8",
     name: "Yogurtland",
     address: "881 Higuera St, San Luis Obispo, CA 93401",
-    category: "Frozen Yogurt",
+    categories: ["Frozen Yogurt", "Vegan"],
     hours: {
       "Mon": "11:00-22:00",
       "Tue": "11:00-22:00",

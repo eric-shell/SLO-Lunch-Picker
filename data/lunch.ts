@@ -5,7 +5,7 @@ export const lunch: Restaurant[] = [
     id: "1",
     name: "Firestone Grill",
     address: "1001 Higuera St, San Luis Obispo, CA 93401",
-    category: "BBQ",
+    categories: ["BBQ"],
     hours: {
       "Mon": "11:00-22:00",
       "Tue": "11:00-22:00",
@@ -25,7 +25,7 @@ export const lunch: Restaurant[] = [
     id: "2",
     name: "Woodstock's Pizza",
     address: "1000 Higuera St, San Luis Obispo, CA 93401",
-    category: "Pizza",
+    categories: ["Pizza"],
     hours: {
       "Mon": "11:00-00:00",
       "Tue": "11:00-00:00",
@@ -44,7 +44,7 @@ export const lunch: Restaurant[] = [
     id: "3",
     name: "High Street Market & Deli",
     address: "350 High St, San Luis Obispo, CA 93401",
-    category: "Sandwiches",
+    categories: ["Sandwiches"],
     hours: {
       "Mon": "09:00-17:30",
       "Tue": "09:00-17:30",
@@ -64,7 +64,7 @@ export const lunch: Restaurant[] = [
     id: "4",
     name: "Splash Café",
     address: "1491 Monterey St, San Luis Obispo, CA 93401",
-    category: "Seafood",
+    categories: ["Seafood"],
     hours: {
       "Mon": "08:00-20:00",
       "Tue": "08:00-20:00",
@@ -83,7 +83,7 @@ export const lunch: Restaurant[] = [
     id: "5",
     name: "Novo Restaurant & Lounge",
     address: "726 Higuera St, San Luis Obispo, CA 93401",
-    category: "Global",
+    categories: ["Global"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -103,7 +103,7 @@ export const lunch: Restaurant[] = [
     id: "6",
     name: "Taqueria Santa Cruz Express",
     address: "1308 Monterey St, San Luis Obispo, CA 93401",
-    category: "Mexican",
+    categories: ["Mexican"],
     hours: {
       "Mon": "08:00-22:00",
       "Tue": "08:00-22:00",
@@ -121,7 +121,7 @@ export const lunch: Restaurant[] = [
     id: "7",
     name: "Petra Mediterranean Pizza & Grill",
     address: "1210 Higuera St, San Luis Obispo, CA 93401",
-    category: "Mediterranean",
+    categories: ["Mediterranean", "Vegan"],
     hours: {
       "Mon": "10:30-22:00",
       "Tue": "10:30-22:00",
@@ -140,7 +140,7 @@ export const lunch: Restaurant[] = [
     id: "8",
     name: "Old San Luis BBQ Company",
     address: "670 Higuera St, San Luis Obispo, CA 93401",
-    category: "BBQ",
+    categories: ["BBQ"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -159,7 +159,7 @@ export const lunch: Restaurant[] = [
     id: "9",
     name: "SloDoCo Donuts",
     address: "793F Foothill Blvd, San Luis Obispo, CA 93405",
-    category: "Bakery",
+    categories: ["Bakery"],
     hours: {
       "Mon": "00:00-23:59",
       "Tue": "00:00-23:59",
@@ -179,7 +179,7 @@ export const lunch: Restaurant[] = [
     id: "10",
     name: "Goshi Japanese Restaurant",
     address: "570 Higuera St, San Luis Obispo, CA 93401",
-    category: "Asian",
+    categories: ["Asian"],
     hours: {
       "Mon": "11:30-14:00",
       "Tue": "11:30-14:00",
@@ -198,7 +198,7 @@ export const lunch: Restaurant[] = [
     id: "11",
     name: "Luna Red",
     address: "1023 Chorro St, San Luis Obispo, CA 93401",
-    category: "Global",
+    categories: ["Global"],
     hours: {
       "Mon": "11:30-21:00",
       "Tue": "11:30-21:00",
@@ -217,7 +217,7 @@ export const lunch: Restaurant[] = [
     id: "12",
     name: "Giuseppe's Cucina Rustica",
     address: "849 Monterey St, San Luis Obispo, CA 93401",
-    category: "Global",
+    categories: ["Global"],
     hours: {
       "Mon": "11:30-22:00",
       "Tue": "11:30-22:00",
@@ -237,7 +237,7 @@ export const lunch: Restaurant[] = [
     id: "13",
     name: "Eureka!",
     address: "1141 Chorro St, San Luis Obispo, CA 93401",
-    category: "American",
+    categories: ["American"],
     hours: {
       "Mon": "11:00-23:00",
       "Tue": "11:00-23:00",
@@ -256,7 +256,7 @@ export const lunch: Restaurant[] = [
     id: "14",
     name: "Thai Boat",
     address: "3212 Broad St, San Luis Obispo, CA 93401",
-    category: "Asian",
+    categories: ["Asian"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -274,7 +274,7 @@ export const lunch: Restaurant[] = [
     id: "15",
     name: "Lincoln Market & Deli",
     address: "496 Broad St, San Luis Obispo, CA 93405",
-    category: "Sandwiches",
+    categories: ["Sandwiches"],
     hours: {
       "Mon": "08:00-20:00",
       "Tue": "08:00-20:00",
@@ -294,7 +294,7 @@ export const lunch: Restaurant[] = [
     id: "16",
     name: "Taste! Craft Eatery",
     address: "2550 Broad St, San Luis Obispo, CA 93401",
-    category: "American",
+    categories: ["American"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -313,7 +313,7 @@ export const lunch: Restaurant[] = [
     id: "17",
     name: "Scout Coffee",
     address: "1130 Garden St, San Luis Obispo, CA 93401",
-    category: "Bakery",
+    categories: ["Bakery"],
     hours: {
       "Mon": "06:30-18:30",
       "Tue": "06:30-18:30",
@@ -332,7 +332,7 @@ export const lunch: Restaurant[] = [
     id: "18",
     name: "Madonna Inn Copper Cafe",
     address: "100 Madonna Rd, San Luis Obispo, CA 93405",
-    category: "American",
+    categories: ["American"],
     hours: {
       "Mon": "07:00-22:00",
       "Tue": "07:00-22:00",
@@ -352,7 +352,7 @@ export const lunch: Restaurant[] = [
     id: "19",
     name: "Finney's Crafthouse",
     address: "857 Monterey St, San Luis Obispo, CA 93401",
-    category: "American",
+    categories: ["American"],
     hours: {
       "Mon": "11:00-22:00",
       "Tue": "11:00-22:00",
@@ -371,7 +371,7 @@ export const lunch: Restaurant[] = [
     id: "20",
     name: "Ziggy's",
     address: "594 California Blvd, San Luis Obispo, CA 93405",
-    category: "American",
+    categories: ["American", "Vegan"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -391,7 +391,7 @@ export const lunch: Restaurant[] = [
     id: "21",
     name: "Taj Palace (Cuisine of India)",
     address: "795 E Foothill Blvd, San Luis Obispo, CA 93405",
-    category: "Indian",
+    categories: ["Indian"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -409,7 +409,7 @@ export const lunch: Restaurant[] = [
     id: "22",
     name: "Raku Ramen",
     address: "799 E Foothill Blvd, San Luis Obispo, CA 93405",
-    category: "Asian",
+    categories: ["Asian"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -427,7 +427,7 @@ export const lunch: Restaurant[] = [
     id: "23",
     name: "Taqueria San Miguel",
     address: "5 Santa Rosa Street, San Luis Obispo, CA 93405",
-    category: "Mexican",
+    categories: ["Mexican"],
     hours: {
       "Mon": "10:00-21:00",
       "Tue": "10:00-21:00",
@@ -445,7 +445,7 @@ export const lunch: Restaurant[] = [
     id: "24",
     name: "Sushi Kokku",
     address: "285 Madonna Rd, San Luis Obispo, CA 93405",
-    category: "Asian",
+    categories: ["Asian"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -463,7 +463,7 @@ export const lunch: Restaurant[] = [
     id: "25",
     name: "Shalimar Restaurant",
     address: "2115 Broad St, San Luis Obispo, CA 93401",
-    category: "Indian",
+    categories: ["Indian", "Vegan"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -481,7 +481,7 @@ export const lunch: Restaurant[] = [
     id: "26",
     name: "Nick The Greek",
     address: "733 Higuera St, San Luis Obispo, CA 93401",
-    category: "Mediterranean",
+    categories: ["Mediterranean"],
     hours: {
       "Mon": "11:00-22:00",
       "Tue": "11:00-22:00",
@@ -499,7 +499,7 @@ export const lunch: Restaurant[] = [
     id: "27",
     name: "Louisa’s Place",
     address: "964 Higuera St, San Luis Obispo, CA 93401",
-    category: "American",
+    categories: ["American"],
     hours: {
       "Mon": "06:00-15:00",
       "Tue": "06:00-15:00",
@@ -517,7 +517,7 @@ export const lunch: Restaurant[] = [
     id: "28",
     name: "Jewel of India",
     address: "2115 Broad St, San Luis Obispo, CA 93401",
-    category: "Indian",
+    categories: ["Indian", "Vegan"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -535,7 +535,7 @@ export const lunch: Restaurant[] = [
     id: "29",
     name: "Kitchen & Vine",
     address: "3897 South Higuera St, San Luis Obispo, CA 93401",
-    category: "American",
+    categories: ["American"],
     hours: {
       "Mon": "07:00-21:00",
       "Tue": "07:00-21:00",
@@ -553,7 +553,7 @@ export const lunch: Restaurant[] = [
     id: "30",
     name: "Sichuan Kitchen SLO",
     address: "977 Foothill Blvd, San Luis Obispo, CA 93401",
-    category: "Asian",
+    categories: ["Asian"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -571,7 +571,7 @@ export const lunch: Restaurant[] = [
     id: "31",
     name: "Baht",
     address: "3845 S Higuera St, San Luis Obispo, CA 93401",
-    category: "Asian",
+    categories: ["Asian"],
     hours: {
       "Mon": "11:00-21:00",
       "Tue": "11:00-21:00",
@@ -589,7 +589,7 @@ export const lunch: Restaurant[] = [
     id: "32",
     name: "Efren's Mexican Restaurant",
     address: "1285 Laurel Ln, San Luis Obispo, CA 93401",
-    category: "Mexican",
+    categories: ["Mexican"],
     hours: {
       "Mon": "08:00-21:00",
       "Tue": "08:00-21:00",

@@ -24,7 +24,7 @@ const RestaurantResult: React.FC<Props> = ({ restaurant, onSpinAgain }) => {
         {restaurant.name}
       </h1>
       
-      <p className="text-lg text-slo-teal font-semibold pt-1 pb-4">{restaurant.category}</p>
+      <p className="text-lg text-slo-teal font-semibold pt-1 pb-4">{restaurant.categories.join(', ')}</p>
 
       <div className="bg-gray-50 rounded-xl p-6 mb-8 space-y-3">
         <div className="flex items-center justify-center gap-2 text-sm text-gray-600">

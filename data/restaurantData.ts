@@ -16,8 +16,8 @@ export interface RestaurantData {
 }
 
 export const PORTAL_CRAVINGS = {
-  coffee: ['Espresso', 'Cold Brew', 'Pastries', 'Quiet Spots'],
-  breakfast: ['Diner', 'Brunch', 'Pancakes', 'Healthy'],
+  coffee: ['Espresso', 'Cold Brew', 'Pastries', 'Quiet Spots', 'Vegan'],
+  breakfast: ['Diner', 'Brunch', 'Pancakes', 'Healthy', 'Vegan'],
   lunch: [
     'American',
     'Asian',
@@ -29,11 +29,12 @@ export const PORTAL_CRAVINGS = {
     'Mexican',
     'Pizza',
     'Sandwiches',
-    'Seafood'
+    'Seafood',
+    'Vegan'
   ],
-  dinner: ['Fine Dining', 'Date Night', 'Casual', 'Steak', 'Italian', 'Sushi'],
+  dinner: ['Fine Dining', 'Date Night', 'Casual', 'Steak', 'Italian', 'Sushi', 'Vegan'],
   drinks: ['Cocktails', 'Craft Beer', 'Wine Bar', 'Mocktails'],
-  treats: ['Ice Cream', 'Cookies', 'Candy', 'Donuts', 'Chocolates', 'Frozen Yogurt'],
+  treats: ['Ice Cream', 'Cookies', 'Candy', 'Donuts', 'Chocolates', 'Frozen Yogurt', 'Vegan'],
 };
 
 export const restaurantData: RestaurantData = {

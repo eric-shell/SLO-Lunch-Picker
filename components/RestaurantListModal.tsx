@@ -51,7 +51,7 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
   }, []);
 
   const allCategories = useMemo(() => {
-    return Array.from(new Set(restaurants.map(r => r.category))).sort();
+    return Array.from(new Set(restaurants.flatMap(r => r.categories))).sort();
   }, [restaurants]);
 
   const filteredAndSortedRestaurants = useMemo(() => {
@@ -59,7 +59,7 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
 
     // Filter by selected categories (if any selected)
     if (selectedCategories.length > 0) {
-      result = result.filter(r => selectedCategories.includes(r.category));
+      result = result.filter(r => r.categories.some(c => selectedCategories.includes(c)));
     }
 
     // Sort
@@ -215,12 +215,12 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
                         ${isIncluded ? 'bg-slo-sand' : 'bg-gray-200 grayscale'}
                       `}
                     >
-                      {getCategoryIcon(r.category)}
+                      {getCategoryIcon(r.categories[0])}
                     </div>
                     <div>
                       <h3 className={`font-bold ${isIncluded ? 'text-gray-800' : 'text-gray-400'}`}>{r.name}</h3>
                       <div className="flex items-center gap-2 text-xs text-gray-500">
-                        <span className="px-2 py-0.5 rounded bg-gray-100">{r.category}</span>
+                        <span className="px-2 py-0.5 rounded bg-gray-100">{r.categories.join(', ')}</span>
                         <span>•</span>
                         <span className="text-slo-yellow font-bold">★ {r.rating}</span>
                       </div>

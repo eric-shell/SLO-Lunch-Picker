@@ -45,7 +45,7 @@ export const getFilteredRestaurants = (
   onlyOpen: boolean
 ): Restaurant[] => {
   return restaurants.filter((r) => {
-    const categoryMatch = categories.includes(r.category);
+    const categoryMatch = r.categories.some(cat => categories.includes(cat));
     const openMatch = onlyOpen ? isOpenNow(r.hours) : true;
     return categoryMatch && openMatch;
   });

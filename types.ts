@@ -6,7 +6,7 @@ export interface Restaurant {
   id: string;
   name: string;
   address: string;
-  category: string;
+  categories: string[];
   hours: Hours;
   website?: string;
   mapUrl: string;

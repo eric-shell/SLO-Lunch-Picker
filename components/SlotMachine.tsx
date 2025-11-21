@@ -38,7 +38,7 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
      if (!isSpinning) {
         const r = restaurants[Math.floor(Math.random() * restaurants.length)];
         if (r) {
-            setTimeout(() => setReel1(getIcon(r.category)), 100);
+            setTimeout(() => setReel1(getIcon(r.categories[0])), 100);
             setTimeout(() => setReel2("Ready to Spin"), 200);
         } else {
            setReel2("No Results");
@@ -55,7 +55,7 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
       // Fast Spin
       intervalRef1.current = window.setInterval(() => {
         const r = restaurants[Math.floor(Math.random() * restaurants.length)];
-        setReel1(getIcon(r.category));
+        setReel1(getIcon(r.categories[0]));
       }, 80);
 
       intervalRef2.current = window.setInterval(() => {
@@ -70,7 +70,7 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
       // Stop Sequence
       setTimeout(() => {
         if (intervalRef1.current) clearInterval(intervalRef1.current);
-        setReel1(getIcon(winner.category));
+        setReel1(getIcon(winner.categories[0]));
       }, 1000);
 
       setTimeout(() => {
