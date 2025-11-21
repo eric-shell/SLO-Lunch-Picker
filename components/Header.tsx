@@ -35,7 +35,7 @@ export const Header: React.FC<Props> = ({
       </div>
 
       {/* Mobile Back Button (Top Left of Screen) */}
-      <div className="md:hidden absolute top-4 left-0">
+      {/* <div className="md:hidden absolute top-4 left-0">
         <Link 
           to="/" 
           className={`
@@ -51,7 +51,7 @@ export const Header: React.FC<Props> = ({
           </svg>
           Back
         </Link>
-      </div>
+      </div> */}
 
       <h1 className={`text-5xl md:text-6xl font-serif tracking-tight ${themeText.includes('white') ? 'text-white' : 'text-slo-blue'}`}>
         {title}

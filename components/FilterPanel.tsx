@@ -24,6 +24,7 @@ const FilterPanel: React.FC<Props> = ({
   themeGradient = 'from-slo-teal to-slo-yellow' // Default fallback
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   const toggleCategory = (cat: string) => {
     setFilters(prev => {
@@ -68,23 +69,41 @@ const FilterPanel: React.FC<Props> = ({
 
   return (
     <>
-      <div className="h-full bg-white rounded-3xl shadow-xl border border-gray-100 p-6 flex flex-col relative overflow-hidden">
+      <div className={`bg-white rounded-3xl shadow-xl border border-gray-100 p-6 flex flex-col relative overflow-hidden transition-all duration-300 ${isExpanded ? 'h-auto' : 'h-auto'} lg:h-full`}>
         
         {/* Decorative Gradient Border */}
         <div className={`absolute top-0 inset-x-0 h-2 bg-gradient-to-r ${themeGradient} z-20`}></div>
 
         <div className="relative z-10 flex flex-col h-full">
-          <div className="mb-6 flex items-start justify-between pt-2">
-            <div>
-              <h2 className="text-2xl font-serif text-slo-blue pb-1">Preferences</h2>
-              <p className="text-gray-500 text-sm font-medium">
-                Showing <span className="text-slo-teal font-bold">{resultCount}</span> of {totalCount} places
-              </p>
+          <div 
+            className="lg:mb-6 flex items-start justify-between lg:pt-2 cursor-pointer lg:cursor-default"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            <div className="flex items-center gap-2">
+              {/* Chevron for mobile */}
+              <div className={`w-8 h-8 mr-3 rounded-full bg-slo-blue flex items-center justify-center lg:hidden transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+                <svg 
+                  className="w-6 h-6 text-white" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+              
+              <div>
+                <h2 className="text-2xl font-serif text-slo-blue pb-1">Preferences</h2>
+                <p className="text-gray-500 text-sm font-medium">
+                  Showing <span className="text-slo-teal font-bold">{resultCount}</span> of {totalCount} places
+                </p>
+              </div>
             </div>
             
             {/* All Restaurants Button */}
             <button 
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setIsModalOpen(true);
                 trackEvent(GA_ACTIONS.SHOW_FULL_LIST, GA_CATEGORIES.INTERACTION);
               }}
@@ -94,8 +113,10 @@ const FilterPanel: React.FC<Props> = ({
             </button>
           </div>
 
-          {/* Filters */}
-          <div className="space-y-3 mb-8">
+          {/* Collapsible Content Wrapper */}
+          <div className={`${isExpanded ? 'block' : 'hidden'} lg:block lg:flex-grow lg:flex lg:flex-col lg:overflow-hidden`}>
+            {/* Filters */}
+            <div className="space-y-3 mb-8">
              {/* Open Now */}
              <div 
                 className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
@@ -189,12 +210,13 @@ const FilterPanel: React.FC<Props> = ({
             })}
           </div>
 
-          {/* AdSense / Placeholder Area */}
-          <div className="mt-auto pt-6">
-             <div className="w-full h-32 bg-gray-100 rounded-xl border border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400">
-                <span className="text-xs font-bold uppercase tracking-widest mb-1">Sponsored</span>
-                <span className="text-xs">This ad space could be yours!</span>
-             </div>
+            {/* AdSense / Placeholder Area */}
+            <div className="mt-auto pt-6">
+               <div className="w-full h-32 bg-gray-100 rounded-xl border border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400">
+                  <span className="text-xs font-bold uppercase tracking-widest mb-1">Sponsored</span>
+                  <span className="text-xs">This ad space could be yours!</span>
+               </div>
+            </div>
           </div>
         </div>
       </div>
