@@ -1,6 +1,6 @@
 import { Restaurant } from '../types';
 
-export const restaurants: Restaurant[] = [
+export const lunch: Restaurant[] = [
   {
     id: "1",
     name: "Firestone Grill",
@@ -605,3 +605,4 @@ export const restaurants: Restaurant[] = [
     price: 1
   }
 ];
+

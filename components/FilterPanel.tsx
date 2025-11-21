@@ -10,10 +10,19 @@ interface Props {
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
   resultCount: number;
   totalCount: number;
-  allRestaurants: Restaurant[]; // Added for modal
+  allRestaurants: Restaurant[];
+  themeGradient?: string;
 }
 
-const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resultCount, totalCount, allRestaurants }) => {
+const FilterPanel: React.FC<Props> = ({ 
+  allCategories, 
+  filters, 
+  setFilters, 
+  resultCount, 
+  totalCount, 
+  allRestaurants,
+  themeGradient = 'from-slo-teal to-slo-yellow' // Default fallback
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const toggleCategory = (cat: string) => {
@@ -62,7 +71,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
       <div className="h-full bg-white rounded-3xl shadow-xl border border-gray-100 p-6 flex flex-col relative overflow-hidden">
         
         {/* Decorative Gradient Border */}
-        <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-slo-teal to-slo-yellow z-20"></div>
+        <div className={`absolute top-0 inset-x-0 h-2 bg-gradient-to-r ${themeGradient} z-20`}></div>
 
         <div className="relative z-10 flex flex-col h-full">
           <div className="mb-6 flex items-start justify-between pt-2">
@@ -96,7 +105,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 onKeyDown={(e) => e.key === 'Enter' && toggleFilter('openNow')}
              >
                 {/* <Tooltip content="Based on known hours" position="top"> */}
-                  <span className="font-semibold text-gray-700 group-hover:text-slo-teal transition-colors">Open Now</span>
+                  <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Open Now</span>
                 {/* </Tooltip> */}
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.openNow ? 'bg-slo-teal' : 'bg-gray-300'}`}>
                   <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.openNow ? 'translate-x-5' : 'translate-x-0'}`}></div>
@@ -109,9 +118,10 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 onClick={() => toggleFilter('useRatingWeight')}
                 role="button"
                 tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && toggleFilter('useRatingWeight')}
              >
                 {/* <Tooltip content="Changes probability based on last known ratings" position="top"> */}
-                  <span className="font-semibold text-gray-700 group-hover:text-slo-coral transition-colors">Rating Adjusted</span>
+                  <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Rating Adjusted</span>
                 {/* </Tooltip> */}
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.useRatingWeight ? 'bg-slo-coral' : 'bg-gray-300'}`}>
                   <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.useRatingWeight ? 'translate-x-5' : 'translate-x-0'}`}></div>
@@ -124,9 +134,10 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
                 onClick={() => toggleFilter('cheapMealsOnly')}
                 role="button"
                 tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && toggleFilter('cheapMealsOnly')}
              >
                 {/* <Tooltip content="This is for $ restaurants" position="top"> */}
-                  <span className="font-semibold text-gray-700 group-hover:text-slo-sky transition-colors">Cheap Meals</span>
+                  <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Cheap Meals</span>
                 {/* </Tooltip> */}
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.cheapMealsOnly ? 'bg-slo-sky' : 'bg-gray-300'}`}>
                   <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.cheapMealsOnly ? 'translate-x-5' : 'translate-x-0'}`}></div>
@@ -182,7 +193,7 @@ const FilterPanel: React.FC<Props> = ({ allCategories, filters, setFilters, resu
           <div className="mt-auto pt-6">
              <div className="w-full h-32 bg-gray-100 rounded-xl border border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400">
                 <span className="text-xs font-bold uppercase tracking-widest mb-1">Sponsored</span>
-                <span className="text-xs">Ad Space</span>
+                <span className="text-xs">This ad space could be yours!</span>
              </div>
           </div>
         </div>

@@ -31,7 +31,8 @@ export const GA_ACTIONS = {
   SHOW_FULL_LIST: 'show_full_restaurant_list',
   GET_DIRECTIONS: 'get_directions',
   SPIN_AGAIN: 'spin_again',
-  EXCLUDE_RESTAURANT: 'exclude_restaurant'
+  EXCLUDE_RESTAURANT: 'exclude_restaurant',
+  SELECT_PORTAL: 'select_portal'
 };
 
 export const trackEvent = (

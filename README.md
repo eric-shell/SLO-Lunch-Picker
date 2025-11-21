@@ -1,6 +1,6 @@
-# SLO Lunch Picker 🌮🥗🍔
+# SLO Foodie Picker 🌮🥗🍔
 
-A fun, React-based web application to help you decide where to eat lunch in San Luis Obispo (93401/93405). Built with Vite, TypeScript, and Tailwind CSS.
+A fun, React-based web application to help you decide where to eat lunch in San Luis Obispo California. Built with Vite, TypeScript, and Tailwind CSS.
 
 Production URL:
 <a href="https://eric-shell.github.io/SLO-Lunch-Picker"/>https://eric-shell.github.io/SLO-Lunch-Picker/</a>

@@ -113,7 +113,7 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
           <div className="flex justify-between items-top">
             <div>
               <h2 className="text-2xl font-serif text-slo-blue">All Restaurants</h2>
-              <p className="text-sm text-gray-500">Manage which places are included in the spin.</p>
+              <p className="text-sm text-gray-500">Manage which options are included in your spin.</p>
             </div>
             <button 
               onClick={onClose}
