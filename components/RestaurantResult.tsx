@@ -64,7 +64,7 @@ const RestaurantResult: React.FC<Props> = ({ restaurant, onSpinAgain }) => {
         
         <button 
           onClick={onSpinAgain}
-          className="block w-full py-3 bg-white hover:bg-gray-50 text-slo-text border-2 border-gray-200 rounded-xl font-bold transition-colors"
+          className="block w-full py-3 bg-white hover:bg-gray-50 text-slo-text border-2 border-gray-200 rounded-xl font-bold transition-colors cursor-pointer"
         >
           Spin Again
         </button>

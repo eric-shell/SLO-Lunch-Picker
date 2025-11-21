@@ -51,22 +51,11 @@ const App: React.FC = () => {
         <Route path="/" element={<LandingPage />} />
         
         <Route 
-          path="/coffee" 
-          element={
-            <FoodPickerPortal 
-              title="Coffee & Cafes" 
-              restaurantData={restaurantData.coffee} 
-              filterOptions={PORTAL_CRAVINGS.coffee}
-              theme={themes.coffee}
-            />
-          } 
-        />
-        
-        <Route 
           path="/breakfast" 
           element={
             <FoodPickerPortal 
-              title="Breakfast & Brunch" 
+              title="SLO Breakfast Picker"
+              slogan="When you're too hungover to make a decision"
               restaurantData={restaurantData.breakfast} 
               filterOptions={PORTAL_CRAVINGS.breakfast}
               theme={themes.breakfast}
@@ -78,7 +67,8 @@ const App: React.FC = () => {
           path="/lunch" 
           element={
             <FoodPickerPortal 
-              title="SLO Foodie Picker" 
+              title="SLO Lunch Picker" 
+              slogan="When you and your coworkers just can't agree"
               restaurantData={restaurantData.lunch} 
               filterOptions={PORTAL_CRAVINGS.lunch}
               theme={themes.lunch}
@@ -90,10 +80,37 @@ const App: React.FC = () => {
           path="/dinner" 
           element={
             <FoodPickerPortal 
-              title="Dinner Decider" 
+              title="SLO Dinner Picker"
+              slogan="When your partner just can't make up their mind"
               restaurantData={restaurantData.dinner} 
               filterOptions={PORTAL_CRAVINGS.dinner}
               theme={themes.dinner}
+            />
+          } 
+        />
+
+        <Route 
+          path="/coffee" 
+          element={
+            <FoodPickerPortal 
+              title="SLO Coffee Picker" 
+              slogan="When it's too early to turn your brain on"
+              restaurantData={restaurantData.coffee} 
+              filterOptions={PORTAL_CRAVINGS.coffee}
+              theme={themes.coffee}
+            />
+          } 
+        />
+
+        <Route 
+          path="/treats" 
+          element={
+            <FoodPickerPortal 
+              title="SLO Treat Picker"
+              slogan="When you just need something to fix the craving"
+              restaurantData={restaurantData.treats} 
+              filterOptions={PORTAL_CRAVINGS.treats}
+              theme={themes.treats}
             />
           } 
         />
@@ -102,25 +119,15 @@ const App: React.FC = () => {
           path="/drinks" 
           element={
             <FoodPickerPortal 
-              title="Drinks & Nightlife" 
+              title="SLO Drink Picker"
+              slogan="When you day was long and your brain is clocked out"
               restaurantData={restaurantData.drinks} 
               filterOptions={PORTAL_CRAVINGS.drinks}
               theme={themes.drinks}
             />
           } 
         />
-        
-        <Route 
-          path="/treats" 
-          element={
-            <FoodPickerPortal 
-              title="Treats & Sweets" 
-              restaurantData={restaurantData.treats} 
-              filterOptions={PORTAL_CRAVINGS.treats}
-              theme={themes.treats}
-            />
-          } 
-        />
+
       </Routes>
     </Router>
   );

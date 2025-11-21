@@ -23,7 +23,8 @@ interface FoodPickerPortalProps {
 }
 
 const FoodPickerPortal: React.FC<FoodPickerPortalProps> = ({ 
-  title, 
+  title,
+  slogan,
   restaurantData, 
   filterOptions,
   theme 
@@ -123,7 +124,7 @@ const FoodPickerPortal: React.FC<FoodPickerPortalProps> = ({
   return (
     <div className={`min-h-screen flex flex-col max-w-7xl mx-auto px-6 font-sans transition-colors duration-500 relative`}>
       
-      <Header title={title} subtitle="Let fate decide your meal" themeText={theme.text} />
+      <Header title={title} slogan={slogan} themeText={theme.text} />
       
       {/* Main Content Area */}
       <main className="flex-grow w-full flex flex-col lg:flex-row gap-8 items-stretch lg:h-[750px] mb-12">
@@ -150,13 +151,13 @@ const FoodPickerPortal: React.FC<FoodPickerPortalProps> = ({
           </div>
           
           {/* Mode Toggle */}
-             <div className={`absolute top-6 right-6 z-20 bg-gray-100 p-1 rounded-full flex shadow-inner transition-opacity duration-300 ${viewState === ViewState.IDLE ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+             <div className={`absolute top-6 right-4 z-20 bg-gray-100 p-1 rounded-full flex shadow-inner transition-opacity duration-300 ${viewState === ViewState.IDLE ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <button 
                   onClick={() => {
                     setMode('WHEEL');
                     trackEvent(GA_ACTIONS.CHANGE_MODE, GA_CATEGORIES.INTERACTION, 'WHEEL');
                   }}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${mode === 'WHEEL' ? 'bg-white shadow text-gray-800' : 'text-gray-400'}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'WHEEL' ? 'bg-white shadow text-gray-800' : 'text-gray-400 hover:bg-sky-900 hover:text-white cursor-pointer'}`}
                 >
                   WHEEL
                 </button>
@@ -165,7 +166,7 @@ const FoodPickerPortal: React.FC<FoodPickerPortalProps> = ({
                     setMode('SLOTS');
                     trackEvent(GA_ACTIONS.CHANGE_MODE, GA_CATEGORIES.INTERACTION, 'SLOTS');
                   }}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${mode === 'SLOTS' ? 'bg-white shadow text-gray-800' : 'text-gray-400'}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${mode === 'SLOTS' ? 'bg-white shadow text-gray-800' : 'text-gray-400 hover:bg-sky-900 hover:text-white cursor-pointer'}`}
                 >
                   SLOTS
                 </button>
@@ -232,7 +233,7 @@ const FoodPickerPortal: React.FC<FoodPickerPortalProps> = ({
           <div className="absolute bottom-4 right-4 z-20">
              <button 
                onClick={handleFullReset}
-               className={`p-2 text-xs font-bold transition-colors flex items-center gap-1 group cursor-pointer ${theme.text}`}
+               className={`py-2 px-4 text-xs font-bold transition-colors flex items-center gap-1 group rounded-full hover:bg-sky-900 hover:text-white cursor-pointer ${theme.text}`}
                title="Reset Everything"
              >
                <svg className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

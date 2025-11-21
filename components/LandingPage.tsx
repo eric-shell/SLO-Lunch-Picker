@@ -68,12 +68,12 @@ const LandingPage: React.FC = () => {
         {/* Hero Section */}
         <div>
           <h1 className="text-5xl md:text-7xl font-serif text-slo-blue mb-4">
-            SLO Foodie Picker
+            SLO Picker
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-xl text-gray-600 max-w-2xl mx-auto">
             Can't decide where to eat in San Luis Obispo? <br/>
             Choose a category and let fate decide your next meal.
-          </p>
+          </h2>
         </div>
 
         {/* Portal Grid */}
@@ -90,7 +90,7 @@ const LandingPage: React.FC = () => {
                 );
               }}
               className={`
-                group relative p-8 rounded-3xl border-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl
+                group relative p-8 rounded-3xl border-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg
                 flex flex-col items-center text-center cursor-pointer
                 ${portal.colorClass}
               `}

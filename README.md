@@ -1,4 +1,4 @@
-# SLO Foodie Picker 🌮🥗🍔
+# SLO Picker 🌮🥗🍔
 
 A fun, React-based web application to help you decide where to eat lunch in San Luis Obispo California. Built with Vite, TypeScript, and Tailwind CSS.
 

@@ -8,8 +8,8 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ 
-  title = "SLO Foodie Picker", 
-  subtitle = "Get help choosing your next meal in San Luis Obispo",
+  title = "SLO Picker", 
+  slogan = "Get help choosing your next meal in San Luis Obispo",
   themeText = "text-gray-700" // Default text color if not provided
 }) => {
   const isDarkTheme = themeText.includes('white') || themeText.includes('gray-100');
@@ -56,9 +56,9 @@ export const Header: React.FC<Props> = ({
       <h1 className={`text-5xl md:text-6xl font-serif tracking-tight ${themeText.includes('white') ? 'text-white' : 'text-slo-blue'}`}>
         {title}
       </h1>
-      <p className={`mt-2 text-lg font-bold tracking-wide uppercase text-xs ${themeText.includes('white') ? 'text-gray-300' : 'text-slo-navy'}`}>
-        {subtitle}
-      </p>
+      <h2 className={`mt-2 text-sm font-bold tracking-wide uppercase ${themeText.includes('white') ? 'text-gray-300' : 'text-slo-navy'}`}>
+        {slogan}
+      </h2>
     </header>
   );
 };
