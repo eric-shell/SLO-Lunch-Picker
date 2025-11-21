@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import FoodPickerPortal from './components/FoodPickerPortal';
 import { restaurantData, PORTAL_CRAVINGS } from './data/restaurantData';
@@ -46,7 +46,7 @@ const themes = {
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         
