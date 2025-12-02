@@ -232,7 +232,7 @@ const FoodPickerPortal: React.FC<FoodPickerPortalProps> = ({
               <div className={`absolute bottom-4 right-4 z-20 transition-opacity duration-300 ${viewState === ViewState.IDLE ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                  <button 
                    onClick={handleFullReset}
-                   className={`py-2 px-4 text-xs font-bold transition-colors flex items-center gap-1 group rounded-full hover:bg-sky-900 hover:text-white cursor-pointer ${theme.text}`}
+                   className={`py-2 px-4 text-xs font-bold transition-colors flex items-center gap-1 group rounded-full hover:bg-sky-900 hover:text-white cursor-pointer`}
                    title="Reset Everything"
                  >
                    <svg className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

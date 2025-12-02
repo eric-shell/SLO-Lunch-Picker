@@ -69,10 +69,10 @@ const FilterPanel: React.FC<Props> = ({
 
   return (
     <>
-      <div className={`bg-white rounded-3xl shadow-xl border border-gray-100 p-6 flex flex-col relative overflow-hidden transition-all duration-300 ${isExpanded ? 'h-auto' : 'h-auto'} lg:h-full`}>
+      <div className={`bg-white rounded-3xl shadow-xl border border-gray-100 p-6 flex flex-col relative transition-all duration-300 ${isExpanded ? 'h-auto' : 'h-auto'} lg:h-full`}>
         
         {/* Decorative Gradient Border */}
-        <div className={`absolute top-0 inset-x-0 h-2 bg-gradient-to-r ${themeGradient} z-20`}></div>
+        <div className={`absolute top-0 inset-x-0 h-2 bg-gradient-to-r ${themeGradient} z-20 rounded-t-3xl`}></div>
 
         <div className="relative z-10 flex flex-col h-full">
           <div 
@@ -114,104 +114,111 @@ const FilterPanel: React.FC<Props> = ({
           </div>
 
           {/* Collapsible Content Wrapper */}
-          <div className={`${isExpanded ? 'block' : 'hidden'} lg:block lg:flex-grow lg:flex lg:flex-col lg:overflow-hidden`}>
-            {/* Filters */}
-            <div className="space-y-3 mb-8 mt-4 lg:mt-0">
-             {/* Open Now */}
-             <div 
-                className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
-                onClick={() => toggleFilter('openNow')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && toggleFilter('openNow')}
-             >
-               {/* <Tooltip content="Based on known hours" position="top"> */}
-                  <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Open Now</span>
-               {/* </Tooltip> */}
-                <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.openNow ? 'bg-slo-teal' : 'bg-gray-300'}`}>
-                  <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.openNow ? 'translate-x-5' : 'translate-x-0'}`}></div>
-                </div>
-             </div>
+          <div className={`${isExpanded ? 'block' : 'hidden'} lg:block lg:flex-grow lg:flex lg:flex-col lg:min-h-0`}>
+            
+            {/* Scrollable Content Area - includes filters AND cravings */}
+            {/* px-1 for focus ring/shadow space, pr-2 extra for scrollbar */}
+            <div className="lg:flex-grow lg:overflow-y-auto lg:min-h-0 custom-scrollbar px-1 pb-1 mr-1">
+              <div>
+                {/* Filters */}
+                <div className="space-y-3 mb-8 mt-4 lg:mt-0">
+                 {/* Open Now */}
+                 <div 
+                    className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
+                    onClick={() => toggleFilter('openNow')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && toggleFilter('openNow')}
+                 >
+                   {/* <Tooltip content="Based on known hours" position="top"> */}
+                      <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Open Now</span>
+                   {/* </Tooltip> */}
+                    <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.openNow ? 'bg-slo-teal' : 'bg-gray-300'}`}>
+                      <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.openNow ? 'translate-x-5' : 'translate-x-0'}`}></div>
+                    </div>
+                 </div>
 
-             {/* Rating Adjusted */}
-             <div 
-                className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
-                onClick={() => toggleFilter('useRatingWeight')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && toggleFilter('useRatingWeight')}
-             >
-               {/* <Tooltip content="Changes probability based on last known ratings" position="top"> */}
-                  <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Rating Adjusted</span>
-               {/* </Tooltip> */}
-                <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.useRatingWeight ? 'bg-slo-coral' : 'bg-gray-300'}`}>
-                  <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.useRatingWeight ? 'translate-x-5' : 'translate-x-0'}`}></div>
-                </div>
-             </div>
+                 {/* Rating Adjusted */}
+                 <div 
+                    className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
+                    onClick={() => toggleFilter('useRatingWeight')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && toggleFilter('useRatingWeight')}
+                 >
+                   {/* <Tooltip content="Changes probability based on last known ratings" position="top"> */}
+                      <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Rating Adjusted</span>
+                   {/* </Tooltip> */}
+                    <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.useRatingWeight ? 'bg-slo-coral' : 'bg-gray-300'}`}>
+                      <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.useRatingWeight ? 'translate-x-5' : 'translate-x-0'}`}></div>
+                    </div>
+                 </div>
 
-             {/* Cheap Meals */}
-             <div 
-                className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
-                onClick={() => toggleFilter('cheapMealsOnly')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && toggleFilter('cheapMealsOnly')}
-             >
-               {/* <Tooltip content="This is for $ restaurants" position="top"> */}
-                  <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Cheap Meals</span>
-               {/* </Tooltip> */}
-                <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.cheapMealsOnly ? 'bg-slo-sky' : 'bg-gray-300'}`}>
-                  <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.cheapMealsOnly ? 'translate-x-5' : 'translate-x-0'}`}></div>
-                </div>
-             </div>
-          </div>
+                 {/* Cheap Meals */}
+                 <div 
+                    className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 
+                    onClick={() => toggleFilter('cheapMealsOnly')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && toggleFilter('cheapMealsOnly')}
+                 >
+                   {/* <Tooltip content="This is for $ restaurants" position="top"> */}
+                      <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Cheap Meals</span>
+                   {/* </Tooltip> */}
+                    <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.cheapMealsOnly ? 'bg-slo-sky' : 'bg-gray-300'}`}>
+                      <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.cheapMealsOnly ? 'translate-x-5' : 'translate-x-0'}`}></div>
+                    </div>
+                 </div>
+              </div>
 
-          {/* Categories */}
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-serif text-xl text-slo-blue">Cravings</h3>
-            <div className="flex space-x-2">
-              <button 
-                onClick={selectAll} 
-                className="px-3 py-1 rounded-md bg-slo-teal/10 text-slo-teal text-xs font-bold hover:bg-slo-teal hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-teal focus:ring-offset-1 cursor-pointer"
-                aria-label="Select all categories"
-              >
-                ALL
-              </button>
-              <button 
-                onClick={clearAll} 
-                className="px-3 py-1 rounded-md bg-slo-coral/10 text-slo-coral text-xs font-bold hover:bg-slo-coral hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-coral focus:ring-offset-1 cursor-pointer"
-                aria-label="Clear all categories"
-              >
-                NONE
-              </button>
+              {/* Categories */}
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-serif text-xl text-slo-blue">Cravings</h3>
+                <div className="flex space-x-2">
+                  <button 
+                    onClick={selectAll} 
+                    className="px-3 py-1 rounded-md bg-slo-teal/10 text-slo-teal text-xs font-bold hover:bg-slo-teal hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-teal focus:ring-offset-1 cursor-pointer"
+                    aria-label="Select all categories"
+                  >
+                    ALL
+                  </button>
+                  <button 
+                    onClick={clearAll} 
+                    className="px-3 py-1 rounded-md bg-slo-coral/10 text-slo-coral text-xs font-bold hover:bg-slo-coral hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slo-coral focus:ring-offset-1 cursor-pointer"
+                    aria-label="Clear all categories"
+                  >
+                    NONE
+                  </button>
+                </div>
+              </div>
+
+              {/* Category Pills */}
+              <div className="flex flex-wrap gap-2 content-start pb-1">
+                {allCategories.map(cat => {
+                  const active = filters.categories.includes(cat);
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => toggleCategory(cat)}
+                      className={`
+                        px-4 py-2 rounded-full text-sm font-bold transition-all
+                        focus:outline-none focus:ring-2 focus:ring-offset-1 cursor-pointer
+                        ${active 
+                          ? 'bg-slo-blue text-white shadow-md shadow-blue-900/10 transform scale-100 focus:ring-slo-blue hover:bg-sky-950' 
+                          : 'bg-gray-100 text-gray-400 hover:bg-gray-200 focus:ring-gray-400 cursor-pointer'
+                        }
+                      `}
+                    >
+                      {cat}
+                    </button>
+                  )
+                })}
+              </div>
+              </div>
             </div>
-          </div>
 
-          {/* Added p-1 to prevent focus ring clipping */}
-          <div className="flex flex-wrap gap-2 content-start overflow-y-auto flex-grow pr-2 custom-scrollbar pb-2 p-1 -m-1">
-            {allCategories.map(cat => {
-              const active = filters.categories.includes(cat);
-              return (
-                <button
-                  key={cat}
-                  onClick={() => toggleCategory(cat)}
-                  className={`
-                    px-4 py-2 rounded-full text-sm font-bold transition-all
-                    focus:outline-none focus:ring-2 focus:ring-offset-1 cursor-pointer
-                    ${active 
-                      ? 'bg-slo-blue text-white shadow-md shadow-blue-900/10 transform scale-100 focus:ring-slo-blue hover:bg-sky-950' 
-                      : 'bg-gray-100 text-gray-400 hover:bg-gray-200 focus:ring-gray-400 cursor-pointer'
-                    }
-                  `}
-                >
-                  {cat}
-                </button>
-              )
-            })}
-          </div>
-
-            {/* AdSense / Placeholder Area */}
-            <div className="mt-auto pt-6">
+            {/* AdSense / Placeholder Area - stays fixed at bottom */}
+            <div className="flex-shrink-0 pt-6">
                <div className="w-full h-32 bg-gray-100 rounded-xl border border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400">
                   <span className="text-xs font-bold uppercase tracking-widest mb-1">Sponsored</span>
                   <span className="text-xs">This ad space could be yours!</span>
