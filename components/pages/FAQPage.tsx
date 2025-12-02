@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Footer } from './Footer';
+import { Footer } from '../layout';
 
 const faqs = [
   {
-    question: "What is SLO Picker?",
-    answer: "SLO Picker is a fun, randomized restaurant picker for San Luis Obispo! When you and your friends can't decide where to eat, let fate decide. We've curated the best local spots for breakfast, lunch, dinner, coffee, treats, and drinks."
+    question: "What is Local Foodie?",
+    answer: "Local Foodieis a fun, randomized restaurant selector for San Luis Obispo! When you and your friends can't decide where to eat, let fate decide. We've curated the best local spots for breakfast, lunch, dinner, coffee, treats, and drinks."
   },
   {
     question: "How does the picker work?",
@@ -24,12 +24,12 @@ const faqs = [
     answer: "Absolutely! We love hearing about hidden gems. Reach out to us and let us know your favorite spots that we might have missed."
   },
   {
-    question: "Is this app free to use?",
-    answer: "Yes! SLO Picker is completely free. No ads, no subscriptions, no catches. Just a helpful tool for indecisive foodies."
+    question: "Is this website free to use?",
+    answer: "Yes! Local Foodie is completely free. No ads, no subscriptions, no catches. Just a helpful tool for indecisive foodies."
   },
   {
     question: "Do you have an app?",
-    answer: "Currently, SLO Picker is a web app optimized for mobile browsers. Add it to your home screen for the best experience! A native app may be in the works..."
+    answer: "Currently, Local Foodie is a web app optimized for mobile browsers. Add it to your home screen for the best experience! A native app may be in the works..."
   },
 ];
 
@@ -85,3 +85,4 @@ const FAQPage: React.FC = () => {
 };
 
 export default FAQPage;
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Footer } from './Footer';
-import { trackEvent, GA_ACTIONS, GA_CATEGORIES } from '../utils/analytics';
+import { Footer } from '../layout';
+import { trackEvent, GA_ACTIONS, GA_CATEGORIES } from '../../utils/analytics';
 
 const portals = [
   {
@@ -11,7 +11,7 @@ const portals = [
     emoji: '🥞',
     description: 'Pancakes, eggs, and morning vibes.',
     colorClass: 'bg-orange-50 hover:bg-orange-100 text-orange-900 border-orange-200',
-    iconBg: 'bg-yellow-100',
+    iconBg: 'bg-white',
   },
   {
     id: 'lunch',
@@ -20,7 +20,7 @@ const portals = [
     emoji: '🥪',
     description: 'Sandwiches, salads, and midday fuel.',
     colorClass: 'bg-teal-50 hover:bg-teal-100 text-teal-900 border-teal-200',
-    iconBg: 'bg-teal-100',
+    iconBg: 'bg-white',
   },
   {
     id: 'dinner',
@@ -29,7 +29,7 @@ const portals = [
     emoji: '🍽️',
     description: 'Date night, fine dining, and savory eats.',
     colorClass: 'bg-indigo-50 hover:bg-indigo-100 text-indigo-900 border-indigo-200',
-    iconBg: 'bg-indigo-100',
+    iconBg: 'bg-white',
   },
   {
     id: 'coffee',
@@ -37,8 +37,8 @@ const portals = [
     path: '/coffee',
     emoji: '☕',
     description: 'Espresso, study spots, and pastries.',
-    colorClass: 'bg-stone-100 hover:bg-stone-200 text-stone-800 border-stone-200',
-    iconBg: 'bg-amber-100',
+    colorClass: 'bg-stone-50 hover:bg-stone-100 text-stone-800 border-stone-200',
+    iconBg: 'bg-white',
   },
   {
     id: 'treats',
@@ -47,7 +47,7 @@ const portals = [
     emoji: '🍦',
     description: 'Ice cream, cookies, and sweet cravings.',
     colorClass: 'bg-pink-50 hover:bg-pink-100 text-pink-900 border-pink-200',
-    iconBg: 'bg-pink-100',
+    iconBg: 'bg-white',
   },
   {
     id: 'drinks',
@@ -56,7 +56,7 @@ const portals = [
     emoji: '🍹',
     description: 'Cocktails, breweries, and wine bars.',
     colorClass: 'bg-purple-50 hover:bg-purple-100 text-purple-900 border-purple-200',
-    iconBg: 'bg-purple-100',
+    iconBg: 'bg-white',
   },
 ];
 
@@ -125,3 +125,4 @@ const LandingPage: React.FC = () => {
 };
 
 export default LandingPage;
+

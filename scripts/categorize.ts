@@ -44,6 +44,7 @@ const CHAIN_RESTAURANTS = [
   "Raising Cane's",
   "MrBeast Burger",
   "Carl’s Jr.",
+  "7-Eleven",
   
   // Chicken
   "KFC",

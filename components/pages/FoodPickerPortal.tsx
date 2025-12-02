@@ -1,14 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Header } from './Header';
-import { Footer } from './Footer';
-import FilterPanel from './FilterPanel';
-import Spinner from './Spinner';
-import { SlotMachine } from './SlotMachine';
-import RestaurantResult from './RestaurantResult';
-import { Confetti } from './Confetti';
-import { Restaurant, FilterState, ViewState } from '../types';
-import { getFilteredRestaurants } from '../utils/timeHelpers';
-import { trackEvent, GA_CATEGORIES, GA_ACTIONS } from '../utils/analytics';
+import { Header, Footer } from '../layout';
+import { FilterPanel, Spinner, SlotMachine, RestaurantResult } from '../picker';
+import { Confetti } from '../ui';
+import { Restaurant, FilterState, ViewState } from '../../types';
+import { getFilteredRestaurants } from '../../utils/timeHelpers';
+import { trackEvent, GA_CATEGORIES, GA_ACTIONS } from '../../utils/analytics';
 
 interface FoodPickerPortalProps {
   title: string;
@@ -233,7 +229,7 @@ const FoodPickerPortal: React.FC<FoodPickerPortalProps> = ({
               </div>
 
               {/* Reset Button */}
-              <div className="absolute bottom-4 right-4 z-20">
+              <div className={`absolute bottom-4 right-4 z-20 transition-opacity duration-300 ${viewState === ViewState.IDLE ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                  <button 
                    onClick={handleFullReset}
                    className={`py-2 px-4 text-xs font-bold transition-colors flex items-center gap-1 group rounded-full hover:bg-sky-900 hover:text-white cursor-pointer ${theme.text}`}
@@ -258,3 +254,4 @@ const FoodPickerPortal: React.FC<FoodPickerPortalProps> = ({
 };
 
 export default FoodPickerPortal;
+

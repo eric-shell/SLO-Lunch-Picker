@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Restaurant } from '../types';
+import { Restaurant } from '../../types';
 
 interface Props {
   restaurants: Restaurant[];
@@ -213,3 +213,4 @@ export const SlotMachine: React.FC<Props> = ({ restaurants, isSpinning, onFinish
     </div>
   );
 };
+

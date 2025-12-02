@@ -27,7 +27,7 @@ const footerLinks = {
       title: 'Coffee', 
       path: '/coffee', 
       emoji: '☕',
-      colorClass: 'bg-stone-100 hover:bg-stone-200 border-stone-200 text-stone-800'
+      colorClass: 'bg-stone-50 hover:bg-stone-100 border-stone-200 text-stone-800'
     },
     { 
       title: 'Treats', 
@@ -53,10 +53,10 @@ export const Footer: React.FC = () => (
   <footer className="bg-slate-50 border-t border-slate-200 mt-auto w-full">
     <div className="max-w-6xl mx-auto px-6 py-12">
       {/* Footer Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         
         {/* Column 1: Meals */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           <h3 className="font-bold text-slo-blue text-sm uppercase tracking-wider mb-1">
             Meals
           </h3>
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => (
               key={link.path}
               to={link.path}
               className={`
-                group flex items-center gap-2 px-4 py-3 rounded-xl border-2 
+                group flex items-center gap-3 px-4 py-3 rounded-xl border-2 
                 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-sm
                 text-sm font-medium
                 ${link.colorClass}
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => (
         </div>
 
         {/* Column 2: Extras */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           <h3 className="font-bold text-slo-blue text-sm uppercase tracking-wider mb-1">
             Extras
           </h3>
@@ -89,7 +89,7 @@ export const Footer: React.FC = () => (
               key={link.path}
               to={link.path}
               className={`
-                group flex items-center gap-2 px-4 py-3 rounded-xl border-2 
+                group flex items-center gap-3 px-4 py-3 rounded-xl border-2 
                 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-sm
                 text-sm font-medium
                 ${link.colorClass}
@@ -107,8 +107,8 @@ export const Footer: React.FC = () => (
         <div className="hidden md:block" />
 
         {/* Column 4: Legal */}
-        <div className="col-span-2 md:col-span-1">
-          <h3 className="font-bold text-slo-blue text-sm uppercase tracking-wider mb-4">
+        <div className="col-span-2 md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
+          <h3 className="font-bold text-slo-blue text-sm uppercase tracking-wider mb-4 mt-4 md:mt-0">
             Info
           </h3>
           <ul className="space-y-3">
@@ -118,7 +118,7 @@ export const Footer: React.FC = () => (
                   to={link.path}
                   className="group flex items-center gap-2 text-gray-600 hover:text-slo-blue transition-colors text-sm"
                 >
-                  <span className="group-hover:translate-x-0.5 transition-transform">
+                  <span className="w-full md:w-auto group-hover:translate-x-0.5 transition-transform">
                     {link.title}
                   </span>
                 </Link>
@@ -131,7 +131,7 @@ export const Footer: React.FC = () => (
       {/* Bottom Bar */}
       <div className="pt-8 border-t border-slate-200">
         <p className="text-gray-400 text-sm text-center">
-          &copy; {new Date().getFullYear()} SLO Picker. Built for indecisive locals by{' '}
+          &copy; {new Date().getFullYear()} Local Foodie. Built for indecisive locals by{' '}
           <a 
             href="https://eric.sh?ref=localfoodie" 
             target="_blank" 
@@ -145,3 +145,4 @@ export const Footer: React.FC = () => (
     </div>
   </footer>
 );
+

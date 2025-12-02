@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ 
-  title = "SLO Picker", 
+  title = "Local Foodie", 
   slogan = "Get help choosing your next meal in San Luis Obispo",
   themeText = "text-gray-700" // Default text color if not provided
 }) => {
@@ -42,3 +42,4 @@ export const Header: React.FC<Props> = ({
     </header>
   );
 };
+

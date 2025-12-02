@@ -1,11 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import FoodPickerPortal from './components/FoodPickerPortal';
-import FAQPage from './components/FAQPage';
-import PrivacyPage from './components/PrivacyPage';
-import TermsPage from './components/TermsPage';
-import { ScrollToTop } from './components/ScrollToTop';
+import { LandingPage, FoodPickerPortal, FAQPage, PrivacyPage, TermsPage } from './components/pages';
+import { ScrollToTop } from './components/ui';
 import { portalData, PORTAL_CRAVINGS } from './data/config';
 
 // Theme configurations for each portal

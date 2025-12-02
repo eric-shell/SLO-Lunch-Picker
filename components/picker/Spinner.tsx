@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Restaurant } from '../types';
+import { Restaurant } from '../../types';
 
 interface Props {
   restaurants: Restaurant[];
@@ -246,3 +246,4 @@ const Spinner: React.FC<Props> = ({ restaurants, isSpinning, onFinished, onTrigg
 };
 
 export default Spinner;
+

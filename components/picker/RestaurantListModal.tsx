@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { Restaurant } from '../types';
+import { Restaurant } from '../../types';
 
 interface Props {
   isOpen: boolean;
@@ -268,3 +268,4 @@ const RestaurantListModal: React.FC<Props> = ({ isOpen, onClose, restaurants, ex
 };
 
 export default RestaurantListModal;
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Footer } from './Footer';
+import { Footer } from '../layout';
 
 const PrivacyPage: React.FC = () => {
   return (
@@ -35,7 +35,7 @@ const PrivacyPage: React.FC = () => {
             <section>
               <h2 className="font-bold text-slo-blue text-xl mb-3">Overview</h2>
               <p className="text-gray-600 leading-relaxed">
-                SLO Picker ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our website.
+              Local Foodie ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our website.
               </p>
             </section>
 
@@ -104,3 +104,4 @@ const PrivacyPage: React.FC = () => {
 };
 
 export default PrivacyPage;
+

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FilterState, Restaurant } from '../types';
+import { FilterState, Restaurant } from '../../types';
 import RestaurantListModal from './RestaurantListModal';
-import Tooltip from './Tooltip';
-import { trackEvent, GA_CATEGORIES, GA_ACTIONS } from '../utils/analytics';
+import Tooltip from '../ui/Tooltip';
+import { trackEvent, GA_CATEGORIES, GA_ACTIONS } from '../../utils/analytics';
 
 interface Props {
   allCategories: string[];
@@ -125,9 +125,9 @@ const FilterPanel: React.FC<Props> = ({
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && toggleFilter('openNow')}
              >
-                {/* <Tooltip content="Based on known hours" position="top"> */}
+               {/* <Tooltip content="Based on known hours" position="top"> */}
                   <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Open Now</span>
-                {/* </Tooltip> */}
+               {/* </Tooltip> */}
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.openNow ? 'bg-slo-teal' : 'bg-gray-300'}`}>
                   <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.openNow ? 'translate-x-5' : 'translate-x-0'}`}></div>
                 </div>
@@ -141,9 +141,9 @@ const FilterPanel: React.FC<Props> = ({
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && toggleFilter('useRatingWeight')}
              >
-                {/* <Tooltip content="Changes probability based on last known ratings" position="top"> */}
+               {/* <Tooltip content="Changes probability based on last known ratings" position="top"> */}
                   <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Rating Adjusted</span>
-                {/* </Tooltip> */}
+               {/* </Tooltip> */}
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.useRatingWeight ? 'bg-slo-coral' : 'bg-gray-300'}`}>
                   <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.useRatingWeight ? 'translate-x-5' : 'translate-x-0'}`}></div>
                 </div>
@@ -157,9 +157,9 @@ const FilterPanel: React.FC<Props> = ({
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && toggleFilter('cheapMealsOnly')}
              >
-                {/* <Tooltip content="This is for $ restaurants" position="top"> */}
+               {/* <Tooltip content="This is for $ restaurants" position="top"> */}
                   <span className="font-semibold text-gray-700 group-hover:text-sky-950 transition-colors">Cheap Meals</span>
-                {/* </Tooltip> */}
+               {/* </Tooltip> */}
                 <div className={`w-12 h-7 rounded-full p-1 transition-colors ${filters.cheapMealsOnly ? 'bg-slo-sky' : 'bg-gray-300'}`}>
                   <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${filters.cheapMealsOnly ? 'translate-x-5' : 'translate-x-0'}`}></div>
                 </div>
@@ -233,3 +233,4 @@ const FilterPanel: React.FC<Props> = ({
 };
 
 export default FilterPanel;
+

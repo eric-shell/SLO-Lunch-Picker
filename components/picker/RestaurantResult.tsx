@@ -1,7 +1,7 @@
 import React from 'react';
-import { Restaurant } from '../types';
-import { isOpenNow, getTodaysHours } from '../utils/timeHelpers';
-import { trackEvent, GA_ACTIONS, GA_CATEGORIES } from '../utils/analytics';
+import { Restaurant } from '../../types';
+import { isOpenNow, getTodaysHours } from '../../utils/timeHelpers';
+import { trackEvent, GA_ACTIONS, GA_CATEGORIES } from '../../utils/analytics';
 
 interface Props {
   restaurant: Restaurant;
@@ -75,3 +75,4 @@ const RestaurantResult: React.FC<Props> = ({ restaurant, onSpinAgain }) => {
 };
 
 export default RestaurantResult;
+

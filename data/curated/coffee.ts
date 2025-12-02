@@ -12,50 +12,6 @@ import { Restaurant } from '../../types';
 
 export const coffee: Restaurant[] = [
   {
-    "id": "1085",
-    "name": "7-Eleven",
-    "address": "552 California Blvd, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "Espresso",
-      "Pastries"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "00:00-23:59"
-    },
-    "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/552-california-blvd-25115?utm_source=G&utm_medium=local&utm_campaign=google-local",
-    "mapUrl": "https://maps.google.com/?cid=10021925978061700194",
-    "rating": 2.1,
-    "price": 1
-  },
-  {
-    "id": "1115",
-    "name": "7-Eleven",
-    "address": "1301 Monterey St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Espresso",
-      "Pastries"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "00:00-23:59"
-    },
-    "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/1301-monterey-st-21006?utm_source=G&utm_medium=local&utm_campaign=google-local",
-    "mapUrl": "https://maps.google.com/?cid=13836306376087897611",
-    "rating": 3.2,
-    "price": 1
-  },
-  {
     "id": "1284",
     "name": "Alma Cafe",
     "address": "1531 Monterey St, San Luis Obispo, CA 93401, USA",
