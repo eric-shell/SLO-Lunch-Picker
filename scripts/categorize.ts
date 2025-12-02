@@ -311,6 +311,12 @@ function isChainRestaurant(name: string): boolean {
   });
 }
 
+function isPermanentlyClosed(restaurant: Restaurant): boolean {
+  // Check if ALL days are "Closed" - likely permanently closed or out of business
+  const days = Object.values(restaurant.hours);
+  return days.length > 0 && days.every(h => h === 'Closed');
+}
+
 function parseHours(hoursStr: string): { open: number; close: number } | null {
   if (hoursStr === 'Closed') return null;
   const match = hoursStr.match(/(\d{2}):(\d{2})-(\d{2}):(\d{2})/);
@@ -645,7 +651,11 @@ function mapToPortalCategories(restaurant: Restaurant, targetCategory: CategoryT
   return [...new Set(mapped)];
 }
 
-function formatRestaurant(restaurant: Restaurant, isChain: boolean, targetCategory: CategoryType): string {
+function formatRestaurant(
+  restaurant: Restaurant, 
+  options: { isChain: boolean; isClosed: boolean }, 
+  targetCategory: CategoryType
+): string {
   const mappedCategories = mapToPortalCategories(restaurant, targetCategory);
   
   const formatted = {
@@ -662,10 +672,12 @@ function formatRestaurant(restaurant: Restaurant, isChain: boolean, targetCatego
   
   const json = JSON.stringify(formatted, null, 2);
   
-  if (isChain) {
+  // Comment out chains and permanently closed restaurants
+  if (options.isChain || options.isClosed) {
+    const label = options.isClosed ? 'CLOSED' : 'CHAIN';
     const lines = json.split('\n');
     return lines.map((line, i) => {
-      if (i === 0) return `  // CHAIN: ${line}`;
+      if (i === 0) return `  // ${label}: ${line}`;
       return `  // ${line}`;
     }).join('\n');
   }
@@ -680,17 +692,31 @@ function generateFile(
 ): string {
   const dateStr = new Date().toISOString().split('T')[0];
   
-  const localRestaurants = restaurants.filter(r => !isChainRestaurant(r.name));
+  // Separate into: open local, permanently closed, and chains
+  const openLocalRestaurants = restaurants.filter(r => 
+    !isChainRestaurant(r.name) && !isPermanentlyClosed(r)
+  );
+  const closedRestaurants = restaurants.filter(r => 
+    !isChainRestaurant(r.name) && isPermanentlyClosed(r)
+  );
   const chainRestaurants = restaurants.filter(r => isChainRestaurant(r.name));
   
   // Sort alphabetically
-  localRestaurants.sort((a, b) => a.name.localeCompare(b.name));
+  openLocalRestaurants.sort((a, b) => a.name.localeCompare(b.name));
+  closedRestaurants.sort((a, b) => a.name.localeCompare(b.name));
   chainRestaurants.sort((a, b) => a.name.localeCompare(b.name));
   
-  const formattedLocal = localRestaurants.map(r => formatRestaurant(r, false, category));
-  const formattedChains = chainRestaurants.map(r => formatRestaurant(r, true, category));
+  const formattedOpen = openLocalRestaurants.map(r => 
+    formatRestaurant(r, { isChain: false, isClosed: false }, category)
+  );
+  const formattedClosed = closedRestaurants.map(r => 
+    formatRestaurant(r, { isChain: false, isClosed: true }, category)
+  );
+  const formattedChains = chainRestaurants.map(r => 
+    formatRestaurant(r, { isChain: true, isClosed: false }, category)
+  );
   
-  const allFormatted = [...formattedLocal, ...formattedChains];
+  const allFormatted = [...formattedOpen, ...formattedClosed, ...formattedChains];
   
   return `import { Restaurant } from '../../types';
 
@@ -698,7 +724,8 @@ function generateFile(
  * ${category.charAt(0).toUpperCase() + category.slice(1)} restaurants from Google Places API
  * Generated on: ${dateStr}
  * 
- * Local restaurants: ${localRestaurants.length}
+ * Open local restaurants: ${openLocalRestaurants.length}
+ * Permanently closed (commented out): ${closedRestaurants.length}
  * Chain restaurants (commented out): ${chainRestaurants.length}
  * 
  * Review and copy desired entries to data/${category}.ts
@@ -777,20 +804,21 @@ async function main() {
   
   // Print summary
   console.log('📋 Categorization Summary:');
-  console.log('─'.repeat(50));
+  console.log('─'.repeat(60));
   console.log('   (Restaurants can appear in multiple categories)');
-  console.log('─'.repeat(50));
+  console.log('─'.repeat(60));
   
   const categoryOrder: CategoryType[] = ['coffee', 'breakfast', 'lunch', 'dinner', 'drinks', 'treats'];
   
   for (const cat of categoryOrder) {
     const items = categorized[cat];
-    const local = items.filter(r => !isChainRestaurant(r.name)).length;
+    const open = items.filter(r => !isChainRestaurant(r.name) && !isPermanentlyClosed(r)).length;
+    const closed = items.filter(r => !isChainRestaurant(r.name) && isPermanentlyClosed(r)).length;
     const chains = items.filter(r => isChainRestaurant(r.name)).length;
-    console.log(`   ${cat.padEnd(12)} ${String(items.length).padStart(3)} total (${local} local, ${chains} chains)`);
+    console.log(`   ${cat.padEnd(12)} ${String(items.length).padStart(3)} total (${open} open, ${closed} closed, ${chains} chains)`);
   }
   
-  console.log('─'.repeat(50));
+  console.log('─'.repeat(60));
   console.log('');
   
   // Create output directory
@@ -817,8 +845,10 @@ async function main() {
     const outputPath = path.join(outputDir, config.filename);
     fs.writeFileSync(outputPath, output);
     
-    const local = items.filter(r => !isChainRestaurant(r.name)).length;
-    console.log(`   ✅ ${config.filename.padEnd(15)} ${String(items.length).padStart(3)} restaurants (${local} local, ${items.length - local} chains)`);
+    const open = items.filter(r => !isChainRestaurant(r.name) && !isPermanentlyClosed(r)).length;
+    const closed = items.filter(r => !isChainRestaurant(r.name) && isPermanentlyClosed(r)).length;
+    const chains = items.filter(r => isChainRestaurant(r.name)).length;
+    console.log(`   ✅ ${config.filename.padEnd(15)} ${String(open).padStart(3)} open (${closed} closed, ${chains} chains commented out)`);
   }
   
   console.log('');

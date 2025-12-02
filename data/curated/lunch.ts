@@ -4,8 +4,9 @@ import { Restaurant } from '../../types';
  * Lunch restaurants from Google Places API
  * Generated on: 2025-12-02
  * 
- * Local restaurants: 210
- * Chain restaurants (commented out): 35
+ * Open local restaurants: 189
+ * Permanently closed (commented out): 17
+ * Chain restaurants (commented out): 39
  * 
  * Curated restaurant list for the app
  */
@@ -52,48 +53,6 @@ export const lunch: Restaurant[] = [
     "mapUrl": "https://maps.google.com/?cid=6785567480948730360",
     "rating": 3.7,
     "price": 2
-  },
-  {
-    "id": "1085",
-    "name": "7-Eleven",
-    "address": "552 California Blvd, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "Bakery"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "00:00-23:59"
-    },
-    "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/552-california-blvd-25115?utm_source=G&utm_medium=local&utm_campaign=google-local",
-    "mapUrl": "https://maps.google.com/?cid=10021925978061700194",
-    "rating": 2.1,
-    "price": 1
-  },
-  {
-    "id": "1115",
-    "name": "7-Eleven",
-    "address": "1301 Monterey St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Bakery"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "00:00-23:59"
-    },
-    "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/1301-monterey-st-21006?utm_source=G&utm_medium=local&utm_campaign=google-local",
-    "mapUrl": "https://maps.google.com/?cid=13836306376087897611",
-    "rating": 3.2,
-    "price": 1
   },
   {
     "id": "1099",
@@ -225,28 +184,6 @@ export const lunch: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1224",
-    "name": "Backyard Pizza",
-    "address": "1064 Osos St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Italian",
-      "Pizza",
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "mapUrl": "https://maps.google.com/?cid=3148859095938051967",
-    "rating": 4,
-    "price": 2
-  },
-  {
     "id": "1191",
     "name": "BAHT",
     "address": "3845 S Higuera St suite 106, San Luis Obispo, CA 93401, USA",
@@ -287,27 +224,6 @@ export const lunch: Restaurant[] = [
     "website": "https://calpolydining.com/",
     "mapUrl": "https://maps.google.com/?cid=7521335751567613052",
     "rating": 2.7,
-    "price": 2
-  },
-  {
-    "id": "1345",
-    "name": "Bear City Social",
-    "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://www.bearcitysocial.com/",
-    "mapUrl": "https://maps.google.com/?cid=3675788516192070149",
-    "rating": 5,
     "price": 2
   },
   {
@@ -372,29 +288,6 @@ export const lunch: Restaurant[] = [
     "website": "https://www.bevmo.com/",
     "mapUrl": "https://maps.google.com/?cid=17641671917846526692",
     "rating": 4.3,
-    "price": 2
-  },
-  {
-    "id": "1238",
-    "name": "Big Wave Sushi",
-    "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Asian",
-      "Seafood",
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://www.bigwavesushi.com/",
-    "mapUrl": "https://maps.google.com/?cid=6794379817072616995",
-    "rating": 5,
     "price": 2
   },
   {
@@ -568,27 +461,6 @@ export const lunch: Restaurant[] = [
     "price": 1
   },
   {
-    "id": "1346",
-    "name": "Burrito Wagon",
-    "address": "285 Prado Rd # C, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Mexican",
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "mapUrl": "https://maps.google.com/?cid=2305067499471643379",
-    "rating": 4.3,
-    "price": 2
-  },
-  {
     "id": "1260",
     "name": "Café Crepes de SLO",
     "address": "785 Marsh St Suit A, San Luis Obispo, CA 93401, USA",
@@ -693,50 +565,6 @@ export const lunch: Restaurant[] = [
     "mapUrl": "https://maps.google.com/?cid=12757075634080827282",
     "rating": 4.1,
     "price": 1
-  },
-  {
-    "id": "1160",
-    "name": "Carl’s Jr.",
-    "address": "3980 Broad St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "07:00-23:00",
-      "Tue": "07:00-21:00",
-      "Wed": "07:00-21:00",
-      "Thu": "07:00-21:00",
-      "Fri": "07:00-21:00",
-      "Sat": "07:00-21:00",
-      "Sun": "07:00-21:00"
-    },
-    "website": "https://locations.carlsjr.com/ca/san-luis-obispo/3980-broad-street",
-    "mapUrl": "https://maps.google.com/?cid=3071480311251304395",
-    "rating": 3.8,
-    "price": 1
-  },
-  {
-    "id": "1174",
-    "name": "Central Coast Pizza Trolley",
-    "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Italian",
-      "Pizza",
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://centralcoastpizzatrolley.com/",
-    "mapUrl": "https://maps.google.com/?cid=16120365435301466600",
-    "rating": 3.8,
-    "price": 2
   },
   {
     "id": "1297",
@@ -1227,26 +1055,6 @@ export const lunch: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1097",
-    "name": "Finney’s",
-    "address": "450 Turner, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "mapUrl": "https://maps.google.com/?cid=3493690369705926102",
-    "rating": 4,
-    "price": 2
-  },
-  {
     "id": "1002",
     "name": "Firestone Grill",
     "address": "1001 Higuera St, San Luis Obispo, CA 93401, USA",
@@ -1329,27 +1137,6 @@ export const lunch: Restaurant[] = [
     "mapUrl": "https://maps.google.com/?cid=14715676466103213779",
     "rating": 4.8,
     "price": 1
-  },
-  {
-    "id": "1164",
-    "name": "Functional Gourmet",
-    "address": "3940 Broad St #1, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "https://usmapir.org/details/functional-gourmet-ChIJEwP",
-    "mapUrl": "https://maps.google.com/?cid=7819427290584794764",
-    "rating": 4,
-    "price": 2
   },
   {
     "id": "1048",
@@ -1544,27 +1331,6 @@ export const lunch: Restaurant[] = [
     },
     "mapUrl": "https://maps.google.com/?cid=13265007031434809719",
     "rating": 4,
-    "price": 2
-  },
-  {
-    "id": "1359",
-    "name": "hellahot",
-    "address": "570 Higuera St Suite 104, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://hellahot.io/",
-    "mapUrl": "https://maps.google.com/?cid=6346149390567497155",
-    "rating": 4.5,
     "price": 2
   },
   {
@@ -1868,27 +1634,6 @@ export const lunch: Restaurant[] = [
     "price": 1
   },
   {
-    "id": "1352",
-    "name": "Kor kitchen",
-    "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://korkitchen.com/",
-    "mapUrl": "https://maps.google.com/?cid=6180068762116693633",
-    "rating": 5,
-    "price": 2
-  },
-  {
     "id": "1257",
     "name": "Kreuzberg California",
     "address": "685 Higuera St, San Luis Obispo, CA 93401, USA",
@@ -2151,27 +1896,6 @@ export const lunch: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1349",
-    "name": "Lua's Catering",
-    "address": "2240 Biddle Ranch Rd, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://www.luascatering.com/",
-    "mapUrl": "https://maps.google.com/?cid=16041658469461655673",
-    "rating": 5,
-    "price": 2
-  },
-  {
     "id": "1262",
     "name": "Lucy's Coffee Co",
     "address": "871 Froom Ranch Way Ste 100, San Luis Obispo, CA 93405, USA",
@@ -2368,27 +2092,6 @@ export const lunch: Restaurant[] = [
     "price": 3
   },
   {
-    "id": "1337",
-    "name": "Mitchell Park Deli",
-    "address": "570 Higuera St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Sandwiches",
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "mapUrl": "https://maps.google.com/?cid=13257594739082935571",
-    "rating": 4,
-    "price": 2
-  },
-  {
     "id": "1201",
     "name": "Moe'Mediterranean Grill",
     "address": "1035 Chorro St, San Luis Obispo, CA 93401, USA",
@@ -2432,47 +2135,6 @@ export const lunch: Restaurant[] = [
     "mapUrl": "https://maps.google.com/?cid=17808530599014707729",
     "rating": 4.6,
     "price": 1
-  },
-  {
-    "id": "1095",
-    "name": "MrBeast Burger",
-    "address": "1800 Monterey St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "12:00-20:30",
-      "Tue": "12:00-20:30",
-      "Wed": "12:00-20:30",
-      "Thu": "12:00-20:30",
-      "Fri": "12:00-21:30",
-      "Sat": "12:00-21:30",
-      "Sun": "12:00-20:30"
-    },
-    "website": "https://www.mrbeastburger.com/",
-    "mapUrl": "https://maps.google.com/?cid=9377701219435606031",
-    "rating": 5,
-    "price": 2
-  },
-  {
-    "id": "1104",
-    "name": "Myron's",
-    "address": "California Polytechnic State University, 1 Grand Ave, San Luis Obispo, CA 93407, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "mapUrl": "https://maps.google.com/?cid=573035179638057339",
-    "rating": 4.2,
-    "price": 2
   },
   {
     "id": "1288",
@@ -3257,27 +2919,6 @@ export const lunch: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1387",
-    "name": "Seoul Food",
-    "address": "773 Foothill Blvd, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://seoulfood.kitchen/",
-    "mapUrl": "https://maps.google.com/?cid=9172367351914074005",
-    "rating": 5,
-    "price": 2
-  },
-  {
     "id": "1338",
     "name": "Sequoia Sandwich Company",
     "address": "893 Higuera St, San Luis Obispo, CA 93401, USA",
@@ -3793,28 +3434,6 @@ export const lunch: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1234",
-    "name": "Tacos Y Birria Sinaloa",
-    "address": "1131 Broad St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Mexican",
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "https://www.tacosbirriasinaloa.com/",
-    "mapUrl": "https://maps.google.com/?cid=3390609086742901395",
-    "rating": 4.6,
-    "price": 2
-  },
-  {
     "id": "1342",
     "name": "Tap Truck SLO",
     "address": "1974 Jennifer St, San Luis Obispo, CA 93401, USA",
@@ -3834,28 +3453,6 @@ export const lunch: Restaurant[] = [
     "mapUrl": "https://maps.google.com/?cid=15232857253203293317",
     "rating": 5,
     "price": 2
-  },
-  {
-    "id": "1125",
-    "name": "Taqueria",
-    "address": "1531 Froom Ranch Way, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "Mexican",
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://www.wholefoodsmarket.com/stores/sanluisobispo",
-    "mapUrl": "https://maps.google.com/?cid=280753293362961786",
-    "rating": 3.8,
-    "price": 3
   },
   {
     "id": "1206",
@@ -4392,28 +3989,6 @@ export const lunch: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1080",
-    "name": "Village Host Pizza & Grill",
-    "address": "2138 Broad St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Italian",
-      "Pizza",
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "mapUrl": "https://maps.google.com/?cid=6347880037102894873",
-    "rating": 4.4,
-    "price": 2
-  },
-  {
     "id": "1005",
     "name": "Woodstock's Pizza SLO",
     "address": "1000 Higuera St, San Luis Obispo, CA 93401, USA",
@@ -4456,27 +4031,6 @@ export const lunch: Restaurant[] = [
     "mapUrl": "https://maps.google.com/?cid=1959793299104063698",
     "rating": 4,
     "price": 2
-  },
-  {
-    "id": "1140",
-    "name": "Zen Dog",
-    "address": "11175 Los Osos Valley Rd, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "American"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://zendog805.com/",
-    "mapUrl": "https://maps.google.com/?cid=11468583015788634229",
-    "rating": 4.6,
-    "price": 1
   },
   {
     "id": "1154",
@@ -4522,6 +4076,411 @@ export const lunch: Restaurant[] = [
     "rating": 4.8,
     "price": 2
   },
+  // CLOSED: {
+  //   "id": "1224",
+  //   "name": "Backyard Pizza",
+  //   "address": "1064 Osos St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Italian",
+  //     "Pizza",
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "mapUrl": "https://maps.google.com/?cid=3148859095938051967",
+  //   "rating": 4,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1345",
+  //   "name": "Bear City Social",
+  //   "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://www.bearcitysocial.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=3675788516192070149",
+  //   "rating": 5,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1238",
+  //   "name": "Big Wave Sushi",
+  //   "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Asian",
+  //     "Seafood",
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://www.bigwavesushi.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=6794379817072616995",
+  //   "rating": 5,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1346",
+  //   "name": "Burrito Wagon",
+  //   "address": "285 Prado Rd # C, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Mexican",
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "mapUrl": "https://maps.google.com/?cid=2305067499471643379",
+  //   "rating": 4.3,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1174",
+  //   "name": "Central Coast Pizza Trolley",
+  //   "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Italian",
+  //     "Pizza",
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://centralcoastpizzatrolley.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=16120365435301466600",
+  //   "rating": 3.8,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1097",
+  //   "name": "Finney’s",
+  //   "address": "450 Turner, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "mapUrl": "https://maps.google.com/?cid=3493690369705926102",
+  //   "rating": 4,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1164",
+  //   "name": "Functional Gourmet",
+  //   "address": "3940 Broad St #1, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "https://usmapir.org/details/functional-gourmet-ChIJEwP",
+  //   "mapUrl": "https://maps.google.com/?cid=7819427290584794764",
+  //   "rating": 4,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1359",
+  //   "name": "hellahot",
+  //   "address": "570 Higuera St Suite 104, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://hellahot.io/",
+  //   "mapUrl": "https://maps.google.com/?cid=6346149390567497155",
+  //   "rating": 4.5,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1352",
+  //   "name": "Kor kitchen",
+  //   "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://korkitchen.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=6180068762116693633",
+  //   "rating": 5,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1349",
+  //   "name": "Lua's Catering",
+  //   "address": "2240 Biddle Ranch Rd, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://www.luascatering.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=16041658469461655673",
+  //   "rating": 5,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1337",
+  //   "name": "Mitchell Park Deli",
+  //   "address": "570 Higuera St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Sandwiches",
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "mapUrl": "https://maps.google.com/?cid=13257594739082935571",
+  //   "rating": 4,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1104",
+  //   "name": "Myron's",
+  //   "address": "California Polytechnic State University, 1 Grand Ave, San Luis Obispo, CA 93407, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "mapUrl": "https://maps.google.com/?cid=573035179638057339",
+  //   "rating": 4.2,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1387",
+  //   "name": "Seoul Food",
+  //   "address": "773 Foothill Blvd, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://seoulfood.kitchen/",
+  //   "mapUrl": "https://maps.google.com/?cid=9172367351914074005",
+  //   "rating": 5,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1234",
+  //   "name": "Tacos Y Birria Sinaloa",
+  //   "address": "1131 Broad St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Mexican",
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "https://www.tacosbirriasinaloa.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=3390609086742901395",
+  //   "rating": 4.6,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1125",
+  //   "name": "Taqueria",
+  //   "address": "1531 Froom Ranch Way, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "Mexican",
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://www.wholefoodsmarket.com/stores/sanluisobispo",
+  //   "mapUrl": "https://maps.google.com/?cid=280753293362961786",
+  //   "rating": 3.8,
+  //   "price": 3
+  // },
+  // CLOSED: {
+  //   "id": "1080",
+  //   "name": "Village Host Pizza & Grill",
+  //   "address": "2138 Broad St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Italian",
+  //     "Pizza",
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "mapUrl": "https://maps.google.com/?cid=6347880037102894873",
+  //   "rating": 4.4,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1140",
+  //   "name": "Zen Dog",
+  //   "address": "11175 Los Osos Valley Rd, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://zendog805.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=11468583015788634229",
+  //   "rating": 4.6,
+  //   "price": 1
+  // },
+  // CHAIN: {
+  //   "id": "1085",
+  //   "name": "7-Eleven",
+  //   "address": "552 California Blvd, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "Bakery"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "00:00-23:59"
+  //   },
+  //   "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/552-california-blvd-25115?utm_source=G&utm_medium=local&utm_campaign=google-local",
+  //   "mapUrl": "https://maps.google.com/?cid=10021925978061700194",
+  //   "rating": 2.1,
+  //   "price": 1
+  // },
+  // CHAIN: {
+  //   "id": "1115",
+  //   "name": "7-Eleven",
+  //   "address": "1301 Monterey St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Bakery"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "00:00-23:59"
+  //   },
+  //   "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/1301-monterey-st-21006?utm_source=G&utm_medium=local&utm_campaign=google-local",
+  //   "mapUrl": "https://maps.google.com/?cid=13836306376087897611",
+  //   "rating": 3.2,
+  //   "price": 1
+  // },
   // CHAIN: {
   //   "id": "1037",
   //   "name": "Blaze Pizza",
@@ -4585,6 +4544,27 @@ export const lunch: Restaurant[] = [
   //   "mapUrl": "https://maps.google.com/?cid=12017104070844227613",
   //   "rating": 1.9,
   //   "price": 2
+  // },
+  // CHAIN: {
+  //   "id": "1160",
+  //   "name": "Carl’s Jr.",
+  //   "address": "3980 Broad St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "07:00-23:00",
+  //     "Tue": "07:00-21:00",
+  //     "Wed": "07:00-21:00",
+  //     "Thu": "07:00-21:00",
+  //     "Fri": "07:00-21:00",
+  //     "Sat": "07:00-21:00",
+  //     "Sun": "07:00-21:00"
+  //   },
+  //   "website": "https://locations.carlsjr.com/ca/san-luis-obispo/3980-broad-street",
+  //   "mapUrl": "https://maps.google.com/?cid=3071480311251304395",
+  //   "rating": 3.8,
+  //   "price": 1
   // },
   // CHAIN: {
   //   "id": "1052",
@@ -4839,6 +4819,27 @@ export const lunch: Restaurant[] = [
   //   "mapUrl": "https://maps.google.com/?cid=8386334598457731915",
   //   "rating": 3.6,
   //   "price": 1
+  // },
+  // CHAIN: {
+  //   "id": "1095",
+  //   "name": "MrBeast Burger",
+  //   "address": "1800 Monterey St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "American"
+  //   ],
+  //   "hours": {
+  //     "Mon": "12:00-20:30",
+  //     "Tue": "12:00-20:30",
+  //     "Wed": "12:00-20:30",
+  //     "Thu": "12:00-20:30",
+  //     "Fri": "12:00-21:30",
+  //     "Sat": "12:00-21:30",
+  //     "Sun": "12:00-20:30"
+  //   },
+  //   "website": "https://www.mrbeastburger.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=9377701219435606031",
+  //   "rating": 5,
+  //   "price": 2
   // },
   // CHAIN: {
   //   "id": "1055",

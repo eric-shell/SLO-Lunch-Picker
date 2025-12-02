@@ -4,7 +4,8 @@ import { Restaurant } from '../../types';
  * Treats restaurants from Google Places API
  * Generated on: 2025-12-02
  * 
- * Local restaurants: 36
+ * Open local restaurants: 34
+ * Permanently closed (commented out): 2
  * Chain restaurants (commented out): 1
  * 
  * Curated restaurant list for the app
@@ -493,28 +494,6 @@ export const treats: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1312",
-    "name": "ROLL’D SLO",
-    "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Cookies",
-      "Donuts"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://www.rolldslo.com/",
-    "mapUrl": "https://maps.google.com/?cid=18114453195563188328",
-    "rating": 4.2,
-    "price": 2
-  },
-  {
     "id": "1314",
     "name": "San Luis Sourdough",
     "address": "3877 Long St, San Luis Obispo, CA 93401, USA",
@@ -556,28 +535,6 @@ export const treats: Restaurant[] = [
     "website": "http://www.seabreezecupcakes.com/",
     "mapUrl": "https://maps.google.com/?cid=17897852437079291812",
     "rating": 4.7,
-    "price": 2
-  },
-  {
-    "id": "1307",
-    "name": "Sin Gluten Co.",
-    "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Cookies",
-      "Donuts"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://singlutenco.com/",
-    "mapUrl": "https://maps.google.com/?cid=11298345259208642670",
-    "rating": 4.6,
     "price": 2
   },
   {
@@ -794,6 +751,50 @@ export const treats: Restaurant[] = [
     "rating": 4,
     "price": 2
   },
+  // CLOSED: {
+  //   "id": "1312",
+  //   "name": "ROLL’D SLO",
+  //   "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Cookies",
+  //     "Donuts"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://www.rolldslo.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=18114453195563188328",
+  //   "rating": 4.2,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1307",
+  //   "name": "Sin Gluten Co.",
+  //   "address": "4750 Allene Way, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Cookies",
+  //     "Donuts"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://singlutenco.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=11298345259208642670",
+  //   "rating": 4.6,
+  //   "price": 2
+  // },
   // CHAIN: {
   //   "id": "1061",
   //   "name": "Einstein Bros. Bagels",

@@ -4,8 +4,9 @@ import { Restaurant } from '../../types';
  * Dinner restaurants from Google Places API
  * Generated on: 2025-12-02
  * 
- * Local restaurants: 147
- * Chain restaurants (commented out): 29
+ * Open local restaurants: 143
+ * Permanently closed (commented out): 0
+ * Chain restaurants (commented out): 33
  * 
  * Curated restaurant list for the app
  */
@@ -54,48 +55,6 @@ export const dinner: Restaurant[] = [
     "mapUrl": "https://maps.google.com/?cid=6785567480948730360",
     "rating": 3.7,
     "price": 2
-  },
-  {
-    "id": "1085",
-    "name": "7-Eleven",
-    "address": "552 California Blvd, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "Casual"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "00:00-23:59"
-    },
-    "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/552-california-blvd-25115?utm_source=G&utm_medium=local&utm_campaign=google-local",
-    "mapUrl": "https://maps.google.com/?cid=10021925978061700194",
-    "rating": 2.1,
-    "price": 1
-  },
-  {
-    "id": "1115",
-    "name": "7-Eleven",
-    "address": "1301 Monterey St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Casual"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "00:00-23:59"
-    },
-    "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/1301-monterey-st-21006?utm_source=G&utm_medium=local&utm_campaign=google-local",
-    "mapUrl": "https://maps.google.com/?cid=13836306376087897611",
-    "rating": 3.2,
-    "price": 1
   },
   {
     "id": "1111",
@@ -1614,28 +1573,6 @@ export const dinner: Restaurant[] = [
     "mapUrl": "https://maps.google.com/?cid=476731565776745699",
     "rating": 4.7,
     "price": 1
-  },
-  {
-    "id": "1095",
-    "name": "MrBeast Burger",
-    "address": "1800 Monterey St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "American",
-      "Casual"
-    ],
-    "hours": {
-      "Mon": "12:00-20:30",
-      "Tue": "12:00-20:30",
-      "Wed": "12:00-20:30",
-      "Thu": "12:00-20:30",
-      "Fri": "12:00-21:30",
-      "Sat": "12:00-21:30",
-      "Sun": "12:00-20:30"
-    },
-    "website": "https://www.mrbeastburger.com/",
-    "mapUrl": "https://maps.google.com/?cid=9377701219435606031",
-    "rating": 5,
-    "price": 2
   },
   {
     "id": "1180",
@@ -3280,6 +3217,48 @@ export const dinner: Restaurant[] = [
     "price": 2
   },
   // CHAIN: {
+  //   "id": "1085",
+  //   "name": "7-Eleven",
+  //   "address": "552 California Blvd, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "Casual"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "00:00-23:59"
+  //   },
+  //   "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/552-california-blvd-25115?utm_source=G&utm_medium=local&utm_campaign=google-local",
+  //   "mapUrl": "https://maps.google.com/?cid=10021925978061700194",
+  //   "rating": 2.1,
+  //   "price": 1
+  // },
+  // CHAIN: {
+  //   "id": "1115",
+  //   "name": "7-Eleven",
+  //   "address": "1301 Monterey St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Casual"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "00:00-23:59"
+  //   },
+  //   "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/1301-monterey-st-21006?utm_source=G&utm_medium=local&utm_campaign=google-local",
+  //   "mapUrl": "https://maps.google.com/?cid=13836306376087897611",
+  //   "rating": 3.2,
+  //   "price": 1
+  // },
+  // CHAIN: {
   //   "id": "1037",
   //   "name": "Blaze Pizza",
   //   "address": "892 Foothill Blvd Suite 5A, San Luis Obispo, CA 93405, USA",
@@ -3344,6 +3323,27 @@ export const dinner: Restaurant[] = [
   //   "mapUrl": "https://maps.google.com/?cid=12017104070844227613",
   //   "rating": 1.9,
   //   "price": 2
+  // },
+  // CHAIN: {
+  //   "id": "1160",
+  //   "name": "Carl’s Jr.",
+  //   "address": "3980 Broad St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Casual"
+  //   ],
+  //   "hours": {
+  //     "Mon": "07:00-23:00",
+  //     "Tue": "07:00-21:00",
+  //     "Wed": "07:00-21:00",
+  //     "Thu": "07:00-21:00",
+  //     "Fri": "07:00-21:00",
+  //     "Sat": "07:00-21:00",
+  //     "Sun": "07:00-21:00"
+  //   },
+  //   "website": "https://locations.carlsjr.com/ca/san-luis-obispo/3980-broad-street",
+  //   "mapUrl": "https://maps.google.com/?cid=3071480311251304395",
+  //   "rating": 3.8,
+  //   "price": 1
   // },
   // CHAIN: {
   //   "id": "1045",
@@ -3539,6 +3539,28 @@ export const dinner: Restaurant[] = [
   //   "mapUrl": "https://maps.google.com/?cid=8386334598457731915",
   //   "rating": 3.6,
   //   "price": 1
+  // },
+  // CHAIN: {
+  //   "id": "1095",
+  //   "name": "MrBeast Burger",
+  //   "address": "1800 Monterey St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "American",
+  //     "Casual"
+  //   ],
+  //   "hours": {
+  //     "Mon": "12:00-20:30",
+  //     "Tue": "12:00-20:30",
+  //     "Wed": "12:00-20:30",
+  //     "Thu": "12:00-20:30",
+  //     "Fri": "12:00-21:30",
+  //     "Sat": "12:00-21:30",
+  //     "Sun": "12:00-20:30"
+  //   },
+  //   "website": "https://www.mrbeastburger.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=9377701219435606031",
+  //   "rating": 5,
+  //   "price": 2
   // },
   // CHAIN: {
   //   "id": "1055",

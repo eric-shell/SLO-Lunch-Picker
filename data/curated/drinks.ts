@@ -4,35 +4,14 @@ import { Restaurant } from '../../types';
  * Drinks restaurants from Google Places API
  * Generated on: 2025-12-02
  * 
- * Local restaurants: 66
+ * Open local restaurants: 63
+ * Permanently closed (commented out): 3
  * Chain restaurants (commented out): 2
  * 
  * Curated restaurant list for the app
  */
 
 export const drinks: Restaurant[] = [
-  {
-    "id": "1139",
-    "name": "11th Hole Grill",
-    "address": "11175 Los Osos Valley Rd, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "Craft Beer",
-      "Cocktails"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://achievementhouse.org/",
-    "mapUrl": "https://maps.google.com/?cid=3262526348974276643",
-    "rating": 4.7,
-    "price": 2
-  },
   {
     "id": "1169",
     "name": "15degrees C",
@@ -184,27 +163,6 @@ export const drinks: Restaurant[] = [
     "website": "http://www.blacksheepslo.com/",
     "mapUrl": "https://maps.google.com/?cid=8996943614475103089",
     "rating": 4.5,
-    "price": 2
-  },
-  {
-    "id": "1372",
-    "name": "Blessed Brewing",
-    "address": "660 Clarion Ct, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Craft Beer"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://blessedbrewing.com/",
-    "mapUrl": "https://maps.google.com/?cid=2506064457655804011",
-    "rating": 4,
     "price": 2
   },
   {
@@ -622,27 +580,6 @@ export const drinks: Restaurant[] = [
     "website": "https://hotel-slo.com/dining/high-bar/",
     "mapUrl": "https://maps.google.com/?cid=10295503263556217023",
     "rating": 4.6,
-    "price": 2
-  },
-  {
-    "id": "1361",
-    "name": "Humdinger Brewing",
-    "address": "855 Capitolio Way STE 1, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Craft Beer"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://www.humdingerbrewing.com/san-luis-obispo-location",
-    "mapUrl": "https://maps.google.com/?cid=2213995780698035344",
-    "rating": 5,
     "price": 2
   },
   {
@@ -1454,6 +1391,70 @@ export const drinks: Restaurant[] = [
     "rating": 5,
     "price": 2
   },
+  // CLOSED: {
+  //   "id": "1139",
+  //   "name": "11th Hole Grill",
+  //   "address": "11175 Los Osos Valley Rd, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "Craft Beer",
+  //     "Cocktails"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://achievementhouse.org/",
+  //   "mapUrl": "https://maps.google.com/?cid=3262526348974276643",
+  //   "rating": 4.7,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1372",
+  //   "name": "Blessed Brewing",
+  //   "address": "660 Clarion Ct, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Craft Beer"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://blessedbrewing.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=2506064457655804011",
+  //   "rating": 4,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1361",
+  //   "name": "Humdinger Brewing",
+  //   "address": "855 Capitolio Way STE 1, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Craft Beer"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://www.humdingerbrewing.com/san-luis-obispo-location",
+  //   "mapUrl": "https://maps.google.com/?cid=2213995780698035344",
+  //   "rating": 5,
+  //   "price": 2
+  // },
   // CHAIN: {
   //   "id": "1074",
   //   "name": "Buffalo Wild Wings",

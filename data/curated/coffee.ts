@@ -4,34 +4,14 @@ import { Restaurant } from '../../types';
  * Coffee restaurants from Google Places API
  * Generated on: 2025-12-02
  * 
- * Local restaurants: 60
- * Chain restaurants (commented out): 8
+ * Open local restaurants: 55
+ * Permanently closed (commented out): 3
+ * Chain restaurants (commented out): 10
  * 
  * Curated restaurant list for the app
  */
 
 export const coffee: Restaurant[] = [
-  {
-    "id": "1284",
-    "name": "Alma Cafe",
-    "address": "1531 Monterey St, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Pastries",
-      "Espresso"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "mapUrl": "https://maps.google.com/?cid=3024943762482069558",
-    "rating": 5,
-    "price": 2
-  },
   {
     "id": "1150",
     "name": "Baby Bear Biscuits Southern Cafe",
@@ -840,28 +820,6 @@ export const coffee: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1000",
-    "name": "Madonna Inn",
-    "address": "100 Madonna Rd, San Luis Obispo, CA 93405, USA",
-    "categories": [
-      "Espresso",
-      "Pastries"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "https://www.madonnainn.com/",
-    "mapUrl": "https://maps.google.com/?cid=8009713497830827500",
-    "rating": 4.5,
-    "price": 2
-  },
-  {
     "id": "1288",
     "name": "Nano's Coffee",
     "address": "790 Foothill Blvd Suite 120, San Luis Obispo, CA 93405, USA",
@@ -1081,27 +1039,6 @@ export const coffee: Restaurant[] = [
     "price": 2
   },
   {
-    "id": "1290",
-    "name": "SLAKE Coffee Roasters",
-    "address": "187 Tank Farm Rd Suite 140, San Luis Obispo, CA 93401, USA",
-    "categories": [
-      "Pastries"
-    ],
-    "hours": {
-      "Mon": "Closed",
-      "Tue": "Closed",
-      "Wed": "Closed",
-      "Thu": "Closed",
-      "Fri": "Closed",
-      "Sat": "Closed",
-      "Sun": "Closed"
-    },
-    "website": "http://www.slakecoffee.com/",
-    "mapUrl": "https://maps.google.com/?cid=1567403590993737398",
-    "rating": 5,
-    "price": 2
-  },
-  {
     "id": "1258",
     "name": "SLO Cafe & Market Place",
     "address": "975 Airport Dr, San Luis Obispo, CA 93401, USA",
@@ -1274,6 +1211,114 @@ export const coffee: Restaurant[] = [
     "rating": 4.6,
     "price": 2
   },
+  // CLOSED: {
+  //   "id": "1284",
+  //   "name": "Alma Cafe",
+  //   "address": "1531 Monterey St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Pastries",
+  //     "Espresso"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "mapUrl": "https://maps.google.com/?cid=3024943762482069558",
+  //   "rating": 5,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1000",
+  //   "name": "Madonna Inn",
+  //   "address": "100 Madonna Rd, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "Espresso",
+  //     "Pastries"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "https://www.madonnainn.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=8009713497830827500",
+  //   "rating": 4.5,
+  //   "price": 2
+  // },
+  // CLOSED: {
+  //   "id": "1290",
+  //   "name": "SLAKE Coffee Roasters",
+  //   "address": "187 Tank Farm Rd Suite 140, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Pastries"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "Closed"
+  //   },
+  //   "website": "http://www.slakecoffee.com/",
+  //   "mapUrl": "https://maps.google.com/?cid=1567403590993737398",
+  //   "rating": 5,
+  //   "price": 2
+  // },
+  // CHAIN: {
+  //   "id": "1085",
+  //   "name": "7-Eleven",
+  //   "address": "552 California Blvd, San Luis Obispo, CA 93405, USA",
+  //   "categories": [
+  //     "Espresso",
+  //     "Pastries"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "00:00-23:59"
+  //   },
+  //   "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/552-california-blvd-25115?utm_source=G&utm_medium=local&utm_campaign=google-local",
+  //   "mapUrl": "https://maps.google.com/?cid=10021925978061700194",
+  //   "rating": 2.1,
+  //   "price": 1
+  // },
+  // CHAIN: {
+  //   "id": "1115",
+  //   "name": "7-Eleven",
+  //   "address": "1301 Monterey St, San Luis Obispo, CA 93401, USA",
+  //   "categories": [
+  //     "Espresso",
+  //     "Pastries"
+  //   ],
+  //   "hours": {
+  //     "Mon": "Closed",
+  //     "Tue": "Closed",
+  //     "Wed": "Closed",
+  //     "Thu": "Closed",
+  //     "Fri": "Closed",
+  //     "Sat": "Closed",
+  //     "Sun": "00:00-23:59"
+  //   },
+  //   "website": "https://www.7-eleven.com/locations/ca/san-luis-obispo/1301-monterey-st-21006?utm_source=G&utm_medium=local&utm_campaign=google-local",
+  //   "mapUrl": "https://maps.google.com/?cid=13836306376087897611",
+  //   "rating": 3.2,
+  //   "price": 1
+  // },
   // CHAIN: {
   //   "id": "1044",
   //   "name": "Campus Dining",

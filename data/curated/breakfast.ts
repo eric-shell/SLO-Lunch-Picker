@@ -4,7 +4,8 @@ import { Restaurant } from '../../types';
  * Breakfast restaurants from Google Places API
  * Generated on: 2025-12-02
  * 
- * Local restaurants: 32
+ * Open local restaurants: 32
+ * Permanently closed (commented out): 0
  * Chain restaurants (commented out): 2
  * 
  * Curated restaurant list for the app
