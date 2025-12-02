@@ -2,6 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import FoodPickerPortal from './components/FoodPickerPortal';
+import FAQPage from './components/FAQPage';
+import PrivacyPage from './components/PrivacyPage';
+import TermsPage from './components/TermsPage';
+import { ScrollToTop } from './components/ScrollToTop';
 import { portalData, PORTAL_CRAVINGS } from './data/config';
 
 // Theme configurations for each portal
@@ -47,9 +51,11 @@ const themes = {
 const App: React.FC = () => {
   return (
     <Router basename={import.meta.env.BASE_URL}>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         
+        {/* Food Picker Portals */}
         <Route 
           path="/breakfast" 
           element={
@@ -127,6 +133,11 @@ const App: React.FC = () => {
             />
           } 
         />
+
+        {/* Info Pages */}
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
 
       </Routes>
     </Router>
