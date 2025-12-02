@@ -118,7 +118,7 @@ export const Footer: React.FC = () => (
                   to={link.path}
                   className="group flex items-center gap-2 text-gray-600 hover:text-slo-blue transition-colors text-sm"
                 >
-                  <span className="w-full md:w-auto group-hover:translate-x-0.5 transition-transform">
+                  <span className="w-full md:w-auto hover:underline">
                     {link.title}
                   </span>
                 </Link>
