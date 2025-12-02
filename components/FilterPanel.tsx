@@ -116,7 +116,7 @@ const FilterPanel: React.FC<Props> = ({
           {/* Collapsible Content Wrapper */}
           <div className={`${isExpanded ? 'block' : 'hidden'} lg:block lg:flex-grow lg:flex lg:flex-col lg:overflow-hidden`}>
             {/* Filters */}
-            <div className="space-y-3 mb-8">
+            <div className="space-y-3 mb-8 mt-4 lg:mt-0">
              {/* Open Now */}
              <div 
                 className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group" 

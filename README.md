@@ -14,9 +14,13 @@ Production URL:
 
 ## Project Structure
 
-*   `data/restaurants.ts`: The database of restaurants. Edit this to add more spots!
-*   `components/`: Reusable UI components.
-*   `utils/`: Helper logic for time checking.
+*   `data/curated/`: The curated restaurant files used by the app (coffee.ts, lunch.ts, etc.)
+*   `data/categorized/`: Auto-generated categorized files for review (gitignored)
+*   `data/exports/`: Raw Google API exports (gitignored)
+*   `data/config.ts`: Portal configuration and data imports
+*   `components/`: Reusable UI components
+*   `scripts/`: Import and categorization scripts
+*   `utils/`: Helper logic for time checking
 
 ## Development
 
@@ -33,23 +37,65 @@ Production URL:
 
 ## How to Update Restaurant Data
 
-1.  Open `data/restaurants.ts`.
-2.  Add a new object to the `restaurants` array following the existing pattern:
+### Manual Updates
+
+1.  Open `data/curated/lunch.ts` (or the appropriate category file).
+2.  Add a new object to the array following the existing pattern:
     ```typescript
     {
       id: "unique-id",
       name: "Restaurant Name",
       address: "Address String",
-      category: "Category Name",
+      categories: ["Category Name"],
       hours: {
         "Mon": "11:00-21:00",
         // ... other days
       },
       mapUrl: "Google Maps Link",
-      // Optional fields: website, notes, rating, price
+      rating: 4.5,
+      price: 2,
+      // Optional fields: website, notes
     }
     ```
 3.  Save the file. The development server will auto-reload if running.
+
+### Google Places API Export (Monthly Refresh)
+
+Fetch the latest restaurants from Google Places API:
+
+1.  **First-time setup** (only once):
+    - Go to [Google Cloud Console](https://console.cloud.google.com/)
+    - Create a project and enable the "Places API"
+    - Create an API key under Credentials
+    - Add your key to `.env`: `GOOGLE_API_KEY=your_key_here`
+
+2.  **Run the import** (does both steps below):
+    ```bash
+    npm run import
+    ```
+
+    Or run individually:
+    ```bash
+    npm run generate    # Fetch from Google → data/exports/master-export.ts
+    npm run categorize  # Sort into categories → data/categorized/*.ts
+    ```
+
+3.  **Review the categorized files**:
+    - `data/categorized/coffee.ts` - Coffee shops
+    - `data/categorized/breakfast.ts` - Breakfast spots
+    - `data/categorized/lunch.ts` - Lunch restaurants
+    - `data/categorized/dinner.ts` - Dinner venues
+    - `data/categorized/drinks.ts` - Bars & breweries
+    - `data/categorized/treats.ts` - Dessert & treats
+
+    **Chain restaurants are automatically commented out** to prioritize local businesses.
+
+4.  **Merge into curated files**:
+    - Copy desired entries to `data/curated/*.ts`
+    - Uncomment chains if you want to include them
+    - Adjust categories to match your portal cravings
+
+**Note**: The Google Places API has a free tier ($200/month credit) which is more than enough for monthly exports. Each run costs approximately $10-15.
 
 ## Deployment to GitHub Pages
 

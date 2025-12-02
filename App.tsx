@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import FoodPickerPortal from './components/FoodPickerPortal';
-import { restaurantData, PORTAL_CRAVINGS } from './data/restaurantData';
+import { portalData, PORTAL_CRAVINGS } from './data/config';
 
 // Theme configurations for each portal
 const themes = {
@@ -56,7 +56,7 @@ const App: React.FC = () => {
             <FoodPickerPortal 
               title="SLO Breakfast Picker"
               slogan="When you're too hungover to make a decision"
-              restaurantData={restaurantData.breakfast} 
+              restaurantData={portalData.breakfast} 
               filterOptions={PORTAL_CRAVINGS.breakfast}
               theme={themes.breakfast}
             />
@@ -69,7 +69,7 @@ const App: React.FC = () => {
             <FoodPickerPortal 
               title="SLO Lunch Picker" 
               slogan="When you and your coworkers just can't agree"
-              restaurantData={restaurantData.lunch} 
+              restaurantData={portalData.lunch} 
               filterOptions={PORTAL_CRAVINGS.lunch}
               theme={themes.lunch}
             />
@@ -82,7 +82,7 @@ const App: React.FC = () => {
             <FoodPickerPortal 
               title="SLO Dinner Picker"
               slogan="When your partner just can't make up their mind"
-              restaurantData={restaurantData.dinner} 
+              restaurantData={portalData.dinner} 
               filterOptions={PORTAL_CRAVINGS.dinner}
               theme={themes.dinner}
             />
@@ -95,7 +95,7 @@ const App: React.FC = () => {
             <FoodPickerPortal 
               title="SLO Coffee Picker" 
               slogan="When it's too early to turn your brain on"
-              restaurantData={restaurantData.coffee} 
+              restaurantData={portalData.coffee} 
               filterOptions={PORTAL_CRAVINGS.coffee}
               theme={themes.coffee}
             />
@@ -108,7 +108,7 @@ const App: React.FC = () => {
             <FoodPickerPortal 
               title="SLO Treat Picker"
               slogan="When you just need something to fix the craving"
-              restaurantData={restaurantData.treats} 
+              restaurantData={portalData.treats} 
               filterOptions={PORTAL_CRAVINGS.treats}
               theme={themes.treats}
             />
@@ -121,7 +121,7 @@ const App: React.FC = () => {
             <FoodPickerPortal 
               title="SLO Drink Picker"
               slogan="When you day was long and your brain is clocked out"
-              restaurantData={restaurantData.drinks} 
+              restaurantData={portalData.drinks} 
               filterOptions={PORTAL_CRAVINGS.drinks}
               theme={themes.drinks}
             />

@@ -1,12 +1,12 @@
 import { Restaurant } from '../types';
-import { coffee } from './coffee';
-import { breakfast } from './breakfast';
-import { lunch } from './lunch';
-import { dinner } from './dinner';
-import { drinks } from './drinks';
-import { treats } from './treats';
+import { coffee } from './curated/coffee';
+import { breakfast } from './curated/breakfast';
+import { lunch } from './curated/lunch';
+import { dinner } from './curated/dinner';
+import { drinks } from './curated/drinks';
+import { treats } from './curated/treats';
 
-export interface RestaurantData {
+export interface PortalData {
   coffee: Restaurant[];
   breakfast: Restaurant[];
   lunch: Restaurant[];
@@ -25,6 +25,7 @@ export const PORTAL_CRAVINGS = {
     'Bakery',
     'Global',
     'Indian',
+    'Italian',
     'Mediterranean',
     'Mexican',
     'Pizza',
@@ -32,12 +33,29 @@ export const PORTAL_CRAVINGS = {
     'Seafood',
     'Vegan'
   ],
-  dinner: ['Fine Dining', 'Date Night', 'Casual', 'Steak', 'Italian', 'Sushi', 'Vegan'],
+  dinner: [
+    'American',
+    'Asian',
+    'BBQ',
+    'Casual',
+    'Date Night',
+    'Fine Dining',
+    'Global',
+    'Indian',
+    'Italian',
+    'Mediterranean',
+    'Mexican',
+    'Pizza',
+    'Seafood',
+    'Steak',
+    'Sushi',
+    'Vegan'
+  ],
   drinks: ['Cocktails', 'Craft Beer', 'Wine Bar', 'Mocktails'],
   treats: ['Ice Cream', 'Cookies', 'Candy', 'Donuts', 'Chocolates', 'Frozen Yogurt', 'Vegan'],
 };
 
-export const restaurantData: RestaurantData = {
+export const portalData: PortalData = {
   coffee,
   breakfast,
   lunch,

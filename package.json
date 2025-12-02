@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && cp docs/index.html docs/404.html",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate": "npx tsx scripts/generate.ts",
+    "categorize": "npx tsx scripts/categorize.ts",
+    "import": "npm run generate && npm run categorize"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.1",
