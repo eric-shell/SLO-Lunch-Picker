@@ -131,7 +131,7 @@ export const Footer: React.FC = () => (
       {/* Bottom Bar */}
       <div className="pt-8 border-t border-slate-200">
         <p className="text-gray-400 text-sm text-center">
-          &copy; {new Date().getFullYear()} Local Foodie. Built for indecisive locals by{' '}
+          {new Date().getFullYear()} Local Foodie. Built for indecisive locals by {' '}
           <a 
             href="https://eric.sh?ref=localfoodie" 
             target="_blank" 
